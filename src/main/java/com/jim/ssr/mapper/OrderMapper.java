@@ -10,6 +10,8 @@ import com.jim.ssr.entity.Order;
 */
 public interface OrderMapper {
 
+    // -------- Generate -----------------
+
     int deleteByPrimaryKey(Long id);
 
     int insert(Order record);

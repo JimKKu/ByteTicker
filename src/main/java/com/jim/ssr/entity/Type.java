@@ -2,12 +2,14 @@ package com.jim.ssr.entity;
 
 import java.io.Serializable;
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * 分类
  * @TableName type
  */
 @Data
+@ToString
 public class Type implements Serializable {
     /**
      * 分类ID

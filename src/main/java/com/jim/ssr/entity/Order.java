@@ -2,12 +2,14 @@ package com.jim.ssr.entity;
 
 import java.io.Serializable;
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * 订单
  * @TableName order
  */
 @Data
+@ToString
 public class Order implements Serializable {
     /**
      * ID

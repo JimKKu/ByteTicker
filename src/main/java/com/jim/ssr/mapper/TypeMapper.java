@@ -10,6 +10,8 @@ import com.jim.ssr.entity.Type;
 */
 public interface TypeMapper {
 
+    // -------- Generate -----------------
+
     int deleteByPrimaryKey(Long id);
 
     int insert(Type record);

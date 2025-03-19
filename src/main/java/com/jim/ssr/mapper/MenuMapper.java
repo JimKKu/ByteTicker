@@ -12,6 +12,9 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface MenuMapper {
 
+
+    // -------- Generate -----------------
+
     int deleteByPrimaryKey(Long id);
 
     int insert(Menu record);

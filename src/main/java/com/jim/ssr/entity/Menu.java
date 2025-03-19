@@ -2,12 +2,14 @@ package com.jim.ssr.entity;
 
 import java.io.Serializable;
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * 菜单
  * @TableName menu
  */
 @Data
+@ToString
 public class Menu implements Serializable {
     /**
      * 主键

@@ -103,7 +103,8 @@ export default {
 #order {
   width: 140px;
   height: 80px;
-  background-color: #fcc307;
+  //background-color: #fcc307;
+  background: linear-gradient(to right,#12c2e9, #ffff1c);;
   position: absolute;
   bottom: 24px;
   right: 264px;
@@ -112,5 +113,23 @@ export default {
   color: #fff;
   font-size: 42px;
   border-radius: 24px;
+  transition: 1s all;
+  box-shadow: 2px 2px 4px #ffff1c inset,-2px -2px 4px #12c2e9 inset ;
 }
+#order:hover {
+  box-shadow: -2px -2px 4px #ffff1c inset,2px 2px 4px #12c2e9 inset ;
+  //animation-name: hover-order;
+  //animation-duration: 1s;
+}
+
+@keyframes hover-order {
+  50% {
+    box-shadow: -2px -2px 4px #ffff1c inset,2px 2px 4px #12c2e9 inset ;
+    background: linear-gradient(to right,#ffff1c, #12c2e9);;
+  } 100% {
+    box-shadow: 2px 2px 4px #ffff1c inset,-2px -2px 4px #12c2e9 inset ;
+    background: linear-gradient(to right,#12c2e9, #ffff1c);;
+  }
+}
+
 </style>

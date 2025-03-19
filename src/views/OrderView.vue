@@ -16,7 +16,7 @@
       </div>
       <!-- 底部DIV -->
       <div id="c-bottom">
-
+        <div id="order">下单</div>
       </div>
     </div>
   </div>
@@ -54,6 +54,8 @@ export default {
 }
 #c-header-div-img {
   height: 42px;
+  border-radius: 24px;
+  box-shadow: 2px 2px 6px #b0b0b0,-2px -2px 6px #ffffff;
 }
 
 #c-body {
@@ -86,7 +88,6 @@ export default {
   z-index: -1;
   width: 100%;
   height: 100%;
-  background-color: pink;
   position: absolute;
   left: 64px;
 }
@@ -98,5 +99,18 @@ export default {
   position: absolute;
   right: 0;
   box-shadow: 0 0 5px #868686;
+}
+#order {
+  width: 140px;
+  height: 80px;
+  background-color: #fcc307;
+  position: absolute;
+  bottom: 24px;
+  right: 264px;
+  line-height: 80px;
+  text-align: center;
+  color: #fff;
+  font-size: 42px;
+  border-radius: 24px;
 }
 </style>

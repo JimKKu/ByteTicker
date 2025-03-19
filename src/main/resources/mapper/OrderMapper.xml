@@ -23,16 +23,16 @@
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from order
+        from tbl_order
         where  id = #{id,jdbcType=BIGINT} 
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-        delete from order
+        delete from tbl_order
         where  id = #{id,jdbcType=BIGINT} 
     </delete>
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.jim.ssr.entity.Order" useGeneratedKeys="true">
-        insert into order
+        insert into tbl_order
         ( id,menu_info,num
         ,status,price,createDate
         ,comment)
@@ -41,7 +41,7 @@
         ,#{comment,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.jim.ssr.entity.Order" useGeneratedKeys="true">
-        insert into order
+        insert into tbl_order
         <trim prefix="(" suffix=")" suffixOverrides=",">
                 <if test="id != null">id,</if>
                 <if test="menu_info != null">menu_info,</if>
@@ -62,7 +62,7 @@
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.jim.ssr.entity.Order">
-        update order
+        update tbl_order
         <set>
                 <if test="menu_info != null">
                     menu_info = #{menu_info,jdbcType=VARCHAR},
@@ -86,7 +86,7 @@
         where   id = #{id,jdbcType=BIGINT} 
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jim.ssr.entity.Order">
-        update order
+        update tbl_order
         set 
             menu_info =  #{menu_info,jdbcType=VARCHAR},
             num =  #{num,jdbcType=INTEGER},

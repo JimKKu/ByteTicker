@@ -19,23 +19,23 @@
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from type
+        from tbl_type
         where  id = #{id,jdbcType=INTEGER} 
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-        delete from type
+        delete from tbl_type
         where  id = #{id,jdbcType=INTEGER} 
     </delete>
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.jim.ssr.entity.Type" useGeneratedKeys="true">
-        insert into type
+        insert into tbl_type
         ( id,name,icon
         ,comment)
         values (#{id,jdbcType=INTEGER},#{name,jdbcType=VARCHAR},#{icon,jdbcType=VARCHAR}
         ,#{comment,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.jim.ssr.entity.Type" useGeneratedKeys="true">
-        insert into type
+        insert into tbl_type
         <trim prefix="(" suffix=")" suffixOverrides=",">
                 <if test="id != null">id,</if>
                 <if test="name != null">name,</if>
@@ -50,7 +50,7 @@
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.jim.ssr.entity.Type">
-        update type
+        update tbl_type
         <set>
                 <if test="name != null">
                     name = #{name,jdbcType=VARCHAR},
@@ -65,7 +65,7 @@
         where   id = #{id,jdbcType=INTEGER} 
     </update>
     <update id="updateByPrimaryKey" parameterType="com.jim.ssr.entity.Type">
-        update type
+        update tbl_type
         set 
             name =  #{name,jdbcType=VARCHAR},
             icon =  #{icon,jdbcType=VARCHAR},

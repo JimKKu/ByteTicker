@@ -20,6 +20,7 @@
         select
         <include refid="Base_Column_List" />
         from tbl_type
+        order by id;
     </select>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">

@@ -1,16 +1,16 @@
 <template>
   <!-- 全屏DIV -->
   <div style="width: 100%;height: 100%;position: fixed">
-    <div style="width: 100%;height: 100%;position: relative">
-      <!-- 头部DIV -->
-      <div id="c-header">
-        <div id="c-header-div">
-          <img id="c-header-div-img" alt="Vue logo" src="../assets/logo.png">
-        </div>
-      </div>
+
       <!-- 身体DIV -->
       <div id="c-body">
-        <div id="c-in-body1">
+        <!-- 头部DIV -->
+        <div id="c-header" style="z-index: 100">
+          <div id="c-header-div">
+            <img id="c-header-div-img" alt="Vue logo" src="../assets/logo.png">
+          </div>
+        </div>
+        <div id="c-in-body1" style="z-index: 1">
           <ul>
             <li v-for="type in typeList" :key="type.id">
               <i :class="type.icon"></i>
@@ -26,7 +26,6 @@
       <div id="c-bottom">
         <div id="order">下单</div>
       </div>
-    </div>
   </div>
 </template>
 
@@ -86,11 +85,9 @@ export default {
 #c-header-div-img {
   height: 42px;
   border-radius: 24px;
-  box-shadow: 2px 2px 6px #b0b0b0,-2px -2px 6px #ffffff;
 }
 
 #c-body {
-  z-index: -1;
   width: 100%;
   height: 100%;
   background-color: #e1e1e1;
@@ -120,16 +117,21 @@ export default {
   width: 46px;
   height: 46px;
   background-color: #e1e1e1;
-  border: 1px solid gray;
   border-radius: 14px;
   box-sizing: border-box;
-  //padding: 10px;
   margin: 10px;
   text-align: center;
   line-height: 46px;
-
-
+  box-shadow: 2px 2px 6px #a9a9a9,-2px -2px 6px #ffffff;
+  transition: .25s all;
+  font-size: 20px;
 }
+
+#c-in-body1 li:hover {
+  box-shadow: 2px 2px 6px #a9a9a9 inset,-2px -2px 6px #ffffff inset;
+  font-size: 18px;
+}
+
 
 #c-in-body2 {
   z-index: -1;
@@ -151,7 +153,6 @@ export default {
   width: 140px;
   height: 80px;
   background-color: #fcc307;
-  //background: linear-gradient(to right,#12c2e9, #ffff1c);;
   position: absolute;
   bottom: 24px;
   right: 264px;
@@ -163,19 +164,13 @@ export default {
   transition: .25s all;
   box-shadow: 2px 2px 4px #ffff1c,-2px -2px 4px #12c2e9 ;
 }
-#order:hover {
-  //box-shadow: -2px -2px 4px #ffff1c inset,2px 2px 4px #12c2e9 inset ;
-  //animation-name: hover-order;
-  //animation-duration: 1s;
-}
+
 
 @keyframes hover-order {
   50% {
-    box-shadow: -2px -2px 4px #ffff1c inset,2px 2px 4px #12c2e9 inset ;
-    background: linear-gradient(to right,#ffff1c, #12c2e9);;
+    box-shadow: none;
   } 100% {
-    box-shadow: 2px 2px 4px #ffff1c inset,-2px -2px 4px #12c2e9 inset ;
-    background: linear-gradient(to right,#12c2e9, #ffff1c);;
+    box-shadow: 2px 2px 6px #a9a9a9 inset,-2px -2px 6px #ffffff inset;
   }
 }
 

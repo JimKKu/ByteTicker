@@ -16,6 +16,12 @@
         comment
     </sql>
 
+    <select id="getTypeList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_type
+    </select>
+
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />

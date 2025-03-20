@@ -25,6 +25,7 @@ public class TypeController {
 
     @GetMapping("/list")
     public List<Type> list() {
+        System.out.println("----滴滴");
         return tm.getTypeList();
     }
 }

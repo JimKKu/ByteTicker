@@ -1,16 +1,48 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4474103 */
-  src: url('iconfont.woff2?t=1710901375492') format('woff2'),
-       url('iconfont.woff?t=1710901375492') format('woff'),
-       url('iconfont.ttf?t=1710901375492') format('truetype');
+  src: url('iconfont.woff2?t=1710946402925') format('woff2'),
+       url('iconfont.woff?t=1710946402925') format('woff'),
+       url('iconfont.ttf?t=1710946402925') format('truetype');
 }
 
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 24px;
+  font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-quanbu2:before {
+  content: "\e621";
+}
+
+.icon-quanbudingdan:before {
+  content: "\e640";
+}
+
+.icon-quanbu:before {
+  content: "\e783";
+}
+
+.icon-quanbu1:before {
+  content: "\e684";
+}
+
+.icon-quanbu3:before {
+  content: "\e624";
+}
+
+.icon-quanbu4:before {
+  content: "\e635";
+}
+
+.icon-quanbu5:before {
+  content: "\e633";
+}
+
+.icon-quanbu6:before {
+  content: "\e61e";
 }
 
 .icon-egg:before {

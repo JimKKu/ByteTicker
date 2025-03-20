@@ -3,19 +3,20 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-// 导入 ElementUI
+// 引入 ElementUI
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 // 使用 ElementUI
 Vue.use(ElementUI);
-
+// 引入 iconfont
+import '@/assets/icons/iconfont.css'
 
 // 导入并使用基础请求
-import {getRequest,putRequest,pstRequest,delRequest} from "@/api/base";
-Vue.prototype.$GET = getRequest;
-Vue.prototype.$PUT = putRequest;
-Vue.prototype.$PST = pstRequest;
-Vue.prototype.$DEL = delRequest;
+import {sndGET,sndPUT,sndPST,sndDEL} from "@/api/base";
+Vue.prototype.$GET = sndGET;
+Vue.prototype.$PUT = sndPUT;
+Vue.prototype.$PST = sndPST;
+Vue.prototype.$DEL = sndDEL;
 
 Vue.config.productionTip = false
 

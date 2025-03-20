@@ -4,7 +4,7 @@ let base = '';
 
 
 // GET 请求
-export const getRequest=(url,params)=>{
+export const sndGET=(url,params)=>{
     return axios({
         method:'get',
         url:`${base}${url}`,
@@ -13,7 +13,7 @@ export const getRequest=(url,params)=>{
 }
 
 // PUT 请求
-export const putRequest=(url,params)=>{
+export const sndPUT=(url,params)=>{
     return axios({
         method:'put',
         url:`${base}${url}`,
@@ -22,7 +22,7 @@ export const putRequest=(url,params)=>{
 }
 
 // POST 请求
-export const pstRequest=(url,params)=>{
+export const sndPST=(url,params)=>{
     return axios({
         method: 'post',
         url:`${base}${url}`,
@@ -31,7 +31,7 @@ export const pstRequest=(url,params)=>{
 }
 
 // DELETE 请求
-export const delRequest=(url,params)=>{
+export const sndDEL=(url,params)=>{
     return axios({
         method:'delete',
         url:`${base}${url}`,

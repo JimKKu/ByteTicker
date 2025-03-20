@@ -10,8 +10,16 @@
       </div>
       <!-- 身体DIV -->
       <div id="c-body">
-        <div id="c-in-body1"></div>
-        <div id="c-in-body2"></div>
+        <div id="c-in-body1">
+          <ul>
+            <li v-for="type in typeList" :key="type.id">
+              <i :class="type.icon"></i>
+            </li>
+          </ul>
+        </div>
+        <div id="c-in-body2">
+
+        </div>
         <div id="c-in-body3"></div>
       </div>
       <!-- 底部DIV -->
@@ -23,8 +31,31 @@
 </template>
 
 <script>
+import {reqGetTypeList} from "@/api/type";
+
 export default {
-  name: 'OrderView'
+  name: 'OrderView',
+  data() {
+    return {
+      /* type */
+      typeList: [],
+    }
+  },
+  mounted() {
+    this.getTypeList();
+  },
+  methods: {
+    async getTypeList() {
+      const {data} = await reqGetTypeList();
+      this.typeList = data;
+    }
+    // getTypeList() {
+    //   console.log('---------------------------------------------------------')
+    //   this.typeList = reqGetTypeList();
+    //   console.log(JSON.stringify(this.typeList));
+    //   console.log('---------------------------------------------------------')
+    // }
+  }
 }
 </script>
 
@@ -82,6 +113,22 @@ export default {
   position: absolute;
   left: 0;
   box-shadow: 0 0 5px #868686;
+  text-align: center;
+}
+#c-in-body1 li {
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  background-color: #e1e1e1;
+  border: 1px solid gray;
+  border-radius: 14px;
+  box-sizing: border-box;
+  //padding: 10px;
+  margin: 10px;
+  text-align: center;
+  line-height: 46px;
+
+
 }
 
 #c-in-body2 {
@@ -103,8 +150,8 @@ export default {
 #order {
   width: 140px;
   height: 80px;
-  //background-color: #fcc307;
-  background: linear-gradient(to right,#12c2e9, #ffff1c);;
+  background-color: #fcc307;
+  //background: linear-gradient(to right,#12c2e9, #ffff1c);;
   position: absolute;
   bottom: 24px;
   right: 264px;
@@ -113,11 +160,11 @@ export default {
   color: #fff;
   font-size: 42px;
   border-radius: 24px;
-  transition: 1s all;
-  box-shadow: 2px 2px 4px #ffff1c inset,-2px -2px 4px #12c2e9 inset ;
+  transition: .25s all;
+  box-shadow: 2px 2px 4px #ffff1c,-2px -2px 4px #12c2e9 ;
 }
 #order:hover {
-  box-shadow: -2px -2px 4px #ffff1c inset,2px 2px 4px #12c2e9 inset ;
+  //box-shadow: -2px -2px 4px #ffff1c inset,2px 2px 4px #12c2e9 inset ;
   //animation-name: hover-order;
   //animation-duration: 1s;
 }

@@ -1,0 +1,254 @@
+{
+  "id": "4474103",
+  "name": "小菜一碟",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "5072218",
+      "name": "煎蛋",
+      "font_class": "egg",
+      "unicode": "e667",
+      "unicode_decimal": 58983
+    },
+    {
+      "icon_id": "5205861",
+      "name": "煎蛋",
+      "font_class": "jiandan3",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "7537903",
+      "name": "煎蛋",
+      "font_class": "jiandan4",
+      "unicode": "e6df",
+      "unicode_decimal": 59103
+    },
+    {
+      "icon_id": "35025140",
+      "name": "饮食_煎蛋_鸡蛋_食物_蛋白质_蛋饼",
+      "font_class": "yinshi_jiandan_jidan_shiwu_danbaizhi_danbing",
+      "unicode": "e933",
+      "unicode_decimal": 59699
+    },
+    {
+      "icon_id": "4955496",
+      "name": "煮水饺",
+      "font_class": "zhushuijiao",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "5071419",
+      "name": "饺子",
+      "font_class": "jiaozi",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "5089128",
+      "name": "饺子",
+      "font_class": "jiaozi1",
+      "unicode": "e709",
+      "unicode_decimal": 59145
+    },
+    {
+      "icon_id": "5204051",
+      "name": "饺子",
+      "font_class": "canyinicon-",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "5316105",
+      "name": "饺子",
+      "font_class": "jiaozi2",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "8243917",
+      "name": "煮水饺",
+      "font_class": "zhushuijiao1",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "13365786",
+      "name": "rice",
+      "font_class": "rice",
+      "unicode": "e7e7",
+      "unicode_decimal": 59367
+    },
+    {
+      "icon_id": "36969605",
+      "name": "饺子-水饺",
+      "font_class": "a-20230816meishitubiao_jiaozi-shuijiao",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "482786",
+      "name": "44icon_8",
+      "font_class": "44icon8",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "2076264",
+      "name": "闹钟",
+      "font_class": "naozhong",
+      "unicode": "e890",
+      "unicode_decimal": 59536
+    },
+    {
+      "icon_id": "2535165",
+      "name": "拉面",
+      "font_class": "lamian",
+      "unicode": "e721",
+      "unicode_decimal": 59169
+    },
+    {
+      "icon_id": "2920458",
+      "name": "Sm-碳水化合物",
+      "font_class": "Sm-tanshuihuahewu",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "3902923",
+      "name": "火腿",
+      "font_class": "huotui",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "5054874",
+      "name": "煎蛋",
+      "font_class": "jiandan",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "5171864",
+      "name": "莲藕",
+      "font_class": "lianou",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "5189302",
+      "name": "资源 1",
+      "font_class": "ziyuan",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "5217941",
+      "name": "煎蛋",
+      "font_class": "jiandan1",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "7459728",
+      "name": "煎蛋",
+      "font_class": "weibiaoti-_huabanfuben",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "7594849",
+      "name": "煎蛋-填充",
+      "font_class": "jiandan-tianchong",
+      "unicode": "e743",
+      "unicode_decimal": 59203
+    },
+    {
+      "icon_id": "8176064",
+      "name": "拉面",
+      "font_class": "ramen",
+      "unicode": "e674",
+      "unicode_decimal": 58996
+    },
+    {
+      "icon_id": "8621666",
+      "name": "首页2",
+      "font_class": "shouye",
+      "unicode": "e693",
+      "unicode_decimal": 59027
+    },
+    {
+      "icon_id": "8922591",
+      "name": "SPAGHETTI",
+      "font_class": "SPAGHETTI",
+      "unicode": "e744",
+      "unicode_decimal": 59204
+    },
+    {
+      "icon_id": "10064276",
+      "name": "拉面",
+      "font_class": "lamian1",
+      "unicode": "e8d8",
+      "unicode_decimal": 59608
+    },
+    {
+      "icon_id": "11452191",
+      "name": "早餐晚餐",
+      "font_class": "zaocanwancan",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "13146529",
+      "name": "拉面",
+      "font_class": "lamian2",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "13711325",
+      "name": "039 - Pastrie ",
+      "font_class": "-Pastrie",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "18294545",
+      "name": "中餐厅@3x",
+      "font_class": "zhongcanting3x",
+      "unicode": "e654",
+      "unicode_decimal": 58964
+    },
+    {
+      "icon_id": "20529837",
+      "name": "煎蛋",
+      "font_class": "jiandan2",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "21246805",
+      "name": "助餐 管理",
+      "font_class": "zhucanguanli",
+      "unicode": "e6bc",
+      "unicode_decimal": 59068
+    },
+    {
+      "icon_id": "21785026",
+      "name": "quantou-01",
+      "font_class": "quantou-01",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "31509132",
+      "name": "通心面通心粉",
+      "font_class": "a-tongxinmiantongxinfen11",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    }
+  ]
+}

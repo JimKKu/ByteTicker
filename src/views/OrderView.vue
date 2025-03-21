@@ -1,31 +1,33 @@
 <template>
   <!-- 全屏DIV -->
   <div style="width: 100%;height: 100%;position: fixed">
-
-      <!-- 身体DIV -->
-      <div id="c-body">
-        <!-- 头部DIV -->
-        <div id="c-header" style="z-index: 100">
-          <div id="c-header-div">
-            <img id="c-header-div-img" alt="Vue logo" src="../assets/logo.png">
-          </div>
-        </div>
-        <div id="c-in-body1" style="z-index: 1">
-          <ul>
-            <li v-for="type in typeList" :key="type.id">
-              <i :class="type.icon"></i>
-            </li>
-          </ul>
-        </div>
-        <div id="c-in-body2">
-
-        </div>
-        <div id="c-in-body3"></div>
+    <!-- 头部DIV -->
+    <div id="c-header" style="z-index: 100">
+      <div id="c-header-div">
+        <img id="c-header-div-img" alt="Vue logo" src="../assets/logo.png">
       </div>
-      <!-- 底部DIV -->
-      <div id="c-bottom">
-        <div id="order">下单</div>
-      </div>
+    </div>
+    <!-- 身体DIV -->
+<!--    <div id="c-body">-->
+
+<!--      <div id="c-in-body1" style="z-index: 1">-->
+<!--        <ul>-->
+<!--          <li v-for="type in typeList" :key="type.id">-->
+<!--            <i :class="type.icon"></i>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--      <div id="c-in-body2">-->
+<!--        <div>-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div id="c-in-body3"></div>-->
+<!--    </div>-->
+    <!-- 底部DIV -->
+    <div id="c-bottom">
+      <div id="order">下单</div>
+    </div>
   </div>
 </template>
 
@@ -122,14 +124,19 @@ export default {
   margin: 10px;
   text-align: center;
   line-height: 46px;
-  box-shadow: 2px 2px 6px #a9a9a9,-2px -2px 6px #ffffff;
+  border: 1px solid gray;
+  //box-shadow: 2px 2px 2px #a9a9a9 inset,-2px -2px 2px #ffffff inset;
+  //box-shadow: 2px 2px 6px #a9a9a9,-2px -2px 6px #ffffff;
   transition: .25s all;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 #c-in-body1 li:hover {
-  box-shadow: 2px 2px 6px #a9a9a9 inset,-2px -2px 6px #ffffff inset;
-  font-size: 18px;
+  //box-shadow: 2px 2px 6px #a9a9a9 inset,-2px -2px 6px #ffffff inset;
+  box-shadow: 2px 2px 6px #a9a9a9,-2px -2px 6px #ffffff;
+  //box-shadow: none;
+  border: .1px solid transparent;
+  font-size: 22px;
 }
 
 
@@ -139,6 +146,13 @@ export default {
   height: 100%;
   position: absolute;
   left: 64px;
+}
+
+#c-in-body2 div {
+  width: 600px;
+  height: 140px;
+  background: pink;
+  display: inline-block;
 }
 
 #c-in-body3 {

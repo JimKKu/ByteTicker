@@ -19,9 +19,10 @@
       <div id="box2">
         <div id="card" v-for="menu in menuList" :key="menu.id">
           <div id="incard1">{{menu.name}}</div>
-          <div id="incard2"></div>
-          <div id="incard3"></div>
-          <div id="incard4"></div>
+          <div id="incard2">
+            <div id="son1">{{ menu.price }}</div>
+            <div id="son2">{{ menu.price+2 }}</div>
+          </div>
         </div>
       </div>
       <div id="box3">我是边栏</div>
@@ -261,6 +262,7 @@ header img {
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
+  overflow: auto;
 }
 #box3 {
   background: #e1e1e1;
@@ -319,47 +321,52 @@ header img {
 
 #card>div {
   position: absolute;
-}
-
-#incard1,
-#incard2 {
-  height: 40%;
-}
-#incard3,
-#incard4 {
-  height: 60%;
+  display: inline-block;
 }
 
 #incard1 {
-  background: #55a532;
-  width: 70%;
+  height: 100%;
+  width: 100%;
+  background-color: #e1e1e1;
+  position: absolute;
   top: 0;
   left: 0;
-  border-top-left-radius: 12px;
-  padding: 3px 5px;
-  font-size: 14px;
+  border-radius: 12px;
+  padding: 4px;
+  box-sizing: border-box;
 }
 #incard2 {
-  background: #b8ff97;
-  width: 30%;
-  top: 0;
-  right: 0;
-  border-top-right-radius: 12px;
-}
-#incard3 {
-  width: 50%;
-  bottom: 0;
-  right: 0;
-  background: #74ff3a;
-  border-bottom-right-radius: 12px;
-}
-#incard4 {
-  width: 50%;
+  height: 40px;
+  width: 100%;
+  position: absolute;
   bottom: 0;
   left: 0;
-  background: #d6ffc5;
-  border-bottom-left-radius: 12px;
+  border-radius: 0 0 12px 12px;
+  border-top: 1px solid gray;
 }
+
+#incard2>div {
+  width: 50%;
+  height: 40px;
+  line-height: 40px;
+  box-sizing: border-box;
+  text-align: center;
+
+}
+
+#son1 {
+  background-color: #e1e1e1;
+  border-bottom-left-radius: 12px;
+  float: left;
+  border-right: 1px solid gray;
+}
+
+#son2 {
+  background-color: #e1e1e1;
+  border-bottom-right-radius: 12px;
+  float: right;
+}
+
 
 
 /* -----  右边栏样式  ----- */

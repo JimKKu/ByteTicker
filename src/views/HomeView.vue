@@ -20,8 +20,8 @@
         <div id="card" v-for="menu in menuList" :key="menu.id">
           <div id="incard1">{{menu.name}}</div>
           <div id="incard2">
-            <div id="son1">{{ menu.price }}</div>
-            <div id="son2">{{ menu.price+2 }}</div>
+            <div id="son1">{{ menu.price }}<span style="font-size: 12px">￥</span></div>
+            <div id="son2">{{ menu.price+2 }}<span style="font-size: 12px">￥</span></div>
           </div>
         </div>
       </div>
@@ -181,6 +181,7 @@ export default {
   background: pink;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 /* 头部标签样式 */
@@ -351,18 +352,27 @@ header img {
   line-height: 40px;
   box-sizing: border-box;
   text-align: center;
-
+  background-color: #e1e1e1;
+  transition: .25s all;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+#incard2>div:hover {
+  background: #3a5fd9;
+  color: gold;
+  height: 41px;
+  line-height: 41px;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 #son1 {
-  background-color: #e1e1e1;
   border-bottom-left-radius: 12px;
   float: left;
   border-right: 1px solid gray;
 }
 
 #son2 {
-  background-color: #e1e1e1;
   border-bottom-right-radius: 12px;
   float: right;
 }

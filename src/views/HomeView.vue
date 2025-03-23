@@ -389,6 +389,19 @@ header img {
 /* ------------  浮动样式  ----------------------- */
 
 #exchange-button {
-
+  width: 20px;
+  height: 20px;
+  background-color: #e1e1e1;
+  position: absolute;
+  z-index: 400;
+  right: 100px;
+  top: 0;
+  border-radius: 0 0 5px 5px;
+  transition: .25s all;
+  border: 1px solid gray;
+}
+#exchange-button:hover {
+  box-shadow: 4px 4px 8px #a9a9a9,-4px -4px 8px #ffffff;
+  height: 40px;
 }
 </style>

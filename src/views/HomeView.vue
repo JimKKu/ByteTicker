@@ -18,10 +18,13 @@
       </div>
       <div id="box2">
         <div id="card" v-for="menu in menuList" :key="menu.id">
-          <div id="incard1">{{menu.name}}</div>
+          <div id="incard1">
+            <div id="son11">{{ menu.name }}1</div>
+            <div id="son12">{{ menu.name }}2</div>
+          </div>
           <div id="incard2">
-            <div id="son1">{{ menu.price }}<span style="font-size: 12px">￥</span></div>
-            <div id="son2">{{ menu.price+2 }}<span style="font-size: 12px">￥</span></div>
+            <div id="son21">{{ menu.price }}<span style="font-size: 12px">￥</span></div>
+            <div id="son22">{{ menu.price+2 }}<span style="font-size: 12px">￥</span></div>
           </div>
         </div>
       </div>
@@ -318,6 +321,7 @@ header img {
   margin: 14px;
   width: 152px;
   height: 122px;
+  color: #1a50ff;
 }
 
 #card>div {
@@ -356,6 +360,7 @@ header img {
   transition: .25s all;
   border-collapse: collapse;
   font-size: 16px;
+  color: gray;
 }
 #incard2>div:hover {
   background: #3a5fd9;
@@ -366,18 +371,35 @@ header img {
   font-weight: 700;
 }
 
-#son1 {
+#son21 {
   border-bottom-left-radius: 12px;
   float: left;
   border-right: 1px solid gray;
 }
 
-#son2 {
+#son22 {
   border-bottom-right-radius: 12px;
   float: right;
 }
 
+#incard1>div {
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+}
 
+#son11 {
+  height: 35px;
+  line-height: 40px;
+  font-weight: 700;
+  font-size: 18px;
+}
+#son12 {
+  height: 30px;
+  font-size: 14px;
+  line-height: 14px;
+  color: gray;
+}
 
 /* -----  右边栏样式  ----- */
 
@@ -391,7 +413,7 @@ header img {
 #exchange-button {
   width: 20px;
   height: 20px;
-  background-color: #e1e1e1;
+  background-color: #ff7474;
   position: absolute;
   z-index: 400;
   right: 100px;
@@ -401,7 +423,7 @@ header img {
   border: 1px solid gray;
 }
 #exchange-button:hover {
-  box-shadow: 4px 4px 8px #a9a9a9,-4px -4px 8px #ffffff;
   height: 40px;
+  border-radius: 0 0 8px 8px;
 }
 </style>

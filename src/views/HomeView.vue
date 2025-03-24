@@ -11,7 +11,7 @@
     <div id="middle">
       <div id="box1">
         <ul>
-          <li v-for="type in typeList" :key="type.id">
+          <li v-for="type in typeList" :key="type.id" @click="getMenuList(type.id)">
             <i :class="type.icon"></i>
           </li>
         </ul>
@@ -19,12 +19,15 @@
       <div id="box2">
         <div id="card" v-for="menu in menuList" :key="menu.id">
           <div id="incard1">
-            <div id="son11">{{ menu.name }}1</div>
-            <div id="son12">{{ menu.name }}2</div>
+            <div id="son11">{{ menu.name1 }}</div>
+            <div id="son12">
+              {{ menu.name2 }}
+              <div v-if="!menu.name2" style="display: inline-block;width: 36px;height: 4px;border-top: .2px solid gray"></div>
+            </div>
           </div>
           <div id="incard2">
-            <div id="son21">{{ menu.price }}<span style="font-size: 12px">￥</span></div>
-            <div id="son22">{{ menu.price+2 }}<span style="font-size: 12px">￥</span></div>
+            <div id="son21">{{ menu.price1 }}<span style="font-size: 12px">￥</span></div>
+            <div id="son22" v-if="menu.price2">{{ menu.price2 }}<span style="font-size: 12px">￥</span></div>
           </div>
         </div>
       </div>
@@ -42,6 +45,7 @@
 
 <script>
 import {reqGetTypeList} from "@/api/type";
+import {reqGetMenuList} from "@/api/menu";
 
 export default {
   name: 'OrderView',
@@ -49,129 +53,20 @@ export default {
     return {
       /* type */
       typeList: [],
-      menuList: [
-        {
-          id:1,
-          name:'饺子饺子饺子饺子饺子饺子饺子饺子饺子饺子',
-          price: 22,
-        },
-        {
-          id:2,
-          name:'馄饨',
-          price: 22,
-        },
-        {
-          id:3,
-          name:'挂面',
-          price: 22,
-        },
-        {
-          id:1,
-          name:'饺子',
-          price: 22,
-        },
-        {
-          id:2,
-          name:'馄饨',
-          price: 22,
-        },
-        {
-          id:3,
-          name:'挂面',
-          price: 22,
-        },
-        {
-          id:1,
-          name:'饺子',
-          price: 22,
-        },
-        {
-          id:2,
-          name:'馄饨',
-          price: 22,
-        },
-        {
-          id:3,
-          name:'挂面',
-          price: 22,
-        },
-        {
-          id:1,
-          name:'饺子',
-          price: 22,
-        },
-        {
-          id:2,
-          name:'馄饨',
-          price: 22,
-        },
-        {
-          id:3,
-          name:'挂面',
-          price: 22,
-        },
-        {
-          id:1,
-          name:'饺子',
-          price: 22,
-        },
-        {
-          id:2,
-          name:'馄饨',
-          price: 22,
-        },
-        {
-          id:3,
-          name:'挂面',
-          price: 22,
-        },
-        {
-          id:1,
-          name:'饺子',
-          price: 22,
-        },
-        {
-          id:2,
-          name:'馄饨',
-          price: 22,
-        },
-        {
-          id:3,
-          name:'挂面',
-          price: 22,
-        },
-        {
-          id:1,
-          name:'饺子',
-          price: 22,
-        },
-        {
-          id:2,
-          name:'馄饨',
-          price: 22,
-        },
-        {
-          id:3,
-          name:'挂面',
-          price: 22,
-        },
-      ]
+      menuList: []
     }
   },
   mounted() {
     this.getTypeList();
+    this.getMenuList(0);
   },
   methods: {
     async getTypeList() {
-      const {data} = await reqGetTypeList();
-      this.typeList = data;
+      this.typeList = await reqGetTypeList();
+    },
+    async getMenuList(typeId) {
+      this.menuList = await reqGetMenuList(typeId);
     }
-    // getTypeList() {
-    //   console.log('---------------------------------------------------------')
-    //   this.typeList = reqGetTypeList();
-    //   console.log(JSON.stringify(this.typeList));
-    //   console.log('---------------------------------------------------------')
-    // }
   }
 }
 </script>
@@ -270,7 +165,7 @@ header img {
 }
 #box3 {
   background: #e1e1e1;
-  width: 180px;
+  width: 280px;
   float: right;
   box-shadow: 0 0 4px grey;
   z-index: 200;

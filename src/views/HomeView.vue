@@ -19,15 +19,19 @@
       <div id="box2">
         <div id="card" v-for="menu in menuList" :key="menu.id">
           <div id="incard1">
-            <div id="son11">{{ menu.name1 }}</div>
-            <div id="son12">
+            <div id="son11" style="text-overflow: ellipsis;">
+              {{ menu.name1 }}
+            </div>
+            <div id="son12" style="text-overflow: ellipsis;">
               {{ menu.name2 }}
               <div v-if="!menu.name2" style="display: inline-block;width: 36px;height: 4px;border-top: .2px solid gray"></div>
             </div>
           </div>
           <div id="incard2">
-            <div id="son21">{{ menu.price1 }}<span style="font-size: 12px">￥</span></div>
-            <div id="son22" v-if="menu.price2">{{ menu.price2 }}<span style="font-size: 12px">￥</span></div>
+            <nav>
+              <div id="son21" :style="menu.price2?'border-right: 1px solid gray':''">{{ menu.price1 }}<span style="font-size: 12px">￥</span></div>
+              <div id="son22" v-if="menu.price2">{{ menu.price2 }}<span style="font-size: 12px">￥</span></div>
+            </nav>
           </div>
         </div>
       </div>
@@ -157,7 +161,7 @@ header img {
   background: #e1e1e1;
   z-index: 1;
   box-sizing: border-box;
-  padding: 50px;
+  padding: 30px 30px 80px 30px;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
@@ -222,15 +226,14 @@ header img {
 #card>div {
   position: absolute;
   display: inline-block;
+  left: 0;
 }
 
 #incard1 {
   height: 100%;
   width: 100%;
   background-color: #e1e1e1;
-  position: absolute;
   top: 0;
-  left: 0;
   border-radius: 12px;
   padding: 4px;
   box-sizing: border-box;
@@ -238,43 +241,44 @@ header img {
 #incard2 {
   height: 40px;
   width: 100%;
-  position: absolute;
   bottom: 0;
-  left: 0;
   border-radius: 0 0 12px 12px;
   border-top: 1px solid gray;
 }
 
-#incard2>div {
-  width: 50%;
+#incard2 nav {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+#incard2 div {
+  flex: 1;
+  text-align: center;
   height: 40px;
   line-height: 40px;
-  box-sizing: border-box;
-  text-align: center;
-  background-color: #e1e1e1;
-  transition: .25s all;
-  border-collapse: collapse;
-  font-size: 16px;
-  color: gray;
 }
-#incard2>div:hover {
+
+
+#incard2 div:hover {
   background: #3a5fd9;
   color: gold;
   height: 41px;
   line-height: 41px;
   font-size: 18px;
   font-weight: 700;
+  border-radius: 0 0 12px 12px;
 }
 
 #son21 {
   border-bottom-left-radius: 12px;
-  float: left;
-  border-right: 1px solid gray;
 }
 
 #son22 {
   border-bottom-right-radius: 12px;
-  float: right;
+  border-left: 1px solid gray;
+  margin-left: -1px;
 }
 
 #incard1>div {

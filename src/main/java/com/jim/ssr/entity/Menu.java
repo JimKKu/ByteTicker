@@ -1,6 +1,7 @@
 package com.jim.ssr.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import lombok.Data;
 
 /**
@@ -17,17 +18,27 @@ public class Menu implements Serializable {
     /**
      * 类型ID
      */
-    private Integer type_id;
+    private Integer typeId;
 
     /**
      * 名称
      */
-    private String name;
+    private String name1;
+
+    /**
+     * 
+     */
+    private String name2;
 
     /**
      * 价格
      */
-    private Integer price;
+    private BigDecimal price1;
+
+    /**
+     * 描述
+     */
+    private Integer price2;
 
     /**
      * 描述
@@ -49,9 +60,11 @@ public class Menu implements Serializable {
         }
         Menu other = (Menu) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getType_id() == null ? other.getType_id() == null : this.getType_id().equals(other.getType_id()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getPrice() == null ? other.getPrice() == null : this.getPrice().equals(other.getPrice()))
+            && (this.getTypeId() == null ? other.getTypeId() == null : this.getTypeId().equals(other.getTypeId()))
+            && (this.getName1() == null ? other.getName1() == null : this.getName1().equals(other.getName1()))
+            && (this.getName2() == null ? other.getName2() == null : this.getName2().equals(other.getName2()))
+            && (this.getPrice1() == null ? other.getPrice1() == null : this.getPrice1().equals(other.getPrice1()))
+            && (this.getPrice2() == null ? other.getPrice2() == null : this.getPrice2().equals(other.getPrice2()))
             && (this.getComment() == null ? other.getComment() == null : this.getComment().equals(other.getComment()));
     }
 
@@ -60,9 +73,11 @@ public class Menu implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getType_id() == null) ? 0 : getType_id().hashCode());
-        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getPrice() == null) ? 0 : getPrice().hashCode());
+        result = prime * result + ((getTypeId() == null) ? 0 : getTypeId().hashCode());
+        result = prime * result + ((getName1() == null) ? 0 : getName1().hashCode());
+        result = prime * result + ((getName2() == null) ? 0 : getName2().hashCode());
+        result = prime * result + ((getPrice1() == null) ? 0 : getPrice1().hashCode());
+        result = prime * result + ((getPrice2() == null) ? 0 : getPrice2().hashCode());
         result = prime * result + ((getComment() == null) ? 0 : getComment().hashCode());
         return result;
     }
@@ -74,9 +89,11 @@ public class Menu implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", type_id=").append(type_id);
-        sb.append(", name=").append(name);
-        sb.append(", price=").append(price);
+        sb.append(", typeId=").append(typeId);
+        sb.append(", name1=").append(name1);
+        sb.append(", name2=").append(name2);
+        sb.append(", price1=").append(price1);
+        sb.append(", price2=").append(price2);
         sb.append(", comment=").append(comment);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

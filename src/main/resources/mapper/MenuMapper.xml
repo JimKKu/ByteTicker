@@ -6,16 +6,32 @@
 
     <resultMap id="BaseResultMap" type="com.jim.ssr.entity.Menu">
             <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="type_id" column="type_id" jdbcType="INTEGER"/>
-            <result property="name" column="name" jdbcType="VARCHAR"/>
-            <result property="price" column="price" jdbcType="DECIMAL"/>
+            <result property="typeId" column="type_id" jdbcType="INTEGER"/>
+            <result property="name1" column="name1" jdbcType="VARCHAR"/>
+            <result property="name2" column="name2" jdbcType="VARCHAR"/>
+            <result property="price1" column="price1" jdbcType="DECIMAL"/>
+            <result property="price2" column="price2" jdbcType="DECIMAL"/>
             <result property="comment" column="comment" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,type_id,name,
-        price,comment
+        id,type_id,name1,
+        name2,price1,price2,
+        comment
     </sql>
+
+    <select id="getMenuList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_menu
+        <trim prefix="where">
+            <if test="typeId !=0">
+                type_id=#{typeId}
+            </if>
+        </trim>
+        ORDER BY id ASC
+    </select>
+
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
@@ -30,39 +46,51 @@
     </delete>
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.jim.ssr.entity.Menu" useGeneratedKeys="true">
         insert into tbl_menu
-        ( id,type_id,name
-        ,price,comment)
-        values (#{id,jdbcType=INTEGER},#{type_id,jdbcType=INTEGER},#{name,jdbcType=VARCHAR}
-        ,#{price,jdbcType=DECIMAL},#{comment,jdbcType=VARCHAR})
+        ( id,type_id,name1
+        ,name2,price1,price2
+        ,comment)
+        values (#{id,jdbcType=INTEGER},#{typeId,jdbcType=INTEGER},#{name1,jdbcType=VARCHAR}
+        ,#{name2,jdbcType=VARCHAR},#{price1,jdbcType=DECIMAL},#{price2,jdbcType=DECIMAL}
+        ,#{comment,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.jim.ssr.entity.Menu" useGeneratedKeys="true">
         insert into tbl_menu
         <trim prefix="(" suffix=")" suffixOverrides=",">
                 <if test="id != null">id,</if>
-                <if test="type_id != null">type_id,</if>
-                <if test="name != null">name,</if>
-                <if test="price != null">price,</if>
+                <if test="typeId != null">type_id,</if>
+                <if test="name1 != null">name1,</if>
+                <if test="name2 != null">name2,</if>
+                <if test="price1 != null">price1,</if>
+                <if test="price2 != null">price2,</if>
                 <if test="comment != null">comment,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
                 <if test="id != null">#{id,jdbcType=INTEGER},</if>
-                <if test="type_id != null">#{type_id,jdbcType=INTEGER},</if>
-                <if test="name != null">#{name,jdbcType=VARCHAR},</if>
-                <if test="price != null">#{price,jdbcType=DECIMAL},</if>
+                <if test="typeId != null">#{typeId,jdbcType=INTEGER},</if>
+                <if test="name1 != null">#{name1,jdbcType=VARCHAR},</if>
+                <if test="name2 != null">#{name2,jdbcType=VARCHAR},</if>
+                <if test="price1 != null">#{price1,jdbcType=DECIMAL},</if>
+                <if test="price2 != null">#{price2,jdbcType=DECIMAL},</if>
                 <if test="comment != null">#{comment,jdbcType=VARCHAR},</if>
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.jim.ssr.entity.Menu">
         update tbl_menu
         <set>
-                <if test="type_id != null">
-                    type_id = #{type_id,jdbcType=INTEGER},
+                <if test="typeId != null">
+                    type_id = #{typeId,jdbcType=INTEGER},
                 </if>
-                <if test="name != null">
-                    name = #{name,jdbcType=VARCHAR},
+                <if test="name1 != null">
+                    name1 = #{name1,jdbcType=VARCHAR},
                 </if>
-                <if test="price != null">
-                    price = #{price,jdbcType=DECIMAL},
+                <if test="name2 != null">
+                    name2 = #{name2,jdbcType=VARCHAR},
+                </if>
+                <if test="price1 != null">
+                    price1 = #{price1,jdbcType=DECIMAL},
+                </if>
+                <if test="price2 != null">
+                    price2 = #{price2,jdbcType=DECIMAL},
                 </if>
                 <if test="comment != null">
                     comment = #{comment,jdbcType=VARCHAR},
@@ -73,9 +101,11 @@
     <update id="updateByPrimaryKey" parameterType="com.jim.ssr.entity.Menu">
         update tbl_menu
         set 
-            type_id =  #{type_id,jdbcType=INTEGER},
-            name =  #{name,jdbcType=VARCHAR},
-            price =  #{price,jdbcType=DECIMAL},
+            type_id =  #{typeId,jdbcType=INTEGER},
+            name1 =  #{name1,jdbcType=VARCHAR},
+            name2 =  #{name2,jdbcType=VARCHAR},
+            price1 =  #{price1,jdbcType=DECIMAL},
+            price2 =  #{price2,jdbcType=DECIMAL},
             comment =  #{comment,jdbcType=VARCHAR}
         where   id = #{id,jdbcType=INTEGER} 
     </update>

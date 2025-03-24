@@ -4,7 +4,6 @@ import com.jim.ssr.entity.Type;
 import com.jim.ssr.mapper.TypeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +24,6 @@ public class TypeController {
 
     @GetMapping("/list")
     public List<Type> list() {
-        System.out.println("----滴滴");
         return tm.getTypeList();
     }
 }

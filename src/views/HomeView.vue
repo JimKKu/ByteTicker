@@ -4,7 +4,7 @@
     <!-- 头部 -->
     <header>
       <div>
-        <img alt="Vue logo" src="../assets/logo.png">
+        <img alt="Vue logo" src="../assets/logo.png" draggable="false" oncontextmenu="return false;">
       </div>
     </header>
     <!-- 身体 -->

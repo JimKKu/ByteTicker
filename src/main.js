@@ -19,7 +19,8 @@ Vue.prototype.$PST = sndPST;
 Vue.prototype.$DEL = sndDEL;
 
 Vue.config.productionTip = false
-
+document.onselectstart = new Function("event.returnValue=false");
+document.oncontextmenu = new Function("event.returnValue=false");
 new Vue({
   router,
   store,

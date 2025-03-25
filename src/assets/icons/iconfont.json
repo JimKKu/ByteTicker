@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "845799",
+      "name": "钱钱",
+      "font_class": "qianqian",
+      "unicode": "e655",
+      "unicode_decimal": 58965
+    },
+    {
+      "icon_id": "1346361",
+      "name": "yly_钱庄",
+      "font_class": "yly_qianzhuang",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
       "icon_id": "997409",
       "name": "全部2",
       "font_class": "quanbu2",

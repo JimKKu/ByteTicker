@@ -35,13 +35,38 @@
           </div>
         </div>
       </div>
-      <div id="box3">我是边栏</div>
+      <div id="box3">
+        <div>
+          <div :class="aside1?'show':'hidden'" @animationend='aside1===false'>
+            <div id="aside-order">
+              <div id="in-aside-order1">
+                <i class="iconfont icon-yly_qianzhuang" style="font-weight: 500;font-size: 22px;color: goldenrod"></i>
+                来单咯
+                <i class="iconfont icon-yly_qianzhuang" style="font-weight: 500;font-size: 22px;color: goldenrod"></i>
+              </div>
+              <div id="in-aside-order2">
+                  <div id="in-aside-order-card" v-for="order in orderList" :key="name">
+                    {{ order.name }}
+                  </div>
+              </div>
+              <div id="in-aside-order3">
+                <div id="button-order">下&nbsp;&nbsp;单</div>
+              </div>
+            </div>
+          </div>
+          <div :class="aside1?'hidden':'show'" @animationend='aside1===true'>
+            <div id="aside-history">
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- 页脚 -->
     <footer>
 <!--      <div id="order">下单</div>-->
     </footer>
-    <div id="exchange-button">
+    <div id="exchange-button" @click="changeAside">
 
     </div>
   </div>
@@ -57,7 +82,40 @@ export default {
     return {
       /* type */
       typeList: [],
-      menuList: []
+      menuList: [],
+      orderList: [
+        {
+          name: '1'
+        },
+        {
+          name: '1'
+        },
+        {
+          name: '1'
+        },
+        {
+          name: '1'
+        },
+        {
+          name: '1'
+        },{
+          name: '1'
+        },
+        {
+          name: '1'
+        },
+        {
+          name: '1'
+        },
+        {
+          name: '1'
+        },
+        {
+          name: '1'
+        }
+
+      ],
+      aside1: true
     }
   },
   mounted() {
@@ -65,6 +123,10 @@ export default {
     this.getMenuList(0);
   },
   methods: {
+    /* ----- methods ----- */
+    changeAside(){
+      this.aside1=!this.aside1;
+    },
     async getTypeList() {
       this.typeList = await reqGetTypeList();
     },
@@ -170,10 +232,15 @@ header img {
 #box3 {
   background: #e1e1e1;
   width: 280px;
+  height: 100%;
   float: right;
   box-shadow: 0 0 4px grey;
   z-index: 200;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
+
 
 /* -----  左侧边栏样式  ----- */
 
@@ -302,8 +369,139 @@ header img {
 
 /* -----  右边栏样式  ----- */
 
+#box3>div {
+  width: 560px;
+  height: 100%;
+  display: inline-block;
+  position: relative;;
+}
+#box3>div>div {
+  width: 280px;
+  height: 100%;
+  padding: 50px 20px 150px 20px;
+  box-sizing: border-box;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #e1e1e1;
+}
+#box3>div>div>div {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  border: 1px solid gray;
+  background-color: #e1e1e1;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+#in-aside-order1 {
+  width: 100%;
+  height: 50px;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid gray;
+  background: #e1e1e1;
+  line-height: 50px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+#in-aside-order2 {
+  text-align: center;
+  flex: 1;
+  padding: 16px 0;
+  background: #e1e1e1;
+  overflow-y: scroll;
 
+}
+#in-aside-order3 {
+  height: 80px;
+  background-color: #e1e1e1;
+  border-radius: 0 0 12px 12px;
+  text-align: center;
+  border-top: 1px solid gray;
+  z-index: 700;
+}
+div::-webkit-scrollbar{
+  display: none;
+}
 
+#button-order {
+  display: inline-block;
+  width: 196px;
+  height: 38px;
+  border: 1px solid gray;
+  transform: translateY(20px);
+  margin: 2px;
+  line-height: 38px;
+  color: #3a5fd9;
+  font-weight: 700;
+  border-radius: 4px;
+  transition: all .25s;
+}
+
+#button-order:hover {
+  width: 200px;
+  height: 40px;
+  line-height: 39px;
+  background: #3a5fd9;
+  color: gold;
+  box-shadow: 4px 4px 8px #a9a9a9,-4px -4px 8px #ffffff;
+}
+
+#in-aside-order-card {
+  display: inline-block;
+  width: 90%;
+  height: 120px;
+  background: #e1e1e1;
+  border-radius: 8px;
+  border: 1px solid gray;
+  margin: 10px 2px;
+}
+/* ----------- 动画 ---------------- */
+
+.hidden {
+  animation: hidden .25s forwards;
+}
+.show {
+  animation: show .25s forwards;
+}
+
+@keyframes show {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 400;
+    width: 280px;
+    height: 100%;
+  }
+  100% {
+    transform: translateX(-280px);
+    opacity: 1;
+    z-index: 400;
+    width: 280px;
+    height: 100%;
+  }
+}
+@keyframes hidden {
+  0% {
+    transform: translateX(-280px);
+    z-index: 300;
+    width: 280px;
+    height: 100%;
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    z-index: 300;
+    width: 240px;
+    height: 100%;
+  }
+}
 
 
 

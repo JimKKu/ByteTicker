@@ -378,7 +378,7 @@ header img {
 #box3>div>div {
   width: 280px;
   height: 100%;
-  padding: 50px 20px 150px 20px;
+  padding: 20px 20px 120px 20px;
   box-sizing: border-box;
   position: absolute;
   right: 0;

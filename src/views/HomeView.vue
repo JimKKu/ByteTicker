@@ -40,13 +40,18 @@
           <div :class="aside1?'show':'hidden'" @animationend='aside1===false'>
             <div id="aside-order">
               <div id="in-aside-order1">
-                <i class="iconfont icon-yly_qianzhuang" style="font-weight: 500;font-size: 22px;color: goldenrod"></i>
+                <i class="iconfont icon-qian8 icon-money"></i>
                 来单咯
-                <i class="iconfont icon-yly_qianzhuang" style="font-weight: 500;font-size: 22px;color: goldenrod"></i>
+                <i class="iconfont icon-qian8 icon-money"></i>
               </div>
               <div id="in-aside-order2">
+                  <!-- inline-block -->
                   <div id="in-aside-order-card" v-for="order in orderList" :key="name">
-                    {{ order.name }}
+                    <div id="in-aside-order-card-container">
+                      <div id="in-aside-card-1"></div>
+                      <div id="in-aside-card-2"></div>
+                      <div id="in-aside-card-3">删&nbsp;&nbsp;除</div>
+                    </div>
                   </div>
               </div>
               <div id="in-aside-order3">
@@ -459,6 +464,33 @@ div::-webkit-scrollbar{
   border: 1px solid gray;
   margin: 10px 2px;
 }
+#in-aside-order-card-container {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+#in-aside-card-1 {
+  flex: .6;
+  border-radius: 8px 8px 0 0;
+}
+#in-aside-card-2 {
+  flex: .4;
+}
+#in-aside-card-3 {
+  height: 20px;
+  background-color: #ff8787;
+  color: #fff;
+  line-height: 20px;
+  border-radius: 0 0 8px 8px;
+  font-size: 12px;
+}
+#in-aside-card-3:hover {
+  flex: .2;
+  background-color: #ff4141;
+  color: #fff;
+}
 /* ----------- 动画 ---------------- */
 
 .hidden {
@@ -522,5 +554,25 @@ div::-webkit-scrollbar{
 #exchange-button:hover {
   height: 40px;
   border-radius: 0 0 8px 8px;
+}
+
+
+/* ------ 小装饰 ----------- */
+.icon-money {
+  font-weight: 500;
+  font-size: 22px;
+  color: goldenrod;
+  display: inline-block;
+  animation: roate-money 2s linear infinite;
+}
+
+@keyframes roate-money {
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+
 }
 </style>

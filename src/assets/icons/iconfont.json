@@ -6,6 +6,69 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1248",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "1092152",
+      "name": "垃圾桶",
+      "font_class": "lajitong",
+      "unicode": "e637",
+      "unicode_decimal": 58935
+    },
+    {
+      "icon_id": "1110886",
+      "name": "垃圾桶",
+      "font_class": "lajitong1",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "1273256",
+      "name": "删除",
+      "font_class": "icon",
+      "unicode": "e6a0",
+      "unicode_decimal": 59040
+    },
+    {
+      "icon_id": "1621485",
+      "name": "垃圾桶",
+      "font_class": "lajitong2",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "1841765",
+      "name": "垃圾桶",
+      "font_class": "lajitong3",
+      "unicode": "e682",
+      "unicode_decimal": 59010
+    },
+    {
+      "icon_id": "5288587",
+      "name": "垃圾桶",
+      "font_class": "lajitong4",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
+    },
+    {
+      "icon_id": "8833723",
+      "name": "垃圾桶",
+      "font_class": "lajitong5",
+      "unicode": "e6e6",
+      "unicode_decimal": 59110
+    },
+    {
+      "icon_id": "12770896",
+      "name": "垃圾桶",
+      "font_class": "lajitong6",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
       "icon_id": "5171802",
       "name": "钱",
       "font_class": "qian_",

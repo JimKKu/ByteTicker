@@ -50,7 +50,7 @@
                     <div id="in-aside-order-card-container">
                       <div id="in-aside-card-1"></div>
                       <div id="in-aside-card-2"></div>
-                      <div id="in-aside-card-3">删&nbsp;&nbsp;除</div>
+                      <div id="in-aside-card-3"><i class="iconfont icon-lajitong"></i></div>
                     </div>
                   </div>
               </div>
@@ -471,20 +471,23 @@ div::-webkit-scrollbar{
   flex-wrap: nowrap;
   flex-direction: column;
 }
+
+/* ---- 点菜小卡片 ---- */
 #in-aside-card-1 {
   flex: .6;
   border-radius: 8px 8px 0 0;
+  color: #000;
 }
 #in-aside-card-2 {
   flex: .4;
 }
 #in-aside-card-3 {
-  height: 20px;
+  height: 22px;
   background-color: #ff8787;
   color: #fff;
   line-height: 20px;
   border-radius: 0 0 8px 8px;
-  font-size: 12px;
+  font-size: 16px;
 }
 #in-aside-card-3:hover {
   flex: .2;

@@ -48,9 +48,18 @@
                   <!-- inline-block -->
                   <div id="in-aside-order-card" v-for="order in orderList" :key="name">
                     <div id="in-aside-order-card-container">
-                      <div id="in-aside-card-1"></div>
-                      <div id="in-aside-card-2"></div>
-                      <div id="in-aside-card-3"><i class="iconfont icon-lajitong"></i></div>
+                      <div id="in-aside-card-1">
+                        {{ order.name1 }}
+                      </div>
+                      <div id="in-aside-card-2">
+                        {{ order.name2 }}
+                      </div>
+                      <div id="in-aside-card-3">
+                        <div>{{order.num}}&nbsp;<i style="font-size: 12px">份</i></div>
+                        <div><i class="iconfont icon-jianhaob button-plus"></i></div>
+                        <div><i class="iconfont icon-jiahao button-plus"></i></div>
+                      </div>
+                      <div id="in-aside-card-4"><i class="iconfont icon-lajitong"></i></div>
                     </div>
                   </div>
               </div>
@@ -90,34 +99,47 @@ export default {
       menuList: [],
       orderList: [
         {
-          name: '1'
+          name1: '雪菜肉丝面',
+          name2: '刀削面',
+          price: 22,
+          size: 'big',
+          num: 2
         },
         {
-          name: '1'
+          name1: '雪菜肉丝面',
+          name2: '刀削面',
+          price: 22,
+          size: 'big',
+          num: 2
         },
         {
-          name: '1'
+          name1: '雪菜肉丝面',
+          name2: '刀削面',
+          price: 22,
+          size: 'big',
+          num: 2
         },
         {
-          name: '1'
+          name1: '雪菜肉丝面',
+          name2: '刀削面',
+          price: 22,
+          size: 'big',
+          num: 2
         },
         {
-          name: '1'
-        },{
-          name: '1'
+          name1: '雪菜肉丝面',
+          name2: '刀削面',
+          price: 22,
+          size: 'big',
+          num: 2
         },
         {
-          name: '1'
+          name1: '雪菜肉丝面',
+          name2: '刀削面',
+          price: 22,
+          size: 'big',
+          num: 2
         },
-        {
-          name: '1'
-        },
-        {
-          name: '1'
-        },
-        {
-          name: '1'
-        }
 
       ],
       aside1: true
@@ -470,27 +492,50 @@ div::-webkit-scrollbar{
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
+  text-align: center;
 }
 
 /* ---- 点菜小卡片 ---- */
 #in-aside-card-1 {
-  flex: .6;
+  flex: .3;
   border-radius: 8px 8px 0 0;
   color: #000;
+  font-size: 20px;
+  font-weight: 700;
+  box-sizing: border-box;
+  margin-top: 10px;
 }
 #in-aside-card-2 {
-  flex: .4;
+  flex: .3;
+  color: gray;
+  font-size: 12px;
 }
 #in-aside-card-3 {
-  height: 22px;
-  background-color: #ff8787;
-  color: #fff;
-  line-height: 20px;
-  border-radius: 0 0 8px 8px;
-  font-size: 16px;
+  flex: .4;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
-#in-aside-card-3:hover {
-  flex: .2;
+
+#in-aside-card-3 :nth-child(1) {
+  flex: .4;
+}
+#in-aside-card-3 :nth-child(2) {
+  flex: .3;
+}
+#in-aside-card-3 :nth-child(3) {
+  flex: .3;
+}
+#in-aside-card-4 {
+  height: 20px;
+  color: #000;
+  border-radius: 0 0 8px 8px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 18px;
+  border-top: 1px solid gray;
+}
+#in-aside-card-4:hover {
   background-color: #ff4141;
   color: #fff;
 }

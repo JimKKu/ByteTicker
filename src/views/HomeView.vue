@@ -55,9 +55,11 @@
                         {{ order.name2 }}
                       </div>
                       <div id="in-aside-card-3">
-                        <div>{{order.num}}&nbsp;<i style="font-size: 12px">份</i></div>
-                        <div><i class="iconfont icon-jianhaob button-plus"></i></div>
-                        <div><i class="iconfont icon-jiahao button-plus"></i></div>
+                        <div class="order-button"><div class="iconfont icon-jianhaob"></div></div>
+                        <div class="order-input">
+                          <input v-model="order.num">
+                        </div>
+                        <div class="order-button"><div class="iconfont icon-jiahao"></div></div>
                       </div>
                       <div id="in-aside-card-4"><i class="iconfont icon-lajitong"></i></div>
                     </div>
@@ -448,6 +450,7 @@ header img {
   border-radius: 0 0 12px 12px;
   text-align: center;
   border-top: 1px solid gray;
+  box-shadow: 0px -10px 10px -10px gray;
   z-index: 700;
 }
 div::-webkit-scrollbar{
@@ -517,14 +520,51 @@ div::-webkit-scrollbar{
   flex-wrap: nowrap;
 }
 
-#in-aside-card-3 :nth-child(1) {
+.order-input {
+  flex: .4;
+  height: 28px;
+  display: inline-block;
+  box-sizing: border-box;
+  outline: none;
+  text-align: center;
+}
+.order-input>input {
+  text-align: center;
+  background-color: #e1e1e1;
+  width: 64px;
+  height: 28px;
+  font-size: 28px;
+  font-weight: 400;
+  border: none;
+  outline: none;
+  transition: all .25s
+}
+.order-input:hover {
+  border: none;
+  box-shadow: 4px 4px 8px #a9a9a9,-4px -4px 8px #ffffff;
+}
+.order-input>input:focus {
+  box-shadow: 2px 2px 4px #a9a9a9 inset;
+  color: #3a5fd9;
+  font-size: 24px;
+}
+.order-button {
   flex: .4;
 }
-#in-aside-card-3 :nth-child(2) {
-  flex: .3;
+.order-button>div {
+  display: inline-block;
+  width: 64%;
+  height: 28px;
+  text-align: center;
+  line-height: 28px;
+  box-sizing: border-box;
+  margin: 2px 4px;
+  border: 1px solid gray;
+  transition: all .25s;
 }
-#in-aside-card-3 :nth-child(3) {
-  flex: .3;
+.order-button>div:hover {
+  border: none;
+  box-shadow: 4px 4px 8px #a9a9a9,-4px -4px 8px #ffffff;
 }
 #in-aside-card-4 {
   height: 20px;

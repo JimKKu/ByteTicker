@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jim.ssr.mapper.OrderDetailMapper">
+
+    <resultMap id="BaseResultMap" type="com.jim.ssr.entity.OrderDetail">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="order_id" column="order_id" jdbcType="BIGINT"/>
+            <result property="name1" column="name1" jdbcType="VARCHAR"/>
+            <result property="name2" column="name2" jdbcType="VARCHAR"/>
+            <result property="price" column="price" jdbcType="INTEGER"/>
+            <result property="size" column="size" jdbcType="TINYINT"/>
+            <result property="num" column="num" jdbcType="INTEGER"/>
+            <result property="comment" column="comment" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,order_id,name1,
+        name2,price,size,
+        num,comment
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_order_detail
+        where  id = #{id,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from tbl_order_detail
+        where  id = #{id,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.jim.ssr.entity.OrderDetail" useGeneratedKeys="true">
+        insert into tbl_order_detail
+        ( id,order_id,name1
+        ,name2,price,size
+        ,num,comment)
+        values (#{id,jdbcType=BIGINT},#{order_id,jdbcType=BIGINT},#{name1,jdbcType=VARCHAR}
+        ,#{name2,jdbcType=VARCHAR},#{price,jdbcType=INTEGER},#{size,jdbcType=TINYINT}
+        ,#{num,jdbcType=INTEGER},#{comment,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.jim.ssr.entity.OrderDetail" useGeneratedKeys="true">
+        insert into tbl_order_detail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="order_id != null">order_id,</if>
+                <if test="name1 != null">name1,</if>
+                <if test="name2 != null">name2,</if>
+                <if test="price != null">price,</if>
+                <if test="size != null">size,</if>
+                <if test="num != null">num,</if>
+                <if test="comment != null">comment,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=BIGINT},</if>
+                <if test="order_id != null">#{order_id,jdbcType=BIGINT},</if>
+                <if test="name1 != null">#{name1,jdbcType=VARCHAR},</if>
+                <if test="name2 != null">#{name2,jdbcType=VARCHAR},</if>
+                <if test="price != null">#{price,jdbcType=INTEGER},</if>
+                <if test="size != null">#{size,jdbcType=TINYINT},</if>
+                <if test="num != null">#{num,jdbcType=INTEGER},</if>
+                <if test="comment != null">#{comment,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.jim.ssr.entity.OrderDetail">
+        update tbl_order_detail
+        <set>
+                <if test="order_id != null">
+                    order_id = #{order_id,jdbcType=BIGINT},
+                </if>
+                <if test="name1 != null">
+                    name1 = #{name1,jdbcType=VARCHAR},
+                </if>
+                <if test="name2 != null">
+                    name2 = #{name2,jdbcType=VARCHAR},
+                </if>
+                <if test="price != null">
+                    price = #{price,jdbcType=INTEGER},
+                </if>
+                <if test="size != null">
+                    size = #{size,jdbcType=TINYINT},
+                </if>
+                <if test="num != null">
+                    num = #{num,jdbcType=INTEGER},
+                </if>
+                <if test="comment != null">
+                    comment = #{comment,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.jim.ssr.entity.OrderDetail">
+        update tbl_order_detail
+        set 
+            order_id =  #{order_id,jdbcType=BIGINT},
+            name1 =  #{name1,jdbcType=VARCHAR},
+            name2 =  #{name2,jdbcType=VARCHAR},
+            price =  #{price,jdbcType=INTEGER},
+            size =  #{size,jdbcType=TINYINT},
+            num =  #{num,jdbcType=INTEGER},
+            comment =  #{comment,jdbcType=VARCHAR}
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+</mapper>

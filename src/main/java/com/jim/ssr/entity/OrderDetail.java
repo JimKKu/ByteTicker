@@ -1,44 +1,48 @@
 package com.jim.ssr.entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import lombok.Data;
 
 /**
- * 订单
- * @TableName tbl_order
+ * 订单信息
+ * @TableName tbl_order_detail
  */
 @Data
-public class Order implements Serializable {
+public class OrderDetail implements Serializable {
     /**
-     * 逐渐
+     * ID
      */
     private Long id;
 
     /**
-     * 名字1(18.8)+名字2(21.4)+....
+     * 外键
      */
-    private String menu_info;
+    private Long order_id;
 
     /**
-     * 订单号码（出现在小票上的），0~999
+     * 主标题
      */
-    private Integer num;
+    private String name1;
 
     /**
-     * 0 创建 1 完成 4 删除
+     * 副标题
      */
-    private Integer status;
+    private String name2;
 
     /**
      * 价格
      */
-    private BigDecimal price;
+    private Integer price;
 
     /**
-     * 创建日期
+     * 大份小份
      */
-    private String createDate;
+    private Integer size;
+
+    /**
+     * 数量
+     */
+    private Integer num;
 
     /**
      * 备注
@@ -58,13 +62,14 @@ public class Order implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Order other = (Order) that;
+        OrderDetail other = (OrderDetail) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getMenu_info() == null ? other.getMenu_info() == null : this.getMenu_info().equals(other.getMenu_info()))
-            && (this.getNum() == null ? other.getNum() == null : this.getNum().equals(other.getNum()))
-            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
+            && (this.getOrder_id() == null ? other.getOrder_id() == null : this.getOrder_id().equals(other.getOrder_id()))
+            && (this.getName1() == null ? other.getName1() == null : this.getName1().equals(other.getName1()))
+            && (this.getName2() == null ? other.getName2() == null : this.getName2().equals(other.getName2()))
             && (this.getPrice() == null ? other.getPrice() == null : this.getPrice().equals(other.getPrice()))
-            && (this.getCreateDate() == null ? other.getCreateDate() == null : this.getCreateDate().equals(other.getCreateDate()))
+            && (this.getSize() == null ? other.getSize() == null : this.getSize().equals(other.getSize()))
+            && (this.getNum() == null ? other.getNum() == null : this.getNum().equals(other.getNum()))
             && (this.getComment() == null ? other.getComment() == null : this.getComment().equals(other.getComment()));
     }
 
@@ -73,11 +78,12 @@ public class Order implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getMenu_info() == null) ? 0 : getMenu_info().hashCode());
-        result = prime * result + ((getNum() == null) ? 0 : getNum().hashCode());
-        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        result = prime * result + ((getOrder_id() == null) ? 0 : getOrder_id().hashCode());
+        result = prime * result + ((getName1() == null) ? 0 : getName1().hashCode());
+        result = prime * result + ((getName2() == null) ? 0 : getName2().hashCode());
         result = prime * result + ((getPrice() == null) ? 0 : getPrice().hashCode());
-        result = prime * result + ((getCreateDate() == null) ? 0 : getCreateDate().hashCode());
+        result = prime * result + ((getSize() == null) ? 0 : getSize().hashCode());
+        result = prime * result + ((getNum() == null) ? 0 : getNum().hashCode());
         result = prime * result + ((getComment() == null) ? 0 : getComment().hashCode());
         return result;
     }
@@ -89,11 +95,12 @@ public class Order implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", menu_info=").append(menu_info);
-        sb.append(", num=").append(num);
-        sb.append(", status=").append(status);
+        sb.append(", order_id=").append(order_id);
+        sb.append(", name1=").append(name1);
+        sb.append(", name2=").append(name2);
         sb.append(", price=").append(price);
-        sb.append(", createDate=").append(createDate);
+        sb.append(", size=").append(size);
+        sb.append(", num=").append(num);
         sb.append(", comment=").append(comment);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

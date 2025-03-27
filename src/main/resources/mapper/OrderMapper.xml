@@ -8,7 +8,7 @@
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="menu_info" column="menu_info" jdbcType="VARCHAR"/>
             <result property="num" column="num" jdbcType="INTEGER"/>
-            <result property="status" column="status" jdbcType="TINYINT"/>
+            <result property="status" column="status" jdbcType="INTEGER"/>
             <result property="price" column="price" jdbcType="DECIMAL"/>
             <result property="createDate" column="createDate" jdbcType="VARCHAR"/>
             <result property="comment" column="comment" jdbcType="VARCHAR"/>
@@ -37,7 +37,7 @@
         ,status,price,createDate
         ,comment)
         values (#{id,jdbcType=BIGINT},#{menu_info,jdbcType=VARCHAR},#{num,jdbcType=INTEGER}
-        ,#{status,jdbcType=TINYINT},#{price,jdbcType=DECIMAL},#{createDate,jdbcType=VARCHAR}
+        ,#{status,jdbcType=INTEGER},#{price,jdbcType=DECIMAL},#{createDate,jdbcType=VARCHAR}
         ,#{comment,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.jim.ssr.entity.Order" useGeneratedKeys="true">
@@ -55,7 +55,7 @@
                 <if test="id != null">#{id,jdbcType=BIGINT},</if>
                 <if test="menu_info != null">#{menu_info,jdbcType=VARCHAR},</if>
                 <if test="num != null">#{num,jdbcType=INTEGER},</if>
-                <if test="status != null">#{status,jdbcType=TINYINT},</if>
+                <if test="status != null">#{status,jdbcType=INTEGER},</if>
                 <if test="price != null">#{price,jdbcType=DECIMAL},</if>
                 <if test="createDate != null">#{createDate,jdbcType=VARCHAR},</if>
                 <if test="comment != null">#{comment,jdbcType=VARCHAR},</if>
@@ -71,7 +71,7 @@
                     num = #{num,jdbcType=INTEGER},
                 </if>
                 <if test="status != null">
-                    status = #{status,jdbcType=TINYINT},
+                    status = #{status,jdbcType=INTEGER},
                 </if>
                 <if test="price != null">
                     price = #{price,jdbcType=DECIMAL},
@@ -90,7 +90,7 @@
         set 
             menu_info =  #{menu_info,jdbcType=VARCHAR},
             num =  #{num,jdbcType=INTEGER},
-            status =  #{status,jdbcType=TINYINT},
+            status =  #{status,jdbcType=INTEGER},
             price =  #{price,jdbcType=DECIMAL},
             createDate =  #{createDate,jdbcType=VARCHAR},
             comment =  #{comment,jdbcType=VARCHAR}

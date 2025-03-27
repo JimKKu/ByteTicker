@@ -73,7 +73,7 @@
                 <textarea placeholder="请输入备注..."></textarea>
               </div>
               <div id="in-aside-order4">
-                <div id="button-order">下&nbsp;&nbsp;单</div>
+                <button :disabled="this.orderList.length === 0" @click="btnNewOrder" id="button-order">下&nbsp;&nbsp;单</button>
               </div>
             </div>
           </div>
@@ -145,10 +145,28 @@ export default {
         }
         this.orderList.push(o)
       }
-      console.log(SIZE);
     },
     btnMenuPrice2(index) {
-      // console.log(index);
+      var m = this.menuList[index];
+      /* ---- 已点份数 ---- */
+      var flag = 0;
+      this.orderList.forEach((o,index) => {
+        if(o.name1 === m.name1 && o.name2 === m.name2 && o.size === 2) {
+          this.orderList[index].num++;
+          flag = 1;
+        }
+      })
+
+      if(flag === 0) {
+        var o = {
+          name1: m.name1,
+          name2: m.name2,
+          price: m.price2,
+          size: 2,
+          num: 1 /* 一定是大份 */
+        }
+        this.orderList.push(o)
+      }
     },
     btnAddOrder (index) {
       if( this.orderList[index].num < 99) this.orderList[index].num ++;
@@ -159,7 +177,11 @@ export default {
     btnDelOrder (index) {
       this.orderList.splice(index,1)
     },
-    /* ------- 请求 ------- */
+    /* ------ 触发请求 ----- */
+    btnNewOrder(){
+
+    },
+    /* ------ 加载请求 ------ */
     async getTypeList() {
       this.typeList = await reqGetTypeList();
     },
@@ -499,6 +521,7 @@ header img {
   margin: 2px;
   line-height: 38px;
   color: #3a5fd9;
+  background-color: #e1e1e1;
   font-weight: 700;
   border-radius: 4px;
   transition: all .25s;
@@ -512,7 +535,16 @@ header img {
   color: gold;
   box-shadow: 4px 4px 8px #a9a9a9,-4px -4px 8px #ffffff;
 }
-
+#button-order:disabled {
+  background-color: #d9d9d9;
+  color: gray;
+}
+#button-order:disabled:hover {
+  width: 196px;
+  height: 38px;
+  line-height: 38px;
+  box-shadow: none;
+}
 #in-aside-order-card {
   display: inline-block;
   width: 90%;

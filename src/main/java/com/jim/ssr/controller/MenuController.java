@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.*;
 import java.util.List;
 
 @RestController
@@ -25,4 +26,20 @@ public class MenuController {
     }
 
 
+    public static void main(String[] args) throws IOException {
+        FileReader fr=new FileReader("E:/zc.txt");
+        BufferedReader br=new BufferedReader(fr);
+        String line="";
+        String[] arrs=null;
+        double dou = 0.00;
+        int lineNum = 1;
+        while ((line=br.readLine())!=null) {
+            System.out.println("-----第{}行");
+            arrs=line.split(" ");
+            for (int i = 0; i < arrs.length; i++) {
+            }
+        }
+        br.close();
+        fr.close();
+    }
 }

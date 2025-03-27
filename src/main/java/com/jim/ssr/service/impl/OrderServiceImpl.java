@@ -30,14 +30,16 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public boolean newOrder(OrderVO vo) {
         /* - 修正参数 - */
-        // 备注
-        vo.setComment("点单");
         // 总价
         int price = 0;
+        StringBuilder sb = new StringBuilder();
         for (OrderDetail detail : vo.getOrderList()) {
             price += detail.getPrice();
+            sb.append(detail.getName1()+(detail.getName2()==null?"":"-"+detail.getName2())+(detail.getNum() == 1?"(小)":detail.getNum() == 2?"(大)":"")+"*"+detail.getNum()+"/");
         }
+        sb.delete(sb.length()-1,sb.length());
         vo.setPrice(price);
+        vo.setMenuInfo(String.valueOf(sb));
         // 订单号码
         vo.setNum(buildNum());
         /* - 入库 ---- */

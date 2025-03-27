@@ -17,7 +17,7 @@
         </ul>
       </div>
       <div id="box2">
-        <div id="card" v-for="menu in menuList" :key="menu.id">
+        <div id="card" v-for="(menu,index) in menuList" :key="menu.id">
           <div id="incard1">
             <div id="son11" style="text-overflow: ellipsis;">
               {{ menu.name1 }}
@@ -29,8 +29,8 @@
           </div>
           <div id="incard2">
             <nav>
-              <div id="son21" :style="menu.price2?'border-right: 1px solid gray':''">{{ menu.price1 }}<span style="font-size: 12px">￥</span></div>
-              <div id="son22" v-if="menu.price2">{{ menu.price2 }}<span style="font-size: 12px">￥</span></div>
+              <div @click="btnMenuPrice1(index,menu.price2)" id="son21" :style="menu.price2?'border-right: 1px solid gray':''">{{ menu.price1 }}<span style="font-size: 12px">￥</span></div>
+              <div @click="btnMenuPrice2(index)" id="son22" v-if="menu.price2">{{ menu.price2 }}<span style="font-size: 12px">￥</span></div>
             </nav>
           </div>
         </div>
@@ -106,51 +106,7 @@ export default {
       /* type */
       typeList: [],
       menuList: [],
-      orderList: [
-        {
-          name1: '雪菜肉丝面',
-          name2: '刀削面',
-          price: 22,
-          size: 'big',
-          num: 2
-        },
-        {
-          name1: '雪菜肉丝面',
-          name2: '刀削面',
-          price: 22,
-          size: 'big',
-          num: 2
-        },
-        {
-          name1: '雪菜肉丝面',
-          name2: '刀削面',
-          price: 22,
-          size: 'big',
-          num: 2
-        },
-        {
-          name1: '雪菜肉丝面',
-          name2: '刀削面',
-          price: 22,
-          size: 'big',
-          num: 2
-        },
-        {
-          name1: '雪菜肉丝面',
-          name2: '刀削面',
-          price: 22,
-          size: 'big',
-          num: 2
-        },
-        {
-          name1: '雪菜肉丝面',
-          name2: '刀削面',
-          price: 22,
-          size: 'big',
-          num: 2
-        },
-
-      ],
+      orderList: [],
       aside1: true
     }
   },
@@ -162,6 +118,37 @@ export default {
     /* ----- methods ----- */
     changeAside(){
       this.aside1=!this.aside1;
+    },
+    btnMenuPrice1(index,bool) {
+      var m = this.menuList[index];
+      /* ---- SIZE:大份小份 ---- */
+      var SIZE = 0;
+      if(bool !== 0) {
+        SIZE = 1;
+      }
+      /* ---- 已点份数 ---- */
+      var flag = 0;
+      this.orderList.forEach((o,index) => {
+          if(o.name1 === m.name1 && o.name2 === m.name2 && o.size === SIZE) {
+            this.orderList[index].num++;
+            flag = 1;
+          }
+      })
+
+      if(flag === 0) {
+        var o = {
+          name1: m.name1,
+          name2: m.name2,
+          price: m.price1,
+          size: SIZE,
+          num: 1
+        }
+        this.orderList.push(o)
+      }
+      console.log(SIZE);
+    },
+    btnMenuPrice2(index) {
+      // console.log(index);
     },
     btnAddOrder (index) {
       if( this.orderList[index].num < 99) this.orderList[index].num ++;

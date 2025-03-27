@@ -70,7 +70,7 @@
                   </div>
               </div>
               <div id="in-aside-order3">
-                <textarea placeholder="请输入备注..."></textarea>
+                <textarea placeholder="请输入备注..." v-model="comment"></textarea>
               </div>
               <div id="in-aside-order4">
                 <button :disabled="this.orderList.length === 0" @click="btnNewOrder" id="button-order">下&nbsp;&nbsp;单</button>
@@ -98,6 +98,7 @@
 <script>
 import {reqGetTypeList} from "@/api/type";
 import {reqGetMenuList} from "@/api/menu";
+import {reqNewOrder} from "@/api/order";
 
 export default {
   name: 'OrderView',
@@ -107,6 +108,7 @@ export default {
       typeList: [],
       menuList: [],
       orderList: [],
+      comment: '', /* 备注 */
       aside1: true
     }
   },
@@ -162,8 +164,8 @@ export default {
           name1: m.name1,
           name2: m.name2,
           price: m.price2,
-          size: 2,
-          num: 1 /* 一定是大份 */
+          size: 2, /* 一定是大份 */
+          num: 1
         }
         this.orderList.push(o)
       }
@@ -178,8 +180,9 @@ export default {
       this.orderList.splice(index,1)
     },
     /* ------ 触发请求 ----- */
+    /* 下单按钮 */
     btnNewOrder(){
-
+      reqNewOrder(this.orderList,this.comment);
     },
     /* ------ 加载请求 ------ */
     async getTypeList() {

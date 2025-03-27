@@ -6,7 +6,7 @@
 
     <resultMap id="BaseResultMap" type="com.jim.ssr.entity.Order">
             <id property="id" column="id" jdbcType="BIGINT"/>
-            <result property="menu_info" column="menu_info" jdbcType="VARCHAR"/>
+            <result property="menuInfo" column="menu_info" jdbcType="VARCHAR"/>
             <result property="num" column="num" jdbcType="INTEGER"/>
             <result property="status" column="status" jdbcType="INTEGER"/>
             <result property="price" column="price" jdbcType="INTEGER"/>
@@ -20,23 +20,22 @@
         comment
     </sql>
 
-    <insert id="newOrder" keyColumn="id" keyProperty="id" parameterType="com.jim.ssr.entity.dto.OrderDTO" useGeneratedKeys="true">
+    <insert id="newOrder" keyColumn="id" keyProperty="id" parameterType="com.jim.ssr.entity.Order" useGeneratedKeys="true">
         insert into tbl_order
-        ( menu_info,num
+        ( id,menu_info,num
         ,price,createDate
         ,comment)
-        values (#{menuInfo,jdbcType=VARCHAR},#{num,jdbcType=INTEGER}
-               ,#{price,jdbcType=INTEGER},#{createDate,jdbcType=VARCHAR}
-               ,#{comment,jdbcType=VARCHAR});
-        insert into tbl_order_detail
-        ( order_id,name1,name2,price,size,num,comment)
-        values
-        <foreach collection="orderList" item="detail" index="no" separator=",">
-            (#{id,jdbcType=INTEGER},#{detail.name1}, #{detail.name2}, #{detail.price},
-            #{detail.size}, #{detail.num},#{detail.comment})
-        </foreach>
+        values (#{id,jdbcType=INTEGER},#{menuInfo,jdbcType=VARCHAR},#{num,jdbcType=INTEGER}
+               ,#{price,jdbcType=INTEGER},date_format(now(), '%Y%m%d')
+               ,#{comment,jdbcType=VARCHAR})
     </insert>
 
+    <select id="selectMaxNum" resultType="java.lang.Integer">
+        select
+        MAX(num)
+        from tbl_order
+        where  createDate=date_format(now(), '%Y%m%d')
+    </select>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select

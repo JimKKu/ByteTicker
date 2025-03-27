@@ -2,6 +2,9 @@ package com.jim.ssr.mapper;
 
 import com.jim.ssr.entity.OrderDetail;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
 * @author Jimkk
@@ -11,6 +14,9 @@ import org.apache.ibatis.annotations.Mapper;
 */
 @Mapper
 public interface OrderDetailMapper {
+
+
+    int newOrder(@Param("list")List<OrderDetail> list,@Param("orderId") Integer orderId);
 
     int deleteByPrimaryKey(Long id);
 

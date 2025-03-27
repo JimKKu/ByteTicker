@@ -1,4 +1,4 @@
-package com.jim.ssr.entity.dto;
+package com.jim.ssr.entity.vo;
 
 import com.jim.ssr.entity.OrderDetail;
 import lombok.Data;
@@ -13,7 +13,7 @@ import java.util.List;
  */
 @Data
 @ToString
-public class OrderDTO {
+public class OrderVO {
     private Integer id;
     private String menuInfo;
     private Integer num;

@@ -1,7 +1,7 @@
 package com.jim.ssr.mapper;
 
 import com.jim.ssr.entity.Order;
-import com.jim.ssr.entity.dto.OrderDTO;
+import com.jim.ssr.entity.vo.OrderVO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -13,7 +13,9 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface OrderMapper {
 
-    int newOrder(OrderDTO recordDTO);
+    int newOrder(OrderVO record);
+
+    Integer selectMaxNum();
 
     /* ----- Generate ------- */
 

@@ -32,6 +32,17 @@
         delete from tbl_order_detail
         where  id = #{id,jdbcType=BIGINT} 
     </delete>
+
+    <insert id="newOrder" parameterType="com.jim.ssr.entity.vo.OrderVO">
+        insert into tbl_order_detail
+        ( order_id,name1,name2,price,size,num,comment)
+        values
+        <foreach collection="list" item="detail" index="no" separator=",">
+            (#{orderId,jdbcType=INTEGER},#{detail.name1}, #{detail.name2}, #{detail.price},
+            #{detail.size}, #{detail.num},#{detail.comment})
+        </foreach>
+    </insert>
+
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.jim.ssr.entity.OrderDetail" useGeneratedKeys="true">
         insert into tbl_order_detail
         ( id,order_id,name1

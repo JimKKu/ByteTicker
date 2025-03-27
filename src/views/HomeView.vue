@@ -46,7 +46,7 @@
               </div>
               <div id="in-aside-order2">
                   <!-- inline-block -->
-                  <div id="in-aside-order-card" v-for="order in orderList" :key="name">
+                  <div id="in-aside-order-card" v-for="(order,index) in orderList">
                     <div id="in-aside-order-card-container">
                       <div id="in-aside-card-1">
                         {{ order.name1 }}
@@ -55,17 +55,24 @@
                         {{ order.name2 }}
                       </div>
                       <div id="in-aside-card-3">
-                        <div class="order-button"><div class="iconfont icon-jianhaob"></div></div>
+                        <div class="order-button">
+                          <button class="iconfont icon-jianhaob" :disabled="order.num === 0" @click="btnMinusOrder(index)"></button>
+                        </div>
                         <div class="order-input">
                           <input v-model="order.num">
                         </div>
-                        <div class="order-button"><div class="iconfont icon-jiahao"></div></div>
+                        <div class="order-button">
+                          <button class="iconfont icon-jiahao" :disabled="order.num === 99" @click="btnAddOrder(index)"></button>
+                        </div>
                       </div>
-                      <div id="in-aside-card-4"><i class="iconfont icon-lajitong"></i></div>
+                      <div id="in-aside-card-4" @click="btnDelOrder(index)" :style="order.num === 0?'height: 36px;transition: .5s all;line-height:36px;background-color:#f0a1a8;color:#fff;font-size: 32px':'transition: .5s all;'"><i class="iconfont icon-lajitong"></i></div>
                     </div>
                   </div>
               </div>
               <div id="in-aside-order3">
+                <textarea placeholder="请输入备注..."></textarea>
+              </div>
+              <div id="in-aside-order4">
                 <div id="button-order">下&nbsp;&nbsp;单</div>
               </div>
             </div>
@@ -156,6 +163,16 @@ export default {
     changeAside(){
       this.aside1=!this.aside1;
     },
+    btnAddOrder (index) {
+      if( this.orderList[index].num < 99) this.orderList[index].num ++;
+    },
+    btnMinusOrder (index) {
+      if( this.orderList[index].num > 0) this.orderList[index].num --;
+    },
+    btnDelOrder (index) {
+      this.orderList.splice(index,1)
+    },
+    /* ------- 请求 ------- */
     async getTypeList() {
       this.typeList = await reqGetTypeList();
     },
@@ -445,24 +462,51 @@ header img {
 
 }
 #in-aside-order3 {
-  height: 80px;
+  padding: 8px 5%;
+  background-color: #e1e1e1;
+  text-align: center;
+  border-top: 1px solid gray;
+  z-index: 700;
+}
+#in-aside-order3>textarea {
+  width: 90%;
+  height: 24px;
+  background-color: #e1e1e1;
+  border-radius: 4px;
+  resize:none;
+  outline: none;
+  border: 1px solid gray;
+  font-weight: 400;
+  padding: 2px;
+  font-size: 18px;
+  transition: all .25s;
+  line-height: 24px;
+}
+#in-aside-order3>textarea:hover {
+  box-shadow: 2px 2px 4px #a9a9a9,-2px -2px 4px #ffffff;
+  border: 1px solid transparent;
+}
+#in-aside-order3>textarea:focus {
+  box-shadow: 2px 2px 4px #a9a9a9 inset,-2px -2px 4px #ffffff inset;
+  height: 72px;
+  border: 1px solid transparent;
+}
+#in-aside-order4 {
+  height: 64px;
   background-color: #e1e1e1;
   border-radius: 0 0 12px 12px;
   text-align: center;
   border-top: 1px solid gray;
-  box-shadow: 0px -10px 10px -10px gray;
   z-index: 700;
 }
-div::-webkit-scrollbar{
-  display: none;
-}
+
 
 #button-order {
   display: inline-block;
   width: 196px;
   height: 38px;
   border: 1px solid gray;
-  transform: translateY(20px);
+  transform: translateY(13px);
   margin: 2px;
   line-height: 38px;
   color: #3a5fd9;
@@ -551,20 +595,25 @@ div::-webkit-scrollbar{
 .order-button {
   flex: .4;
 }
-.order-button>div {
+
+.order-button>button {
   display: inline-block;
   width: 64%;
   height: 28px;
+  background-color: #e1e1e1;
   text-align: center;
   line-height: 28px;
   box-sizing: border-box;
   margin: 2px 4px;
-  border: 1px solid gray;
+  border: none;
   transition: all .25s;
 }
-.order-button>div:hover {
+.order-button>button:hover {
   border: none;
   box-shadow: 4px 4px 8px #a9a9a9,-4px -4px 8px #ffffff;
+}
+.order-button>button:disabled {
+  opacity: 0;
 }
 #in-aside-card-4 {
   height: 20px;
@@ -662,5 +711,11 @@ div::-webkit-scrollbar{
     transform: rotateY(360deg);
   }
 
+}
+
+
+/* ------ 整体样式 ------ */
+div::-webkit-scrollbar {
+  display: none;
 }
 </style>

@@ -20,6 +20,24 @@
         comment
     </sql>
 
+    <insert id="newOrder" keyColumn="id" keyProperty="id" parameterType="com.jim.ssr.entity.dto.OrderDTO" useGeneratedKeys="true">
+        insert into tbl_order
+        ( menu_info,num
+        ,price,createDate
+        ,comment)
+        values (#{menuInfo,jdbcType=VARCHAR},#{num,jdbcType=INTEGER}
+               ,#{price,jdbcType=INTEGER},#{createDate,jdbcType=VARCHAR}
+               ,#{comment,jdbcType=VARCHAR});
+        insert into tbl_order_detail
+        ( order_id,name1,name2,price,size,num,comment)
+        values
+        <foreach collection="orderList" item="detail" index="no" separator=",">
+            (#{id,jdbcType=INTEGER},#{detail.name1}, #{detail.name2}, #{detail.price},
+            #{detail.size}, #{detail.num},#{detail.comment})
+        </foreach>
+    </insert>
+
+
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />

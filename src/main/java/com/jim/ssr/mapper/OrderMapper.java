@@ -1,6 +1,8 @@
 package com.jim.ssr.mapper;
 
 import com.jim.ssr.entity.Order;
+import com.jim.ssr.entity.dto.OrderDTO;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author Jimkk
@@ -8,7 +10,12 @@ import com.jim.ssr.entity.Order;
 * @createDate 2024-03-27 14:39:24
 * @Entity com.jim.ssr.entity.Order
 */
+@Mapper
 public interface OrderMapper {
+
+    int newOrder(OrderDTO recordDTO);
+
+    /* ----- Generate ------- */
 
     int deleteByPrimaryKey(Long id);
 

@@ -1,6 +1,7 @@
 package com.jim.ssr.mapper;
 
 import com.jim.ssr.entity.OrderDetail;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author Jimkk
@@ -8,6 +9,7 @@ import com.jim.ssr.entity.OrderDetail;
 * @createDate 2024-03-27 14:39:24
 * @Entity com.jim.ssr.entity.OrderDetail
 */
+@Mapper
 public interface OrderDetailMapper {
 
     int deleteByPrimaryKey(Long id);

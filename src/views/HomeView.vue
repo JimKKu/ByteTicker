@@ -490,6 +490,8 @@ header img {
   box-shadow: 2px 2px 4px #a9a9a9 inset,-2px -2px 4px #ffffff inset;
   height: 72px;
   border: 1px solid transparent;
+  padding: 12px 6px;
+  box-sizing: border-box;
 }
 #in-aside-order4 {
   height: 64px;
@@ -717,5 +719,8 @@ header img {
 /* ------ 整体样式 ------ */
 div::-webkit-scrollbar {
   display: none;
+}
+textarea {
+  overflow: hidden;
 }
 </style>

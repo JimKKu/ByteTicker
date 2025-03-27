@@ -181,8 +181,15 @@ export default {
     },
     /* ------ 触发请求 ----- */
     /* 下单按钮 */
-    btnNewOrder(){
-      reqNewOrder(this.orderList,this.comment);
+    async btnNewOrder(){
+      var code = await reqNewOrder(this.orderList,this.comment);
+      if(code === '000') {
+        this.$notify.success("下单成功！");
+        this.orderList.splice(0,this.orderList.length);
+        this.comment = '';
+      } else {
+        this.$notify.error("下单失败！");
+      }
     },
     /* ------ 加载请求 ------ */
     async getTypeList() {

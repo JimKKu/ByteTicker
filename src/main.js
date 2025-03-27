@@ -13,6 +13,11 @@ Vue.prototype.$PUT = sndPUT;
 Vue.prototype.$PST = sndPST;
 Vue.prototype.$DEL = sndDEL;
 
+// 导入 Element-UI
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
+
 Vue.config.productionTip = false
 document.onselectstart = new Function("event.returnValue=false");
 document.oncontextmenu = new Function("event.returnValue=false");

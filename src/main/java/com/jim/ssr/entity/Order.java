@@ -1,7 +1,6 @@
 package com.jim.ssr.entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import lombok.Data;
 
 /**
@@ -33,7 +32,7 @@ public class Order implements Serializable {
     /**
      * 价格
      */
-    private BigDecimal price;
+    private Integer price;
 
     /**
      * 创建日期

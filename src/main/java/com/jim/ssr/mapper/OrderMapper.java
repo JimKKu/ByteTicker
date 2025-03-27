@@ -5,7 +5,7 @@ import com.jim.ssr.entity.Order;
 /**
 * @author Jimkk
 * @description 针对表【tbl_order(订单)】的数据库操作Mapper
-* @createDate 2024-03-27 14:27:21
+* @createDate 2024-03-27 14:39:24
 * @Entity com.jim.ssr.entity.Order
 */
 public interface OrderMapper {

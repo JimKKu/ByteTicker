@@ -40,11 +40,18 @@
           <div :class="aside1?'show':'hidden'" @animationend='aside1===false'>
             <div id="aside-order">
               <div id="in-aside-order1">
-                <i class="iconfont icon-qian8 icon-money"></i>
-                来单咯
-                <i class="iconfont icon-qian8 icon-money"></i>
+                <div id="in-aside-order1-inner">
+                  <div id="in-aside-order1-inner-left" @click="orderList = []">
+                    <i class="iconfont icon-lajitong lajitong-clear">&nbsp;</i>清&nbsp;空
+                  </div>
+                  <div id="in-aside-order1-inner-right">
+                    <i class="iconfont icon-qian8 icon-money"></i>
+                    来单咯
+                    <i class="iconfont icon-qian8 icon-money"></i>
+                  </div>
+                </div>
               </div>
-              <div id="in-aside-order2">
+              <div id="in-aside-order2" :class="orderList.length?'do-order':'no-order'">
                   <!-- inline-block -->
                   <div id="in-aside-order-card" v-for="(order,index) in orderList">
                     <div id="in-aside-order-card-container">
@@ -65,7 +72,7 @@
                           <button class="iconfont icon-jiahao" :disabled="order.num === 99" @click="btnAddOrder(index)"></button>
                         </div>
                       </div>
-                      <div id="in-aside-card-4" @click="btnDelOrder(index)" :style="order.num === 0?'height: 36px;transition: .5s all;line-height:36px;background-color:#f0a1a8;color:#fff;font-size: 32px':'transition: .5s all;'"><i class="iconfont icon-lajitong"></i></div>
+                      <div id="in-aside-card-4" @click="btnDelOrder(index)" :style="!order.num?'height: 36px;transition: .5s all;line-height:36px;background-color:#f0a1a8;color:#fff;font-size: 32px':'transition: .5s all;'"><i class="iconfont icon-lajitong"></i></div>
                     </div>
                   </div>
               </div>
@@ -92,8 +99,12 @@
                   <img src="@/assets/imgs/clock2.png" alt="时钟" class="icon-clock clock2">
                 </div>
               </div>
-              <div id="in-history-card-2"></div>
-              <div id="in-history-card-3"></div>
+              <div id="in-history-card-2">
+                <!-- Cards -->
+              </div>
+              <div id="in-history-card-3">
+                <input v-model="query" placeholder="输入订单号搜索">
+              </div>
             </div>
           </div>
         </div>
@@ -123,7 +134,8 @@ export default {
       menuList: [],
       orderList: [],
       comment: '', /* 备注 */
-      aside1: false
+      query:'', /* 模糊搜索历史订单 */
+      aside1: true
     }
   },
   mounted() {
@@ -485,14 +497,47 @@ header img {
   text-align: center;
   font-size: 24px;
   font-weight: 700;
+  overflow: hidden;
+  position: relative;
+}
+/* 左侧是删除 右侧是标题 */
+#in-aside-order1-inner {
+  width: 480px;
+  height: 50px;
+  float: right;
+  position: absolute;
+  background: #e1e1e1;
+  right: 0;
+  top: 0;
+  transition: all .25s;
+}
+#in-aside-order1-inner:hover {
+  transform: translateX(240px);
+  background: #ff4e4e;
+  color: #fff;
+}
+#in-aside-order1-inner>div {
+  width: 240px;
+  height: 50px;
+  display: inline-block;
+  text-align: center;
+}
+#in-aside-order1-inner-left {
+  display: inline-block;
+  float: left;
+  background: transparent;
+  position: relative;
+}
+#in-aside-order1-inner-right {
+  display: inline-block;
+  float: right;
+  background: transparent;
 }
 #in-aside-order2 {
   text-align: center;
   flex: 1;
   padding: 16px 0;
-  background: #e1e1e1;
   overflow-y: scroll;
-
 }
 #in-aside-order3 {
   padding: 8px 5%;
@@ -577,6 +622,8 @@ header img {
   border-radius: 8px;
   border: 1px solid gray;
   margin: 10px 2px;
+  box-shadow: 2px 2px 4px #a9a9a9,-2px -2px 4px #ffffff;
+
 }
 #in-aside-order-card-container {
   width: 100%;
@@ -677,7 +724,7 @@ header img {
 /* ---- 历史页面 ---- */
 #in-history-card-1 {
   width: 100%;
-  height: 50px;
+  height: 52px;
   border-radius: 12px 12px 0 0;
   border-bottom: 1px solid gray;
   background: #e1e1e1;
@@ -687,10 +734,38 @@ header img {
   font-weight: 700;
 }
 #in-history-card-2 {
-
+  flex: 1;
+  box-shadow: 2px 2px 4px #a9a9a9 inset,-2px -2px 4px #ffffff inset;
+  background: #dadada;
 }
-#in-history-card-3 {
 
+#in-history-card-3 {
+  width: 100%;
+  height: 70px;
+  border-top: 1px solid gray;
+  text-align: center;
+}
+#in-history-card-3>input {
+  width: 85%;
+  height: 28px;
+  outline: none;
+  background-color: #e1e1e1;
+  border: 1px solid gray;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 28px;
+  margin: 21px 0;
+  font-size: 18px;
+  font-weight: 200;
+  transition: all .25s;
+}
+#in-history-card-3>input:focus {
+  color: #3a5fd9;
+  font-size: 20px;
+  width: 87%;
+  height: 30px;
+  line-height: 30px;
+  box-shadow: 2px 2px 4px #a9a9a9 inset,-2px -2px 4px #ffffff inset;
 }
 /* ----------- 动画 ---------------- */
 
@@ -776,6 +851,19 @@ header img {
 
 
 /* ------ 小装饰 ----------- */
+.lajitong-clear {
+  font-size: 24px;
+  color: #efefff;
+}
+
+.img-recycle-clear {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  right: 16px;
+  z-index: 2000;
+}
 .icon-money {
   font-weight: 500;
   font-size: 22px;
@@ -820,5 +908,14 @@ div::-webkit-scrollbar {
 }
 textarea {
   overflow: hidden;
+}
+
+/* ----- 一些小装饰 ----- */
+.do-order {
+  box-shadow: 2px 2px 4px #a9a9a9 inset,-2px -2px 4px #ffffff inset;
+  background: #dadada;
+}
+.no-order {
+
 }
 </style>

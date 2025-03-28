@@ -77,9 +77,23 @@
               </div>
             </div>
           </div>
+          <!-- box3>div>div -->
           <div :class="aside1?'hidden':'show'" @animationend='aside1===true'>
+            <!-- box3>div>div>div -->
             <div id="aside-history">
-
+              <div id="in-history-card-1">
+                <div class="icon-clock-container">
+                  <img src="@/assets/imgs/clock1.png" alt="时钟" class="icon-clock clock1">
+                  <img src="@/assets/imgs/clock2.png" alt="时钟" class="icon-clock clock2">
+                </div>
+                历史订单
+                <div class="icon-clock-container">
+                  <img src="@/assets/imgs/clock1.png" alt="时钟" class="icon-clock clock1">
+                  <img src="@/assets/imgs/clock2.png" alt="时钟" class="icon-clock clock2">
+                </div>
+              </div>
+              <div id="in-history-card-2"></div>
+              <div id="in-history-card-3"></div>
             </div>
           </div>
         </div>
@@ -109,7 +123,7 @@ export default {
       menuList: [],
       orderList: [],
       comment: '', /* 备注 */
-      aside1: true
+      aside1: false
     }
   },
   mounted() {
@@ -659,6 +673,25 @@ header img {
   background-color: #ff4141;
   color: #fff;
 }
+
+/* ---- 历史页面 ---- */
+#in-history-card-1 {
+  width: 100%;
+  height: 50px;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid gray;
+  background: #e1e1e1;
+  line-height: 50px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+#in-history-card-2 {
+
+}
+#in-history-card-3 {
+
+}
 /* ----------- 动画 ---------------- */
 
 .hidden {
@@ -703,7 +736,24 @@ header img {
   }
 }
 
-
+/* 时针 */
+@keyframes clock1 {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(-360deg);
+  }
+}
+/* 分针 */
+@keyframes clock2 {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(-1440deg);
+  }
+}
 
 /* ------------  浮动样式  ----------------------- */
 
@@ -734,6 +784,25 @@ header img {
   animation: roate-money 2s linear infinite;
 }
 
+.icon-clock-container {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  position: relative;
+}
+.icon-clock {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 0;
+  bottom: -4px;
+}
+.clock1 {
+  animation: clock1 2s linear infinite;
+}
+.clock2 {
+  animation: clock2 2s linear infinite;
+}
 @keyframes roate-money {
   50% {
     transform: rotateY(180deg);

@@ -89,14 +89,28 @@
             <!-- box3>div>div>div -->
             <div id="aside-history">
               <div id="in-history-card-1">
-                <div class="icon-clock-container">
-                  <img src="@/assets/imgs/clock1.png" alt="时钟" class="icon-clock clock1">
-                  <img src="@/assets/imgs/clock2.png" alt="时钟" class="icon-clock clock2">
-                </div>
-                历史订单
-                <div class="icon-clock-container">
-                  <img src="@/assets/imgs/clock1.png" alt="时钟" class="icon-clock clock1">
-                  <img src="@/assets/imgs/clock2.png" alt="时钟" class="icon-clock clock2">
+                <div id="history-title-moved">
+                  <div id="history-title-moved-left-son">
+                    <div id="left-icon-div">
+                      <img src="@/assets/imgs/i-left.png" alt="左箭头" class="i-direction i-left">
+                    </div>
+                    <div id="left-colck-div">
+                      <img src="@/assets/imgs/clock1.png" alt="时钟" class="icon-clock clock1">
+                      <img src="@/assets/imgs/clock2.png" alt="时钟" class="icon-clock clock2">
+                    </div>
+                  </div>
+                  <div id="history-title-moved-middle-son">
+                    历史订单
+                  </div>
+                  <div id="history-title-moved-right-son">
+                    <div id="right-icon-div">
+                      <img src="@/assets/imgs/i-right.png" alt="右箭头" class="i-direction i-right">
+                    </div>
+                    <div id="right-colck-div">
+                      <img src="@/assets/imgs/clock1.png" alt="时钟" class="icon-clock clock1">
+                      <img src="@/assets/imgs/clock2.png" alt="时钟" class="icon-clock clock2">
+                    </div>
+                  </div>
                 </div>
               </div>
               <div id="in-history-card-2">
@@ -135,7 +149,7 @@ export default {
       orderList: [],
       comment: '', /* 备注 */
       query:'', /* 模糊搜索历史订单 */
-      aside1: true
+      aside1: false
     }
   },
   mounted() {
@@ -229,6 +243,78 @@ export default {
 </script>
 
 <style scoped>
+
+#history-title-moved {
+  width: 360px;
+  display: flex;
+  flex-direction: row;
+}
+.icon-clock {
+  width: 22px;
+  height: 22px;
+}
+#history-title-moved>div {
+  flex: 1;
+  height: 52px;
+  display: inline-block;
+  transform: translateX(-60px);
+  transition: all .25s;
+  position: relative;
+}
+#history-title-moved-left-son {
+  z-index: 600;
+}
+#history-title-moved-left-son:hover {
+  transform: translateX(0px);
+  background: rgba(58,95,217,0.8);
+  border-radius: 12px;
+  height: 48px;
+  margin: 2px;
+  //background-image: linear-gradient( 135deg, #3C8CE7 10%, #00EAFF 100%);
+  //box-shadow: 2px 2px 4px #b0b0b0 inset,-2px -2px 4px #ffffff inset;
+}
+#history-title-moved-middle-son {
+  z-index: 700;
+  background: #e1e1e1;
+}
+#history-title-moved-right-son {
+  z-index: 600;
+}
+#history-title-moved-right-son:hover {
+  transform: translateX(-120px);
+  background: rgba(58,95,217,0.8);
+  border-radius: 12px;
+  height: 48px;
+  margin: 2px;
+  //background-image: linear-gradient( 135deg, #CE9FFC 10%, #7367F0 100%);
+  //box-shadow: 2px 2px 6px #b0b0b0 inset,-2px -2px 6px #ffffff inset;
+}
+
+#left-colck-div {
+  position: absolute;
+  width: 22px;
+  background: #e1e1e1;
+  right: 5px;
+  bottom: 14px;
+}
+#right-colck-div {
+  position: absolute;
+  width: 22px;
+  background: #e1e1e1;
+  left: 5px;
+  bottom: 16px;
+}
+.i-direction {
+  width: 18px;
+  bottom: 15px;
+  position: absolute;
+}
+.i-left {
+  left: 21px;
+}
+.i-right {
+  right: 21px;
+}
 /* 全局容器 */
 #container {
   width: 100%;
@@ -732,6 +818,7 @@ header img {
   text-align: center;
   font-size: 24px;
   font-weight: 700;
+  overflow: hidden;
 }
 #in-history-card-2 {
   flex: 1;
@@ -767,6 +854,7 @@ header img {
   line-height: 30px;
   box-shadow: 2px 2px 4px #a9a9a9 inset,-2px -2px 4px #ffffff inset;
 }
+
 /* ----------- 动画 ---------------- */
 
 .hidden {
@@ -872,12 +960,6 @@ header img {
   animation: roate-money 2s linear infinite;
 }
 
-.icon-clock-container {
-  width: 22px;
-  height: 22px;
-  display: inline-block;
-  position: relative;
-}
 .icon-clock {
   position: absolute;
   width: 22px;

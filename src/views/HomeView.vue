@@ -88,11 +88,11 @@
           <div :class="aside1?'hidden':'show'" @animationend='aside1===true'>
             <!-- box3>div>div>div -->
             <div id="aside-history">
-              <div id="in-history-card-1">
+              <div id="in-history-aside-1">
                 <div id="history-title-moved">
                   <div id="history-title-moved-left-son">
                     <div id="left-icon-div">
-                      <img src="@/assets/imgs/i-left.png" alt="左箭头" class="i-direction i-left">
+                      <img src="@/assets/imgs/i-left.png" alt="左箭头" class="i-direction i-left" @click="btnLastDay">
                     </div>
                     <div id="left-colck-div">
                       <img src="@/assets/imgs/clock1.png" alt="时钟" class="icon-clock clock1">
@@ -104,7 +104,7 @@
                   </div>
                   <div id="history-title-moved-right-son">
                     <div id="right-icon-div">
-                      <img src="@/assets/imgs/i-right.png" alt="右箭头" class="i-direction i-right">
+                      <img src="@/assets/imgs/i-right.png" alt="右箭头" class="i-direction i-right" @click="btnNextDay">
                     </div>
                     <div id="right-colck-div">
                       <img src="@/assets/imgs/clock1.png" alt="时钟" class="icon-clock clock1">
@@ -113,12 +113,25 @@
                   </div>
                 </div>
               </div>
-              <div id="in-history-card-2">
-                <div >
-
+              <div id="in-history-aside-2">
+                <div id="history-card" v-for="(order,index) in historyList">
+                  <div id="in-history-card-1">
+                    <span>{{order.num}}</span>
+                    <span>/{{order.createDate}}</span>
+                  </div>
+                  <div id="in-history-card-2" v-html="order.menuInfo.replaceAll('/','<br>')">
+                    <!-- v-html绑定内容 -->
+                  </div>
+                  <div id="in-history-card-3">
+                    备注：{{order.comment?order.comment:'无'}}
+                  </div>
+                  <div id="in-history-card-absolute-1">
+                    {{order.price}}<span style="font-size: 24px">￥</span>
+                  </div>
+                  <div id="in-history-card-absolute-2"></div>
                 </div>
               </div>
-              <div id="in-history-card-3">
+              <div id="in-history-aside-3">
                 <input v-model="history_orderDate" placeholder="日期" :style="iToday === history_orderDate?'color:gray':''">
                 <input v-model="history_orderNo" placeholder="订单号" v-on:input="queryHistoryOrders">
               </div>
@@ -129,7 +142,6 @@
     </div>
     <!-- 页脚 -->
     <footer>
-<!--      <div id="order">下单</div>-->
     </footer>
     <div id="exchange-button" @click="changeAside">
 
@@ -141,7 +153,7 @@
 import {reqGetTypeList} from "@/api/type";
 import {reqGetMenuList} from "@/api/menu";
 import {historyOrder, reqNewOrder} from "@/api/order";
-import {iToday} from "@/api/utils";
+import {JDay} from '@/api/JDay';
 
 
 export default {
@@ -229,6 +241,14 @@ export default {
     btnDelOrder (index) {
       this.orderList.splice(index,1)
     },
+    async btnLastDay(){
+      this.history_orderDate = lastDay(this.history_orderDate);
+      // this.historyList = await historyOrder(this.history_orderDate,this.history_orderNo);
+    },
+    async btnNextDay(){
+      this.history_orderDate++;
+      this.historyList = await historyOrder(this.history_orderDate,this.history_orderNo);
+    },
     /* ------ 触发请求 ----- */
     /* 下单按钮 */
     async btnNewOrder(){
@@ -243,7 +263,6 @@ export default {
     },
     async queryHistoryOrders() {
       this.historyList = await historyOrder(this.history_orderDate,this.history_orderNo);
-      console.log(JSON.stringify(this.historyList))
     },
     /* ------ Mounted ------ */
     async getTypeList() {
@@ -253,14 +272,81 @@ export default {
       this.menuList = await reqGetMenuList(typeId);
     },
     INIT_Date() {
-      this.history_orderDate = iToday();
-      this.iToday = iToday();
+      var jDay = new JDay();
+      jDay.today().toString();
+      // this.history_orderDate = JDay.toString(JDay.iToday());
+      // this.iToday = iToday();
     }
   }
 }
 </script>
 
 <style scoped>
+
+/* --- 历史订单·小卡片 --- */
+#history-card {
+  width: calc(100% - 20px);
+  border: 1px solid gray;
+  margin: 20px 10px;
+  border-radius: 12px;
+  padding: 5px;
+  box-sizing: border-box;
+  position: relative;
+}
+#history-card div:hover,
+#history-card span:hover{
+  color: red;
+}
+/* 单号/日期 */
+#in-history-card-1 {
+  width: 100%;
+  height: 26px;
+  line-height: 26px;
+}
+/* 单号 */
+#in-history-card-1 :nth-child(1) {
+  font-size: 24px;
+  font-weight: 700;
+  color: #565656;
+}
+/* 日期 */
+#in-history-card-1 :nth-child(2) {
+  font-size: 14px;
+  color: gray;
+}
+/* 订单详情 */
+#in-history-card-2 {
+  color: gray;
+  font-size: 14px;
+  padding: 10px 5px 10px 0;
+  margin-top: 10px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+/* 备注 */
+#in-history-card-3 {
+  color: gray;
+  font-size: 14px;
+  padding: 5px 10px 5px 0;
+  font-weight: 500;
+}
+/* 价格（右上角） */
+#in-history-card-absolute-1 {
+  position: absolute;
+  right: 10px;
+  top: -22px;
+  color: #3a5fd9;
+  display: inline-block;
+  font-size: 32px;
+  font-weight: 700;
+  font-style: italic;
+  font-family: Tahoma;
+}
+/* 详情按钮（暂时未用到） */
+#in-history-card-absolute-2 {
+
+}
+/* --- 历史订单·侧边栏 --- */
 
 #history-title-moved {
   width: 360px;
@@ -832,7 +918,7 @@ header img {
 }
 
 /* ---- 历史页面 ---- */
-#in-history-card-1 {
+#in-history-aside-1 {
   width: 100%;
   height: 52px;
   border-radius: 12px 12px 0 0;
@@ -844,19 +930,20 @@ header img {
   font-weight: 700;
   overflow: hidden;
 }
-#in-history-card-2 {
+#in-history-aside-2 {
   flex: 1;
   box-shadow: 2px 2px 4px #a9a9a9 inset,-2px -2px 4px #ffffff inset;
   background: #dadada;
+  overflow: scroll;
 }
 
-#in-history-card-3 {
+#in-history-aside-3 {
   width: 100%;
   height: 70px;
   border-top: 1px solid gray;
   text-align: center;
 }
-#in-history-card-3>input {
+#in-history-aside-3>input {
   width: 45%;
   height: 28px;
   outline: none;
@@ -869,15 +956,15 @@ header img {
   font-weight: 200;
   transition: all .25s;
 }
-#in-history-card-3 :first-child {
+#in-history-aside-3 :first-child {
   border-radius: 8px 0 0 8px;
   text-align: right;
 }
-#in-history-card-3 :last-child {
+#in-history-aside-3 :last-child {
   border-radius: 0 8px 8px 0;
   text-align: left;
 }
-#in-history-card-3>input:focus {
+#in-history-aside-3>input:focus {
   color: #3a5fd9;
   width: 45%;
   border: 1px solid gray;

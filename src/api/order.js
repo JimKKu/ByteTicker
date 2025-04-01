@@ -1,5 +1,6 @@
 import {sndPST,sndGET} from "@/api/base";
-import {iToday} from "@/api/utils";
+import {today} from "@/api/Date";
+
 /**
  * 创建新订单（下单）
  * @returns {Promise<unknown>}
@@ -30,7 +31,7 @@ export const reqNewOrder = (list,comment) => {
 
 export const historyOrder = (date,param) => {
     if(date === null || date === '') {
-        date = iToday();
+        date = today();
     }
     var orderNo;
     if(param === null || param === '') {

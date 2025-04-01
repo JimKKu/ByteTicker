@@ -90,9 +90,9 @@
             <div id="aside-history">
               <div id="in-history-aside-1">
                 <div id="history-title-moved">
-                  <div id="history-title-moved-left-son">
+                  <div id="history-title-moved-left-son" @click="btnLastDay">
                     <div id="left-icon-div">
-                      <img src="@/assets/imgs/i-left.png" alt="左箭头" class="i-direction i-left" @click="btnLastDay">
+                      <img src="@/assets/imgs/i-left.png" alt="左箭头" class="i-direction i-left">
                     </div>
                     <div id="left-colck-div">
                       <img src="@/assets/imgs/clock1.png" alt="时钟" class="icon-clock clock1">
@@ -102,9 +102,9 @@
                   <div id="history-title-moved-middle-son">
                     历史订单
                   </div>
-                  <div id="history-title-moved-right-son">
+                  <div id="history-title-moved-right-son" @click="btnNextDay">
                     <div id="right-icon-div">
-                      <img src="@/assets/imgs/i-right.png" alt="右箭头" class="i-direction i-right" @click="btnNextDay">
+                      <img src="@/assets/imgs/i-right.png" alt="右箭头" class="i-direction i-right">
                     </div>
                     <div id="right-colck-div">
                       <img src="@/assets/imgs/clock1.png" alt="时钟" class="icon-clock clock1">
@@ -153,8 +153,7 @@
 import {reqGetTypeList} from "@/api/type";
 import {reqGetMenuList} from "@/api/menu";
 import {historyOrder, reqNewOrder} from "@/api/order";
-import {JDay} from '@/api/JDay';
-
+import {lastDay,today,nextDay} from "@/api/Date";
 
 export default {
   name: 'OrderView',
@@ -169,7 +168,7 @@ export default {
       history_orderNo:'', /* 模糊搜索历史订单 */
       history_orderDate: 0,
       iToday: '',
-      aside1: false
+      aside1: true
     }
   },
   mounted() {
@@ -182,6 +181,9 @@ export default {
     /* ----- methods ----- */
     changeAside(){
       this.aside1=!this.aside1;
+      if(!this.aside1) {
+        this.queryHistoryOrders();
+      }
     },
     btnMenuPrice1(index,bool) {
       var m = this.menuList[index];
@@ -243,10 +245,12 @@ export default {
     },
     async btnLastDay(){
       this.history_orderDate = lastDay(this.history_orderDate);
-      // this.historyList = await historyOrder(this.history_orderDate,this.history_orderNo);
+      // this.history_orderDate = lastDay(this.history_orderDate);
+      this.historyList = await historyOrder(this.history_orderDate,this.history_orderNo);
     },
     async btnNextDay(){
-      this.history_orderDate++;
+      this.history_orderDate = nextDay(this.history_orderDate);
+      // this.history_orderDate++;
       this.historyList = await historyOrder(this.history_orderDate,this.history_orderNo);
     },
     /* ------ 触发请求 ----- */
@@ -272,17 +276,8 @@ export default {
       this.menuList = await reqGetMenuList(typeId);
     },
     INIT_Date() {
-      var jDay1 = new JDay().today();
-      console.log(jDay1.lastDay());
-      console.log(jDay1.nextDay());
-      // var jDay2 = new JDay(2023,12,1)
-      // console.log(jDay.today())
-      // console.log(jDay.toView())
-      // jDay.lastDay(jDay)
-      // jDay.nextDay(jDay)
-      // jDay.today().toString();
-      // this.history_orderDate = JDay.toString(JDay.iToday());
-      // this.iToday = iToday();
+      this.iToday = today();
+      this.history_orderDate = today();
     }
   }
 }

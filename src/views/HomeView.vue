@@ -272,8 +272,15 @@ export default {
       this.menuList = await reqGetMenuList(typeId);
     },
     INIT_Date() {
-      var jDay = new JDay();
-      jDay.today().toString();
+      var jDay1 = new JDay().today();
+      console.log(jDay1.lastDay());
+      console.log(jDay1.nextDay());
+      // var jDay2 = new JDay(2023,12,1)
+      // console.log(jDay.today())
+      // console.log(jDay.toView())
+      // jDay.lastDay(jDay)
+      // jDay.nextDay(jDay)
+      // jDay.today().toString();
       // this.history_orderDate = JDay.toString(JDay.iToday());
       // this.iToday = iToday();
     }

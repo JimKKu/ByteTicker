@@ -117,7 +117,8 @@
                 <!-- Cards -->
               </div>
               <div id="in-history-card-3">
-                <input v-model="query" placeholder="输入订单号搜索">
+                <input v-model="history_orderDate" placeholder="日期" :style="iToday === history_orderDate?'color:gray':''">
+                <input v-model="history_orderNo" placeholder="订单号" v-on:input="queryHistoryOrders">
               </div>
             </div>
           </div>
@@ -148,13 +149,16 @@ export default {
       menuList: [],
       orderList: [],
       comment: '', /* 备注 */
-      query:'', /* 模糊搜索历史订单 */
+      history_orderNo:'', /* 模糊搜索历史订单 */
+      history_orderDate: 0,
+      iToday: '',
       aside1: false
     }
   },
   mounted() {
     this.getTypeList();
     this.getMenuList(0);
+    this.INIT_Date();
   },
   methods: {
     /* ----- methods ----- */
@@ -231,12 +235,34 @@ export default {
         this.$notify.error("下单失败！");
       }
     },
-    /* ------ 加载请求 ------ */
+    queryHistoryOrders() {
+      console.log(this.history_orderDate);
+      console.log(this.history_orderNo);
+    },
+    /* ------ Mounted ------ */
     async getTypeList() {
       this.typeList = await reqGetTypeList();
     },
     async getMenuList(typeId) {
       this.menuList = await reqGetMenuList(typeId);
+    },
+    INIT_Date() {
+      var iNow = new Date();
+      var iY = iNow.getFullYear();
+      var iMon = iNow.getMonth()+1;
+      var iDay = iNow.getDate();
+      if(iMon < 10) {
+        iMon = '0' + iMon;
+      } else {
+        iMon = '' + iMon;
+      }
+      if(iDay < 10) {
+        iDay = '0' + iDay;
+      } else {
+        iDay = '' + iDay;
+      }
+      this.history_orderDate = iY + iMon + iDay;
+      this.iToday = iY + iMon + iDay;
     }
   }
 }
@@ -254,7 +280,7 @@ export default {
   height: 22px;
 }
 #history-title-moved>div {
-  flex: 1;
+  width: 120px;
   height: 52px;
   display: inline-block;
   transform: translateX(-60px);
@@ -265,9 +291,12 @@ export default {
   z-index: 600;
 }
 #history-title-moved-left-son:hover {
+  //background: rgba(58,95,217,0.8);
+  //background-image: linear-gradient( 135deg, #E2B0FF 10%, #9F44D3 100%);
   transform: translateX(0px);
-  background: rgba(58,95,217,0.8);
+  background: #ee3f4d;
   border-radius: 12px;
+  width: 116px;
   height: 48px;
   margin: 2px;
   //background-image: linear-gradient( 135deg, #3C8CE7 10%, #00EAFF 100%);
@@ -281,9 +310,12 @@ export default {
   z-index: 600;
 }
 #history-title-moved-right-son:hover {
+  //background: rgba(58,95,217,0.8);
+  //background-image: linear-gradient( 135deg, #E2B0FF 10%, #9F44D3 100%);
   transform: translateX(-120px);
-  background: rgba(58,95,217,0.8);
+  background: #ee3f4d;
   border-radius: 12px;
+  width: 116px;
   height: 48px;
   margin: 2px;
   //background-image: linear-gradient( 135deg, #CE9FFC 10%, #7367F0 100%);
@@ -833,25 +865,31 @@ header img {
   text-align: center;
 }
 #in-history-card-3>input {
-  width: 85%;
+  width: 45%;
   height: 28px;
   outline: none;
   background-color: #e1e1e1;
   border: 1px solid gray;
-  border-radius: 8px;
   text-align: center;
   line-height: 28px;
   margin: 21px 0;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 200;
   transition: all .25s;
 }
+#in-history-card-3 :first-child {
+  border-radius: 8px 0 0 8px;
+  text-align: right;
+}
+#in-history-card-3 :last-child {
+  border-radius: 0 8px 8px 0;
+  text-align: left;
+}
 #in-history-card-3>input:focus {
   color: #3a5fd9;
-  font-size: 20px;
-  width: 87%;
-  height: 30px;
-  line-height: 30px;
+  width: 45%;
+  border: 1px solid gray;
+  height: 28px;
   box-shadow: 2px 2px 4px #a9a9a9 inset,-2px -2px 4px #ffffff inset;
 }
 

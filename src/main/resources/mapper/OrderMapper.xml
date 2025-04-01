@@ -37,6 +37,21 @@
         where  createDate=date_format(now(), '%Y%m%d')
     </select>
 
+
+    <select id="historyOrder" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_order
+        where
+            createDate LIKE CONCAT('%',#{date},'%')
+        <trim prefix="and">
+            <if test="orderNo!='' and orderNo!=null">
+                num like CONCAT('%',#{orderNo},'%')
+            </if>
+        </trim>
+    </select>
+
+
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />

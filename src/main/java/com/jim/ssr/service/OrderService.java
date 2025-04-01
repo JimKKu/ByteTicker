@@ -1,7 +1,10 @@
 package com.jim.ssr.service;
 
 
+import com.jim.ssr.entity.Order;
 import com.jim.ssr.entity.vo.OrderVO;
+
+import java.util.List;
 
 /**
 * @author Jimkk
@@ -11,4 +14,7 @@ import com.jim.ssr.entity.vo.OrderVO;
 public interface OrderService {
 
     boolean newOrder(OrderVO vo);
+
+    List<Order> history(String date, Integer orderNo);
+
 }

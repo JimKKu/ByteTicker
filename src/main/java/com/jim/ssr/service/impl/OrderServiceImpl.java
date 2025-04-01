@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
 * @author Jimkk
@@ -49,6 +50,11 @@ public class OrderServiceImpl implements OrderService {
         // --- 表单号码
         /* - 打印小票 - */
         return iom>0 && idm > 0;
+    }
+
+    @Override
+    public List<Order> history(String date,Integer orderNo) {
+        return om.historyOrder(date,orderNo);
     }
 
 

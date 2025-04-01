@@ -1,5 +1,5 @@
-import {sndPST} from "@/api/base";
-import { Notification  } from 'element-ui';
+import {sndPST,sndGET} from "@/api/base";
+import {iToday} from "@/api/utils";
 /**
  * 创建新订单（下单）
  * @returns {Promise<unknown>}
@@ -26,3 +26,20 @@ export const reqNewOrder = (list,comment) => {
         return rsp.data;
     });
 }
+
+
+export const historyOrder = (date,param) => {
+    if(date === null || date === '') {
+        date = iToday();
+    }
+    var orderNo;
+    if(param === null || param === '') {
+        orderNo = '';
+    } else {
+        orderNo = '?orderNo='+param;
+    }
+    return sndGET('/order/history/' + date + orderNo).then(rsp => {
+        return rsp.data;
+    });
+}
+

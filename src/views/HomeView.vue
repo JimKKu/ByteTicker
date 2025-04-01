@@ -114,7 +114,9 @@
                 </div>
               </div>
               <div id="in-history-card-2">
-                <!-- Cards -->
+                <div >
+
+                </div>
               </div>
               <div id="in-history-card-3">
                 <input v-model="history_orderDate" placeholder="日期" :style="iToday === history_orderDate?'color:gray':''">
@@ -138,7 +140,9 @@
 <script>
 import {reqGetTypeList} from "@/api/type";
 import {reqGetMenuList} from "@/api/menu";
-import {reqNewOrder} from "@/api/order";
+import {historyOrder, reqNewOrder} from "@/api/order";
+import {iToday} from "@/api/utils";
+
 
 export default {
   name: 'OrderView',
@@ -148,6 +152,7 @@ export default {
       typeList: [],
       menuList: [],
       orderList: [],
+      historyList: [],
       comment: '', /* 备注 */
       history_orderNo:'', /* 模糊搜索历史订单 */
       history_orderDate: 0,
@@ -159,6 +164,7 @@ export default {
     this.getTypeList();
     this.getMenuList(0);
     this.INIT_Date();
+    this.queryHistoryOrders();
   },
   methods: {
     /* ----- methods ----- */
@@ -235,9 +241,9 @@ export default {
         this.$notify.error("下单失败！");
       }
     },
-    queryHistoryOrders() {
-      console.log(this.history_orderDate);
-      console.log(this.history_orderNo);
+    async queryHistoryOrders() {
+      this.historyList = await historyOrder(this.history_orderDate,this.history_orderNo);
+      console.log(JSON.stringify(this.historyList))
     },
     /* ------ Mounted ------ */
     async getTypeList() {
@@ -247,22 +253,8 @@ export default {
       this.menuList = await reqGetMenuList(typeId);
     },
     INIT_Date() {
-      var iNow = new Date();
-      var iY = iNow.getFullYear();
-      var iMon = iNow.getMonth()+1;
-      var iDay = iNow.getDate();
-      if(iMon < 10) {
-        iMon = '0' + iMon;
-      } else {
-        iMon = '' + iMon;
-      }
-      if(iDay < 10) {
-        iDay = '0' + iDay;
-      } else {
-        iDay = '' + iDay;
-      }
-      this.history_orderDate = iY + iMon + iDay;
-      this.iToday = iY + iMon + iDay;
+      this.history_orderDate = iToday();
+      this.iToday = iToday();
     }
   }
 }

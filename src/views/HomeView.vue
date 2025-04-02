@@ -965,8 +965,6 @@ header img {
   flex-wrap: nowrap;
   flex-direction: row;
 }
-/* 历史订单-回到今天 */
-
 #in-history-aside-3-container>input {
   //width: 40%;
   height: 100%;
@@ -979,6 +977,7 @@ header img {
   font-weight: 200;
   transition: all .25s;
 }
+/* 历史订单-回到今天 */
 #in-history-aside-3-container :nth-child(1) {
   width: 32px;
   height: 28px;

@@ -1,16 +1,5 @@
 import {sndPST,sndGET} from "@/api/base";
-import {today} from "@/api/Date";
-
-/**
- * 创建新订单（下单）
- * @returns {Promise<unknown>}
- */
-// export const reqNewOrder=(params)=>{
-//     return sndPST('/order/new',params).then(rsp => {
-//         console.log(JSON.stringify(rsp));
-//         return rsp.data;
-//     });
-// }
+import {today} from "@/api/date";
 
 export const reqNewOrder = (list,comment) => {
     var newList = [];

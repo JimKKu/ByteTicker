@@ -132,8 +132,11 @@
                 </div>
               </div>
               <div id="in-history-aside-3">
-                <input v-model="history_orderDate" placeholder="日期" :style="iToday === history_orderDate?'color:gray':''">
-                <input v-model="history_orderNo" placeholder="订单号" v-on:input="queryHistoryOrders">
+                <div id="in-history-aside-3-container">
+                  <div class="iconfont icon-jintian4" @click="btnToday"></div>
+                  <input v-model="history_orderDate" placeholder="日期" :style="iToday === history_orderDate?'color:gray':'color:#3a5fd9;font-weight: 500'">
+                  <input v-model="history_orderNo" placeholder="订单号" v-on:input="queryHistoryOrders">
+                </div>
               </div>
             </div>
           </div>
@@ -153,7 +156,7 @@
 import {reqGetTypeList} from "@/api/type";
 import {reqGetMenuList} from "@/api/menu";
 import {historyOrder, reqNewOrder} from "@/api/order";
-import {lastDay,today,nextDay} from "@/api/Date";
+import {lastDay,today,nextDay} from "@/api/date";
 
 export default {
   name: 'OrderView',
@@ -253,6 +256,11 @@ export default {
       // this.history_orderDate++;
       this.historyList = await historyOrder(this.history_orderDate,this.history_orderNo);
     },
+    async btnToday(){
+      this.history_orderDate = today();
+      // this.history_orderDate++;
+      this.historyList = await historyOrder(this.history_orderDate,this.history_orderNo);
+    },
     /* ------ 触发请求 ----- */
     /* 下单按钮 */
     async btnNewOrder(){
@@ -294,6 +302,8 @@ export default {
   padding: 5px;
   box-sizing: border-box;
   position: relative;
+  background: #e1e1e1;
+  box-shadow: 2px 2px 4px #b0b0b0,-2px -2px 4px #ffffff;
 }
 #history-card div:hover,
 #history-card span:hover{
@@ -436,6 +446,7 @@ export default {
   flex-direction: column;
   overflow: hidden;
 }
+
 
 /* 头部标签样式 */
 header {
@@ -945,32 +956,61 @@ header img {
   border-top: 1px solid gray;
   text-align: center;
 }
-#in-history-aside-3>input {
-  width: 45%;
+
+#in-history-aside-3-container {
+  width: 220px;
   height: 28px;
+  margin: 22px 10px 0 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+/* 历史订单-回到今天 */
+
+#in-history-aside-3-container>input {
+  //width: 40%;
+  height: 100%;
   outline: none;
   background-color: #e1e1e1;
   border: 1px solid gray;
   text-align: center;
   line-height: 28px;
-  margin: 21px 0;
   font-size: 16px;
   font-weight: 200;
   transition: all .25s;
 }
-#in-history-aside-3 :first-child {
-  border-radius: 8px 0 0 8px;
-  text-align: right;
-}
-#in-history-aside-3 :last-child {
-  border-radius: 0 8px 8px 0;
-  text-align: left;
-}
-#in-history-aside-3>input:focus {
-  color: #3a5fd9;
-  width: 45%;
-  border: 1px solid gray;
+#in-history-aside-3-container :nth-child(1) {
+  width: 32px;
   height: 28px;
+  line-height: 28px;
+  text-align: center;
+  font-size: 22px;
+  display: inline-block;
+  border: 1px solid gray;
+  border-radius: 8px 0 0 8px;
+  border-right-style: dashed;
+}
+#in-history-aside-3-container :nth-child(1):hover {
+  background: #3a5fd9;
+  color: #fff;
+}
+#in-history-aside-3-container :nth-child(2) {
+  text-align: center;
+  border-right: none;
+  border-left: none;
+  min-width: 0px;
+  flex: 1;
+}
+#in-history-aside-3-container :nth-child(3) {
+  border-radius: 0 8px 8px 0;
+  text-align: center;
+  border-left-style: dashed;
+  min-width: 0px;
+  flex: 1;
+}
+#in-history-aside-3-container>input:focus {
+  color: #3a5fd9;
+  font-size: 18px;
   box-shadow: 2px 2px 4px #a9a9a9 inset,-2px -2px 4px #ffffff inset;
 }
 

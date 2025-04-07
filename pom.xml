@@ -14,6 +14,14 @@
         <spring-boot.version>2.6.13</spring-boot.version>
     </properties>
     <dependencies>
+        <!-- 小票打印依赖 -->
+        <dependency>
+            <groupId>net.jposprinter</groupId>
+            <artifactId>Sdk</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/JposPrinterSDK.jar</systemPath>
+        </dependency>
         <!-- 视图层依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

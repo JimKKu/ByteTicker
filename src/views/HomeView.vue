@@ -78,7 +78,10 @@
               </div>
               <div id="in-aside-order-quick-info">
                 <div v-for="order in quickInfoList" style="width: 100%;height: 100%">
-                  <div id="quick-info-button" :style="{background: order.background}">{{order.info}}</div>
+                  <div id="quick-info-button" :style="{background: order.background}">
+                    <i :class="order.icon" :style="{fontsize: order.size}" id="quick-info-icon"></i>
+                    {{order.info}}
+                  </div>
                 </div>
               </div>
               <div id="in-aside-order3">
@@ -180,19 +183,29 @@ export default {
       quickInfoList: [
         {
           background: '#ffc09f',
-          info: "微辣"
+          info: '微辣',
+          icon: 'iconfont icon-lajiao1ge',
+          size: '18px'
         },{
           background: '#ff8c51',
-          info: "中辣"
+          info: "中辣",
+          icon: 'iconfont icon-lajiao2ge',
+          size: '18px'
         },{
           background: '#ff3333',
-          info: "重辣"
+          info: "重辣",
+          icon: 'iconfont icon-lajiao3ge',
+          size: '18px'
         },{
           background: '#3f9124',
-          info: "香葱"
+          info: "香葱",
+          icon: 'iconfont icon-jinzhi2',
+          size: '12px'
         },{
           background: '#6cc94c',
-          info: "香菜"
+          info: "香菜",
+          icon: 'iconfont icon-jinzhi2',
+          size: '12px'
         }
       ]
     }
@@ -794,11 +807,20 @@ header img {
   color: #fff;
   box-sizing: border-box;
   transition: all .25s;
+  position: relative;
 }
 #quick-info-button:hover {
   box-shadow: 0 0 4px gray;
-  border: 3px solid transparent;
   font-size: 16px;
+}
+#quick-info-icon {
+  display: inline-block;
+  position: absolute;
+  right: -2px;
+  top: -13px;
+  color: red;
+  font-weight: 700;
+  z-index: 400;
 }
 #in-aside-order3 {
   padding: 8px 5%;

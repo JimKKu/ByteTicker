@@ -4,6 +4,7 @@ package com.jim.ssr.utils;
 import com.jim.ssr.entity.OrderDetail;
 import com.jim.ssr.entity.vo.OrderVO;
 import lombok.extern.slf4j.Slf4j;
+import net.jposprinter.Sdk;
 import org.springframework.util.unit.DataUnit;
 
 import java.util.ArrayList;
@@ -19,25 +20,62 @@ public class PrinterUtils {
 
 
     public static void print(OrderVO vo) {
-        TITLE1();
+//        TITLE1();
         TITLE2();
-        NUM(vo.getNum());
-        LINE();
-        INFO(vo.getNum());
-        LINE();
-        MENU(vo.getOrderList());
-        LINE();
-        COMMENT(vo.getComment());
-        PRICE_TOTAL(vo.getOrderList());
+//        NUM(vo.getNum());
+//        LINE();
+//        INFO(vo.getNum());
+//        LINE();
+//        MENU(vo.getOrderList());
+//        LINE();
+//        COMMENT(vo.getComment());
+//        PRICE_TOTAL(vo.getOrderList());
+        PAPER_END();
+    }
+
+
+    public static void main(String[] args)  {
+        /* ------ 打印标题 ------ */
+        Sdk sdk =new Sdk();
+        sdk.pioOpen("usb","",3000);//usb
+        String str = "重庆二两面123\n";
+        // 居中
+        sdk.setLeftSpace(4,0);
+        sdk.setHorizontalAndVerticalMoveUnit(10,10);
+        // 字体大小
+//        sdk.setChineseCharacterModel(8);
+        // margin-left/right
+        sdk.setChineseCharLeftAndRightSpace(1,0);
+        sdk.selectCharacterSize(012012);
+        sdk.selectOrCancelInvertPrintModel(1);
+        sdk.pioWritePort(str.getBytes());
+//        NUM(10023);
+        /* 换行 */
+        sdk.pioWritePort("\n\n\n".getBytes());
+
+        sdk.pioClose();
+
     }
 
     /**
      * 打印标题（大字加粗）
      * 1. 店名
      */
-    public static void TITLE1(){
-        String str = "重庆二两面";
+    public static void TITLE1() {
+        String str = "重庆二两面1\n";
         System.out.println(str);
+        Sdk sdk =new Sdk();
+        sdk.pioOpen("usb","",3000);//usb
+        sdk.setLeftSpace(7,0);
+        sdk.setHorizontalAndVerticalMoveUnit(10,10);
+        sdk.setBarcodeHeight(10);
+        sdk.setBarcodeWidth(10);
+        // 字体大小
+        sdk.setChineseCharacterModel(8);
+        // margin-left/right
+        sdk.setChineseCharLeftAndRightSpace(0,0);
+        sdk.pioWritePort(str.getBytes());
+        sdk.pioClose();
     }
 
     /**
@@ -45,8 +83,20 @@ public class PrinterUtils {
      * 1. 祝您用餐愉快
      */
     public static void TITLE2(){
-        String str = "祝您用餐愉快";
+        String str = "祝您用餐愉快\n";
         System.out.println(str);
+        Sdk sdk =new Sdk();
+        sdk.pioOpen("usb","",3000);//usb
+        sdk.setLeftSpace(6,0);
+        sdk.setHorizontalAndVerticalMoveUnit(10,10);
+        sdk.setBarcodeHeight(1);
+        sdk.setBarcodeWidth(1);
+        // 字体大小
+        sdk.setChineseCharacterModel(1);
+        // margin-left/right
+        sdk.setChineseCharLeftAndRightSpace(0,0);
+        sdk.pioWritePort(str.getBytes());
+        sdk.pioClose();
     }
 
 
@@ -61,8 +111,13 @@ public class PrinterUtils {
                 DateUtils.getCurrentDateTime("yyyy-MM-dd HH:mm:ss") +
                 "\n" +
                 "订单号:" +
-                num;
+                num +
+                "\n";
         System.out.println(str);
+        Sdk sdk =new Sdk();
+        sdk.pioOpen("usb","",3000);//usb
+        sdk.pioWritePort(str.getBytes());
+        sdk.pioClose();
     }
 
     /**
@@ -70,8 +125,36 @@ public class PrinterUtils {
      * 1. 订单流水号 0001 ~ 9999
      */
     public static void NUM(int num){
-        String str = "流水号:"+String.valueOf(num).substring(1);
+        String str = "取餐号码"+String.valueOf(num).substring(1) +
+                "\n";
         System.out.println(str);
+        Sdk sdk =new Sdk();
+        sdk.pioOpen("usb","",3000);//usb
+        sdk.setLeftSpace(10,10);
+        sdk.setHorizontalAndVerticalMoveUnit(10,10);
+        sdk.setBarcodeHeight(10);
+        sdk.setBarcodeWidth(10);
+//         字体大小
+        sdk.setChineseCharacterModel(8);
+        sdk.selectOrCancleCustomChar(8);
+        sdk.setLeftSpace(0,0);
+        sdk.setHorizontalAndVerticalMoveUnit(0,0);
+        sdk.selectOrCancelUnderlineModel(49);
+        sdk.selectOrCancelBoldModel(1);
+        sdk.setBarcodeHeight(0);
+        sdk.setBarcodeWidth(0);
+//         字体大小
+        sdk.setChineseCharacterModel(8);
+//        sdk.selectOrCancelDoubelPrintModel(1);
+        sdk.selectFont(1);
+//        sdk.selectInternationalCharacterSets(2);
+        sdk.selectOrCancleCustomChar(8);
+        sdk.selectAlignment(0);
+        sdk.selectCharacterCodePage(255);
+        // margin-left/right
+        sdk.setChineseCharLeftAndRightSpace(3,3);
+        sdk.pioWritePort(str.getBytes());
+        sdk.pioClose();
     }
 
     /**
@@ -85,7 +168,7 @@ public class PrinterUtils {
         String name;
         /* 表头 */
         str.append("品类")
-                .append("\t\t\t\t\t")
+                .append("\t\t\t")
                 .append("份数")
                 .append("\t")
                 .append("小计")
@@ -109,16 +192,16 @@ public class PrinterUtils {
             str.append(name);
             if(name.length()<=2) {
                 /* 小于5位 + 4个制表符 | 荷包蛋 */
-                str.append("\t\t\t\t\t");
+                str.append("\t\t\t\t");
             } else if (name.length()<=5){
                 /* 大于5位/小于等于8位 + 3个制表符 | 豌豆面-粉丝/番茄鸡蛋面(小) */
-                str.append("\t\t\t\t");
+                str.append("\t\t\t");
             }else if (name.length()<=8){
                 /* 大于5位/小于等于8位 + 3个制表符 | 豌豆面-粉丝/番茄鸡蛋面(小) */
-                str.append("\t\t\t");
+                str.append("\t\t");
             } else if (name.length()<=10){
                 /* 大于8位/小于等于10位 + 2个制表符 | 豌豆面-粉丝/番茄鸡蛋面(小) */
-                str.append("\t\t");
+                str.append("\t");
             } else {
                 /* 大于10位 + 1个制表符 | 番茄炒鸡蛋-刀削面(小)*/
                 str.append("\t");
@@ -133,6 +216,12 @@ public class PrinterUtils {
         /* 删除最后一个换行 */
         str.deleteCharAt(str.length()-1);
         System.out.println(str);
+        str.append("\n");
+        Sdk sdk =new Sdk();
+        sdk.pioOpen("usb","",3000);//usb
+//        sdk.set
+        sdk.pioWritePort(str.toString().getBytes());
+        sdk.pioClose();
     }
 
     /**
@@ -150,7 +239,12 @@ public class PrinterUtils {
         for (OrderDetail detail : list) {
             sum += detail.getPrice()*detail.getNum();
         }
-        System.out.println("应付金额:"+sum);
+        String str = "应付金额:" + sum + "\n";
+        System.out.println(str);
+        Sdk sdk =new Sdk();
+        sdk.pioOpen("usb","",3000);//usb
+        sdk.pioWritePort(str.getBytes());
+        sdk.pioClose();
     }
 
     /**
@@ -164,7 +258,12 @@ public class PrinterUtils {
         if(str.toString().endsWith("、")) {
             str.deleteCharAt(str.length() - 1);
         }
+        str.append("\n");
         System.out.println(str);
+        Sdk sdk =new Sdk();
+        sdk.pioOpen("usb","",3000);//usb
+        sdk.pioWritePort(str.toString().getBytes());
+        sdk.pioClose();
     }
 
 
@@ -173,7 +272,24 @@ public class PrinterUtils {
      * --------------------------------
      */
     public static void LINE() {
-        String str = "--------------------------------";
+        String str = "--------------------------------\n";
         System.out.println(str);
+        Sdk sdk =new Sdk();
+        sdk.pioOpen("usb","",3000);//usb
+        sdk.pioWritePort(str.getBytes());
+        sdk.pioClose();
     }
+
+    /**
+     * 打印分割线
+     * --------------------------------
+     */
+    public static void PAPER_END() {
+        Sdk sdk =new Sdk();
+        sdk.pioOpen("usb","",3000);//usb
+        sdk.pioWritePort("\n\n\n\n\n".getBytes());
+        sdk.pioClose();
+    }
+
+
 }

@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "707464",
+      "name": "辣椒3个",
+      "font_class": "lajiao3ge",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
       "icon_id": "707462",
       "name": "辣椒1个",
       "font_class": "lajiao1ge",
@@ -18,13 +25,6 @@
       "font_class": "lajiao2ge",
       "unicode": "e62e",
       "unicode_decimal": 58926
-    },
-    {
-      "icon_id": "39200728",
-      "name": "辣椒2个-copy",
-      "font_class": "lajiao2ge1",
-      "unicode": "e618",
-      "unicode_decimal": 58904
     },
     {
       "icon_id": "496400",

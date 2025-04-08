@@ -69,6 +69,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>ssr</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -7,6 +7,7 @@ import com.jim.ssr.entity.vo.OrderVO;
 import com.jim.ssr.mapper.OrderDetailMapper;
 import com.jim.ssr.mapper.OrderMapper;
 import com.jim.ssr.service.OrderService;
+import com.jim.ssr.utils.PrinterUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
         StringBuilder sb = new StringBuilder();
         for (OrderDetail detail : vo.getOrderList()) {
             price += detail.getPrice();
-            sb.append(detail.getName1()+(detail.getName2()==null?"":"-"+detail.getName2())+(detail.getNum() == 1?"(小)":detail.getNum() == 2?"(大)":"")+"*"+detail.getNum()+"/");
+            sb.append(detail.getName1()+(detail.getName2()==null?"":"-"+detail.getName2())+(detail.getSize() == 1?"(小)":detail.getNum() == 2?"(大)":"")+"*"+detail.getNum()+"/");
         }
         sb.delete(sb.length()-1,sb.length());
         vo.setPrice(price);
@@ -47,6 +48,7 @@ public class OrderServiceImpl implements OrderService {
         int iom = om.newOrder(vo);
         int idm = odm.newOrder(vo.getOrderList(),vo.getId());
 
+        PrinterUtils.print(vo);
         // --- 表单号码
         /* - 打印小票 - */
         return iom>0 && idm > 0;

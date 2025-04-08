@@ -6,11 +6,46 @@
   "description": "",
   "glyphs": [
     {
-      "icon_id": "1471",
-      "name": "大",
-      "font_class": "da",
+      "icon_id": "707462",
+      "name": "辣椒1个",
+      "font_class": "lajiao1ge",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "707477",
+      "name": "辣椒2个",
+      "font_class": "lajiao2ge",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "39200728",
+      "name": "辣椒2个-copy",
+      "font_class": "lajiao2ge1",
       "unicode": "e618",
       "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "496400",
+      "name": "禁止",
+      "font_class": "jinzhi",
+      "unicode": "e6bd",
+      "unicode_decimal": 59069
+    },
+    {
+      "icon_id": "1094835",
+      "name": "禁止",
+      "font_class": "jinzhi1",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "12661309",
+      "name": "禁止",
+      "font_class": "jinzhi2",
+      "unicode": "e666",
+      "unicode_decimal": 58982
     },
     {
       "icon_id": "795049",

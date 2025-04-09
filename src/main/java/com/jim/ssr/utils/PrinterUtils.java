@@ -62,7 +62,7 @@ public class PrinterUtils {
      * 1. 店名
      */
     public static void TITLE1() {
-        String str = "重庆二两面1\n";
+        String str = "重庆二两面\n";
         System.out.println(str);
         Sdk sdk =new Sdk();
         sdk.pioOpen("usb","",3000);//usb

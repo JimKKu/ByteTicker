@@ -78,7 +78,7 @@
               </div>
               <div id="in-aside-order-quick-info">
                 <div v-for="order in quickInfoList" style="width: 100%;height: 100%">
-                  <div id="quick-info-button" :style="{background: order.background}">
+                  <div id="quick-info-button" :style="{background: order.background}" @click="btnQuickInfo(order.info)">
                     <i :class="order.icon" :style="{fontsize: order.size}" id="quick-info-icon"></i>
                     {{order.info}}
                   </div>
@@ -281,6 +281,23 @@ export default {
     },
     btnDelOrder (index) {
       this.orderList.splice(index,1)
+    },
+    btnQuickInfo(info) {
+      if(info.includes('辣')) {
+        if(this.comment.includes('微辣')) {
+          this.comment = this.comment.replace('微辣',info);
+        } else if (this.comment.includes('中辣')) {
+          this.comment = this.comment.replace('中辣',info);
+        } else if (this.comment.includes('重辣')) {
+          this.comment = this.comment.replace('重辣',info)
+        } else {
+          this.comment += (info + '、');
+        }
+      } else if (!this.comment.includes('香葱') && info === '香葱') {
+        this.comment += ('不要香葱、')
+      } else if (!this.comment.includes('香菜') && info === '香菜') {
+        this.comment += ('不要香菜、')
+      }
     },
     async btnLastDay(){
       this.history_orderDate = lastDay(this.history_orderDate);
@@ -839,7 +856,7 @@ header img {
   border: 1px solid gray;
   font-weight: 400;
   padding: 2px;
-  font-size: 18px;
+  font-size: 14px;
   transition: all .25s;
   line-height: 24px;
 }

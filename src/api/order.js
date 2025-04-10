@@ -1,14 +1,16 @@
 import {sndPST,sndGET} from "@/api/base";
 import {today} from "@/api/date";
 
-export const reqNewOrder = (list,comment) => {
+export const reqNewOrder = (list,comment,price) => {
     var newList = [];
+    var sum = 0;
     list.forEach(o => {
         if(o.num > 0 ) {
             newList.push(o);
         }
     })
     var param = {
+        price: price,
         comment: comment,
         orderList: newList
     }
@@ -38,4 +40,19 @@ export const rePrintLatest = () => {
     return sndGET('/order/reprint').then(rsp => {
         return rsp.data;
     });
+}
+
+export const sumPrice = (list) => {
+    if(list.length < 1) {
+        return 0;
+    }
+
+    var sum = 0;
+
+    list.forEach(l => {
+        // console.log(l['num'])
+        sum += l['num']* l['price'];
+    })
+
+    return sum;
 }

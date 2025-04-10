@@ -157,6 +157,7 @@
     </div>
     <!-- 页脚 -->
     <footer>
+      <div v-if="sum!==0">应收金额:&nbsp;&nbsp;<span>{{ sum }}</span>&nbsp;元</div>
     </footer>
 
     <!-- 右上角两个绝对定位按钮 -->
@@ -189,7 +190,7 @@
 <script>
 import {reqGetTypeList} from "@/api/type";
 import {reqGetMenuList} from "@/api/menu";
-import {historyOrder, rePrintLatest, reqNewOrder} from "@/api/order";
+import {historyOrder, rePrintLatest, reqNewOrder, sumPrice} from "@/api/order";
 import {lastDay,today,nextDay} from "@/api/date";
 
 export default {
@@ -205,6 +206,7 @@ export default {
       history_orderNo:'', /* 模糊搜索历史订单 */
       history_orderDate: 0,
       iToday: '',
+      sum: 0,
       aside1: true,
       quickInfoList: [
         {
@@ -244,6 +246,10 @@ export default {
   },
   methods: {
     /* ----- methods ----- */
+    getSum() {
+      this.sum = sumPrice(this.orderList);
+      console.log(this.sum);
+    },
     changeAside(){
       this.aside1=!this.aside1;
       if(!this.aside1) {
@@ -276,6 +282,7 @@ export default {
         }
         this.orderList.push(o)
       }
+      this.getSum();
     },
     btnMenuPrice2(index) {
       var m = this.menuList[index];
@@ -298,15 +305,19 @@ export default {
         }
         this.orderList.push(o)
       }
+      this.getSum();
     },
     btnAddOrder (index) {
       if( this.orderList[index].num < 99) this.orderList[index].num ++;
+      this.getSum();
     },
     btnMinusOrder (index) {
       if( this.orderList[index].num > 0) this.orderList[index].num --;
+      this.getSum();
     },
     btnDelOrder (index) {
       this.orderList.splice(index,1)
+      this.getSum();
     },
     btnQuickInfo(info) {
       if(info.includes('辣')) {
@@ -343,11 +354,12 @@ export default {
     /* ------ 触发请求 ----- */
     /* 下单按钮 */
     async btnNewOrder(){
-      var code = await reqNewOrder(this.orderList,this.comment);
+      var code = await reqNewOrder(this.orderList,this.comment,this.sum);
       if(code === '000') {
         this.$notify.success("下单成功！");
         this.orderList.splice(0,this.orderList.length);
         this.comment = '';
+        this.sum = 0;
       } else {
         this.$notify.error("下单失败！");
       }
@@ -551,6 +563,20 @@ footer {
   background-color: #e1e1e1;
   box-shadow: 0 0 5px #868686;
   z-index: 300;
+  text-align: center;
+}
+
+footer div {
+  margin-top: 10px;
+  display: inline-block;
+  color: #3a5fd9;
+  font-size: 18px;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+}
+
+footer span {
+  font-size: 24px;
+  font-weight: 700;
 }
 
 /* 身体样式 */

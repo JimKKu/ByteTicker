@@ -225,12 +225,12 @@ export default {
         },{
           background: '#3f9124',
           info: "香葱",
-          icon: 'iconfont icon-shucai-',
+          icon: 'iconfont icon-dacong',
           size: '12px'
         },{
           background: '#6cc94c',
           info: "香菜",
-          icon: 'iconfont icon-xiangcai',
+          icon: 'iconfont icon-food31',
           size: '12px'
         }
       ]

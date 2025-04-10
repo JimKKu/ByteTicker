@@ -43,7 +43,7 @@
             <div id="aside-order">
               <div id="in-aside-order1">
                 <div id="in-aside-order1-inner">
-                  <div id="in-aside-order1-inner-left" @click="orderList = []">
+                  <div id="in-aside-order1-inner-left" @click="emptyAll">
                     <i class="iconfont icon-lajitong lajitong-clear">&nbsp;</i>清&nbsp;空
                   </div>
                   <div id="in-aside-order1-inner-right">
@@ -58,7 +58,8 @@
                   <div id="in-aside-order-card" v-for="(order,index) in orderList">
                     <div id="in-aside-order-card-container">
                       <div id="in-aside-card-1">
-                        {{ order.name1 }}
+                        {{order.name1}}
+                        <span style="font-size: 14px;font-weight: 400;color: GRAY">{{order.size === 0? '' : order.size === 1 ? '(小)' : '(大)' }}</span>
                       </div>
                       <div id="in-aside-card-2">
                         {{ order.name2 }}
@@ -157,7 +158,7 @@
     </div>
     <!-- 页脚 -->
     <footer>
-      <div v-if="sum!==0">应收金额:&nbsp;&nbsp;<span>{{ sum }}</span>&nbsp;元</div>
+      <div v-if="sum!==0">应收金额:&nbsp;&nbsp;<span>{{ showSum.toFixed() }}</span>&nbsp;元</div>
     </footer>
 
     <!-- 右上角两个绝对定位按钮 -->
@@ -186,12 +187,12 @@
 
   </div>
 </template>
-
 <script>
 import {reqGetTypeList} from "@/api/type";
 import {reqGetMenuList} from "@/api/menu";
 import {historyOrder, rePrintLatest, reqNewOrder, sumPrice} from "@/api/order";
 import {lastDay,today,nextDay} from "@/api/date";
+import {gsap} from "gsap";
 
 export default {
   name: 'OrderView',
@@ -236,6 +237,13 @@ export default {
           size: '12px'
         }
       ]
+      ,
+      showSum: 0,
+    }
+  },
+  watch: {
+    sum(newValue) {
+      gsap.to(this.$data, { duration: .5, showSum: newValue });
     }
   },
   mounted() {
@@ -248,13 +256,16 @@ export default {
     /* ----- methods ----- */
     getSum() {
       this.sum = sumPrice(this.orderList);
-      console.log(this.sum);
     },
     changeAside(){
       this.aside1=!this.aside1;
       if(!this.aside1) {
         this.queryHistoryOrders();
       }
+    },
+    emptyAll() {
+      this.orderList = [];
+      this.sum = 0;
     },
     btnMenuPrice1(index,bool) {
       var m = this.menuList[index];
@@ -359,7 +370,6 @@ export default {
         this.$notify.success("下单成功！");
         this.orderList.splice(0,this.orderList.length);
         this.comment = '';
-        this.sum = 0;
       } else {
         this.$notify.error("下单失败！");
       }
@@ -569,9 +579,13 @@ footer {
 footer div {
   margin-top: 10px;
   display: inline-block;
+  padding: 4px;
+  border-radius: 4px;
   color: #3a5fd9;
+  border-bottom: 2px solid purple;
   font-size: 18px;
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-weight: 500;
+  box-shadow: 2px 2px 6px #b0b0b0,-2px -2px 6px #ffffff;
 }
 
 footer span {

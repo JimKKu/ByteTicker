@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import OrderView from '../views/OrderView.vue'
 import SettingView from '../views/SettingView.vue'
 import HomeView from "@/views/HomeView.vue";
+import TestView from "@/views/TestView.vue";
 
 Vue.use(VueRouter)
 
@@ -21,7 +22,12 @@ const routes = [
     path: '/setting',
     name: 'setting',
     component: SettingView
-  }
+  },
+  {
+    path: '/test',
+    name: 'test',
+    component: TestView
+  },
 ]
 
 const router = new VueRouter({

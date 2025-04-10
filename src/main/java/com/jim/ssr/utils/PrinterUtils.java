@@ -24,7 +24,7 @@ public class PrinterUtils {
     private static final String LINE = "--------------------------------";
     /* ø’∏Ò≤π∆Î */
     private static final String b0 = "";
-    private static final String b1 = "-";
+    private static final String b1 = " ";
     private static final String b2 = b1 + b1;
     private static final String b3 = b2 + b1;
     private static final String b4 = b2 + b2;
@@ -55,7 +55,7 @@ public class PrinterUtils {
     public static void print(OrderVO vo) {
 
         /* ≤‚ ‘: ÷’∂À ‰≥ˆ */
-        doTest(vo);
+        doPrint(vo);
 
     }
 
@@ -172,7 +172,7 @@ public class PrinterUtils {
         for (OrderDetail detail : details) {
             sb.append(getName(detail.getName1(),detail.getName2(),detail.getSize()))
                     .append(getNum(detail.getNum()))
-                    .append(getPrice(detail.getPrice()))
+                    .append(getPrice(detail.getPrice(),detail.getNum()))
                     .append("\n");
         }
         return sb.toString();
@@ -216,6 +216,20 @@ public class PrinterUtils {
         }
     }
 
+    private static String getPrice(int price,int num) {
+        int len = strLen(price*num);
+        switch (len) {
+            case 1:
+                return b2 + price*num;
+            case 2:
+                return b1 + price*num;
+            case 3:
+                return b0 + price*num;
+            default:
+                return b1 + "xx";
+        }
+    }
+
 
     /**
      * ∑› ˝
@@ -226,11 +240,11 @@ public class PrinterUtils {
         int len = strLen(num);
         switch (len) {
             case 1:
-                return b1 + num + b1;
+                return num + b2;
             case 2:
-                return b1 + num;
+                return num + b1;
             default:
-                return b0 + num;
+                return num + b0;
         }
     }
 

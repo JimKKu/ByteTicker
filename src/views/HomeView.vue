@@ -35,8 +35,10 @@
           </div>
         </div>
       </div>
+      <!-- 侧边栏 -->
       <div id="box3">
         <div>
+          <!-- aside:点单 -->
           <div :class="aside1?'show':'hidden'" @animationend='aside1===false'>
             <div id="aside-order">
               <div id="in-aside-order1">
@@ -79,8 +81,10 @@
               <div id="in-aside-order-quick-info">
                 <div v-for="order in quickInfoList" style="width: 100%;height: 100%">
                   <div id="quick-info-button" :style="{background: order.background}" @click="btnQuickInfo(order.info)">
-                    <i :class="order.icon" :style="{fontsize: order.size}" id="quick-info-icon"></i>
-                    {{order.info}}
+                    <div id="in-quick-info-button-container">
+                      <div>{{order.info}}</div>
+                      <div  :class="order.icon" :style="{fontsize: order.size}" id="quick-info-icon"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -92,7 +96,7 @@
               </div>
             </div>
           </div>
-          <!-- box3>div>div -->
+          <!-- aside:历史订单 -->
           <div :class="aside1?'hidden':'show'" @animationend='aside1===true'>
             <!-- box3>div>div>div -->
             <div id="aside-history">
@@ -154,6 +158,8 @@
     <!-- 页脚 -->
     <footer>
     </footer>
+
+    <!-- 右上角两个绝对定位按钮 -->
     <div id="exchange-button" class="float-button" @click="changeAside">
       <div class="in-float-button-container">
         <div>
@@ -219,12 +225,12 @@ export default {
         },{
           background: '#3f9124',
           info: "香葱",
-          icon: 'iconfont icon-jinzhi2',
+          icon: 'iconfont icon-shucai-',
           size: '12px'
         },{
           background: '#6cc94c',
           info: "香菜",
-          icon: 'iconfont icon-jinzhi2',
+          icon: 'iconfont icon-xiangcai',
           size: '12px'
         }
       ]
@@ -845,19 +851,46 @@ header img {
   box-sizing: border-box;
   transition: all .25s;
   position: relative;
+  overflow: hidden;
 }
+
+#in-quick-info-button-container {
+  width: 200%;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#in-quick-info-button-container:hover {
+  left: 0;
+}
+
+#in-quick-info-button-container>div {
+  width: 50%;
+  height: 30px;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  line-height: 30px;
+}
+#in-quick-info-button-container :first-child {
+  background: #3a5fd9;
+  left: 0;
+}
+#in-quick-info-button-container :last-child {
+  right: 0;
+}
+
 #quick-info-button:hover {
   box-shadow: 0 0 4px gray;
   font-size: 16px;
 }
 #quick-info-icon {
-  display: inline-block;
-  position: absolute;
-  right: -2px;
-  top: -13px;
-  color: red;
-  font-weight: 700;
-  z-index: 400;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 200;
 }
 #in-aside-order3 {
   padding: 8px 5%;

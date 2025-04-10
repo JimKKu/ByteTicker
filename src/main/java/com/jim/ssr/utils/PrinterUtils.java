@@ -126,11 +126,11 @@ public class PrinterUtils {
         sdk.printAndFeedLine();
         sdk.selectCharacterSize(122122);
         /* 应收金额 */
-        sdk.pioWritePort(("应收金额:"+vo.getPrice()).getBytes());
+        sdk.pioWritePort(("应收金额:"+vo.getPrice()+"元").getBytes());
         /* 换行 */
         sdk.printAndFeedLine();
 
-        sdk.pioWritePort("\n\n\n\n\n\n".getBytes());
+        sdk.pioWritePort("\n\n\n\n\n\n\n".getBytes());
         sdk.selectCutPagerModerAndCutPager(0);
 
         sdk.pioClose();

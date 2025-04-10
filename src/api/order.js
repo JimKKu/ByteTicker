@@ -33,3 +33,9 @@ export const historyOrder = (date,param) => {
     });
 }
 
+
+export const rePrintLatest = () => {
+    return sndGET('/order/reprint').then(rsp => {
+        return rsp.data;
+    });
+}

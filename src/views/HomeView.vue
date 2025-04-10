@@ -171,7 +171,7 @@
       </div>
     </div>
 
-    <div id="reprint-button" class="float-button" style="right: 100px">
+    <div id="reprint-button" class="float-button" style="right: 100px" @click="rePrinter">
       <div class="in-float-button-container">
         <div>
           <i class="iconfont icon-zhongxinshengcheng"></i>
@@ -189,7 +189,7 @@
 <script>
 import {reqGetTypeList} from "@/api/type";
 import {reqGetMenuList} from "@/api/menu";
-import {historyOrder, reqNewOrder} from "@/api/order";
+import {historyOrder, rePrintLatest, reqNewOrder} from "@/api/order";
 import {lastDay,today,nextDay} from "@/api/date";
 
 export default {
@@ -361,6 +361,9 @@ export default {
     },
     async getMenuList(typeId) {
       this.menuList = await reqGetMenuList(typeId);
+    },
+    async rePrinter() {
+      await rePrintLatest();
     },
     INIT_Date() {
       this.iToday = today();

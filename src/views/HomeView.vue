@@ -158,14 +158,14 @@
     </div>
     <!-- 页脚 -->
     <footer>
-      <div v-if="sum!==0">应收金额:&nbsp;&nbsp;<span>{{ showSum.toFixed() }}</span>&nbsp;元</div>
+      <div v-if="sum!==0" @click="orderList.length === 0?sum=0:''">应收金额:&nbsp;&nbsp;<span>{{ showSum.toFixed() }}</span>&nbsp;元</div>
     </footer>
 
     <!-- 右上角两个绝对定位按钮 -->
     <div id="exchange-button" class="float-button" @click="changeAside">
       <div class="in-float-button-container">
         <div>
-          <i :class="aside1? 'iconfont icon-lishijilu':'iconfont icon-dingdan'"></i>
+          <i :class="aside1? 'iconfont icon-lishihangcheng':'iconfont icon-dingdan'"></i>
         </div>
         <div>
           {{aside1 ? '历史订单' : '继续点单'}}
@@ -582,7 +582,6 @@ footer div {
   padding: 4px;
   border-radius: 4px;
   color: #3a5fd9;
-  border-bottom: 2px solid purple;
   font-size: 18px;
   font-weight: 500;
   box-shadow: 2px 2px 6px #b0b0b0,-2px -2px 6px #ffffff;

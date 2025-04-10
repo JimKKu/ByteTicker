@@ -31,14 +31,12 @@ public class OrderServiceImpl implements OrderService {
     public boolean newOrder(OrderVO vo) {
         /* - 修正参数 - */
         // 总价
-        int price = 0;
         StringBuilder sb = new StringBuilder();
         for (OrderDetail detail : vo.getOrderList()) {
-            price += detail.getPrice();
-            sb.append(detail.getName1()+(detail.getName2()==null?"":"-"+detail.getName2())+(detail.getSize() == 1?"(小)":detail.getNum() == 2?"(大)":"")+"*"+detail.getNum()+"/");
+            sb.append(detail.getName1()).append(detail.getName2() == null ? "" : "-" + detail.getName2()).append(detail.getSize() == 1 ? "(小)" : detail.getNum() == 2 ? "(大)" : "").append("*").append(detail.getNum()).append("/");
         }
         sb.delete(sb.length()-1,sb.length());
-        vo.setPrice(price);
+        vo.setPrice(vo.getPrice()==null?0:vo.getPrice());
         vo.setMenuInfo(String.valueOf(sb));
         // 订单号码
         vo.setNum(buildNum());

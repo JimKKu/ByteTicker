@@ -6,6 +6,34 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "3237695",
+      "name": "大葱",
+      "font_class": "dacong",
+      "unicode": "e6d4",
+      "unicode_decimal": 59092
+    },
+    {
+      "icon_id": "5172487",
+      "name": "葱",
+      "font_class": "shucai-",
+      "unicode": "e68f",
+      "unicode_decimal": 59023
+    },
+    {
+      "icon_id": "5175750",
+      "name": "香菜",
+      "font_class": "xiangcai",
+      "unicode": "e6a9",
+      "unicode_decimal": 59049
+    },
+    {
+      "icon_id": "7919688",
+      "name": "大葱",
+      "font_class": "dacong1",
+      "unicode": "e68e",
+      "unicode_decimal": 59022
+    },
+    {
       "icon_id": "1305475",
       "name": "历史记录",
       "font_class": "lishijilu",

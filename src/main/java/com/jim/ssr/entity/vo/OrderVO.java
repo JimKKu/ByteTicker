@@ -2,7 +2,9 @@ package com.jim.ssr.entity.vo;
 
 import com.jim.ssr.entity.Order;
 import com.jim.ssr.entity.OrderDetail;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.List;
@@ -14,6 +16,8 @@ import java.util.List;
  */
 @Data
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderVO {
     private Integer id;
     private String menuInfo;

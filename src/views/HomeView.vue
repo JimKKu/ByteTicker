@@ -154,9 +154,29 @@
     <!-- 页脚 -->
     <footer>
     </footer>
-    <div id="exchange-button" @click="changeAside">
-
+    <div id="exchange-button" class="float-button" @click="changeAside">
+      <div class="in-float-button-container">
+        <div>
+          <i :class="aside1? 'iconfont icon-lishijilu':'iconfont icon-dingdan'"></i>
+        </div>
+        <div>
+          {{aside1 ? '历史订单' : '继续点单'}}
+        </div>
+      </div>
     </div>
+
+    <div id="reprint-button" class="float-button" style="right: 100px">
+      <div class="in-float-button-container">
+        <div>
+          <i class="iconfont icon-zhongxinshengcheng"></i>
+        </div>
+        <div>
+          重新打印
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </template>
 
@@ -1169,23 +1189,71 @@ header img {
 
 /* ------------  浮动样式  ----------------------- */
 
-#exchange-button {
-  width: 20px;
-  height: 20px;
-  background-color: #ff7474;
+.float-button {
+  width: 40px;
+  height: 40px;
+  background-color: #e1e1e1;
   position: absolute;
   z-index: 400;
-  right: 100px;
   top: 0;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 8px 8px;
   transition: .25s all;
   border: 1px solid gray;
-}
-#exchange-button:hover {
-  height: 40px;
-  border-radius: 0 0 8px 8px;
+  color: gray;
+  font-size: 14px;
+  text-align: center;
+  line-height: 20px;
+  overflow: hidden;
 }
 
+.in-float-button-container {
+  width: 80px;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: all .25s;
+}
+
+.in-float-button-container>div {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+}
+
+.in-float-button-container :first-child {
+  float: left;
+  color: #fff;
+  font-size: 22px;
+  text-align: center;
+  line-height: 40px;
+  width: 40px;
+}
+.in-float-button-container i {
+  width: 22px;
+  height: 22px;
+}
+
+.in-float-button-container:hover {
+  transform: translateX(40px);
+  background: #3a5fd9;
+}
+
+
+.float-button:active {
+  width: 36px;
+  height: 36px;
+  transform: translateX(-2px);
+  line-height: 18px;
+  padding-left: 2px;
+}
+
+#exchange-button {
+  right: 180px;
+}
+#reprint-button {
+  right: 100px;
+}
 
 /* ------ 小装饰 ----------- */
 .lajitong-clear {

@@ -11,8 +11,6 @@ import com.jim.ssr.utils.PrinterUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -48,7 +46,10 @@ public class OrderServiceImpl implements OrderService {
         int iom = om.newOrder(vo);
         int idm = odm.newOrder(vo.getOrderList(),vo.getId());
 
-        PrinterUtils.print(vo);
+        /* 新建线程处理小票 */
+        new Thread(() -> {
+            PrinterUtils.print(vo);
+        }).start();
         // --- 表单号码
         /* - 打印小票 - */
         return iom>0 && idm > 0;
@@ -57,6 +58,14 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> history(String date,Integer orderNo) {
         return om.historyOrder(date,orderNo);
+    }
+
+    @Override
+    public String rePrint() {
+        Order re = om.selectLatestData();
+        List<OrderDetail> details = odm.selectByOrderId(re.getId());
+        PrinterUtils.print(new OrderVO(re,details));
+        return "000";
     }
 
 
@@ -69,6 +78,7 @@ public class OrderServiceImpl implements OrderService {
         }
         return ++num;
     }
+
 
 }
 

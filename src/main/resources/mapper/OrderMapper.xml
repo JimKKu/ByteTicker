@@ -58,6 +58,11 @@
         from tbl_order
         where  id = #{id,jdbcType=BIGINT} 
     </select>
+    <select id="selectLatestData" resultType="com.jim.ssr.entity.Order">
+        SELECT <include refid="Base_Column_List" />
+        from tbl_order
+        where id = (SELECT max(id) FROM tbl_order);
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from tbl_order

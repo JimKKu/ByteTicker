@@ -17,4 +17,5 @@ public interface OrderService {
 
     List<Order> history(String date, Integer orderNo);
 
+    String rePrint();
 }

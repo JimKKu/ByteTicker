@@ -1,6 +1,7 @@
 package com.jim.ssr.utils;
 
 
+import com.jim.ssr.entity.Order;
 import com.jim.ssr.entity.OrderDetail;
 import com.jim.ssr.entity.vo.OrderVO;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,11 @@ public class PrinterUtils {
 
 
     public static void print(OrderVO vo) {
+
+        System.out.println(vo.getComment());
+        for (OrderDetail detail : vo.getOrderList()) {
+            System.out.println(detail);
+        }
 //        TITLE1();
         TITLE2();
 //        NUM(vo.getNum());
@@ -32,6 +38,7 @@ public class PrinterUtils {
 //        PRICE_TOTAL(vo.getOrderList());
         PAPER_END();
     }
+
 
 
     public static void main(String[] args)  {
@@ -290,6 +297,7 @@ public class PrinterUtils {
         sdk.pioWritePort("\n\n\n\n\n".getBytes());
         sdk.pioClose();
     }
+
 
 
 }

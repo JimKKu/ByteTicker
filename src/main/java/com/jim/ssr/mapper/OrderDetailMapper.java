@@ -30,4 +30,5 @@ public interface OrderDetailMapper {
 
     int updateByPrimaryKey(OrderDetail record);
 
+    List<OrderDetail> selectByOrderId(Long id);
 }

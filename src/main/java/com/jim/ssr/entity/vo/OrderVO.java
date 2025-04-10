@@ -1,5 +1,6 @@
 package com.jim.ssr.entity.vo;
 
+import com.jim.ssr.entity.Order;
 import com.jim.ssr.entity.OrderDetail;
 import lombok.Data;
 import lombok.ToString;
@@ -23,5 +24,13 @@ public class OrderVO {
     private String comment;
 
     List<OrderDetail> orderList;
+
+
+    public OrderVO(Order order, List<OrderDetail> details) {
+        this.num = order.getNum();
+        this.price = order.getPrice();
+        this.comment = order.getComment();
+        this.orderList = details;
+    }
 
 }

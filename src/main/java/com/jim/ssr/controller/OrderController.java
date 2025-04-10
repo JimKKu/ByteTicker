@@ -32,4 +32,9 @@ public class OrderController {
         return os.history(date,orderNo);
     }
 
+    @GetMapping("/reprint")
+    public String rePrint() {
+        return os.rePrint();
+    }
+
 }

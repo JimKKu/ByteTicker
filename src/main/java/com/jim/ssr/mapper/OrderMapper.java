@@ -20,6 +20,8 @@ public interface OrderMapper {
 
     Integer selectMaxNum();
 
+    Order selectLatestData();
+
     List<Order> historyOrder(@Param("date") String date, @Param("orderNo") Integer orderNo);
 
 

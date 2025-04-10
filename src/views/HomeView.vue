@@ -1219,6 +1219,7 @@ header img {
   display: inline-block;
   width: 50%;
   height: 100%;
+  transition: all .25s;
 }
 
 .in-float-button-container :first-child {
@@ -1228,25 +1229,21 @@ header img {
   text-align: center;
   line-height: 40px;
   width: 40px;
+  transform: translateX(0);
 }
-.in-float-button-container i {
-  width: 22px;
-  height: 22px;
-}
+
 
 .in-float-button-container:hover {
   transform: translateX(40px);
   background: #3a5fd9;
 }
 
-
-.float-button:active {
-  width: 36px;
-  height: 36px;
-  transform: translateX(-2px);
-  line-height: 18px;
-  padding-left: 2px;
+.in-float-button-container :first-child:active {
+  font-size: 18px;
 }
+
+
+
 
 #exchange-button {
   right: 180px;

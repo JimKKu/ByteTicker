@@ -161,29 +161,36 @@
       <div v-if="sum!==0" @click="orderList.length === 0?sum=0:''">应收金额:&nbsp;&nbsp;<span>{{ showSum.toFixed() }}</span>&nbsp;元</div>
     </footer>
 
-    <!-- 右上角两个绝对定位按钮 -->
-    <div id="exchange-button" class="float-button" @click="changeAside">
-      <div class="in-float-button-container">
-        <div>
-          <i :class="aside1? 'iconfont icon-lishihangcheng':'iconfont icon-dingdan'"></i>
-        </div>
-        <div>
-          {{aside1 ? '历史订单' : '继续点单'}}
-        </div>
-      </div>
-    </div>
-
-    <div id="reprint-button" class="float-button" style="right: 100px" @click="rePrinter">
-      <div class="in-float-button-container">
-        <div>
-          <i class="iconfont icon-zhongxinshengcheng"></i>
-        </div>
-        <div>
-          重新打印
+    <div id="float-buttons" :style="successFlag?'transform: translateX(0px)':'transform: translateX(140px)'">
+      <!-- 右上角两个绝对定位按钮 -->
+      <div id="exchange-button" class="float-button" @click="changeAside">
+        <div class="in-float-button-container">
+          <div>
+            <i :class="aside1? 'iconfont icon-lishihangcheng':'iconfont icon-dingdan'"></i>
+          </div>
+          <div>
+            {{aside1 ? '历史订单' : '继续点单'}}
+          </div>
         </div>
       </div>
-    </div>
 
+      <div id="reprint-button" class="float-button" @click="rePrinter">
+        <div class="in-float-button-container">
+          <div>
+            <i class="iconfont icon-zhongxinshengcheng"></i>
+          </div>
+          <div>
+            重新打印
+          </div>
+        </div>
+      </div>
+
+
+      <div id="information">
+        <i class="iconfont icon-chenggong"></i>
+        <div>{{ successMsg }}</div>
+      </div>
+    </div>
 
   </div>
 </template>
@@ -209,6 +216,8 @@ export default {
       iToday: '',
       sum: 0,
       aside1: true,
+      successFlag: 0,
+      successMsg: '',
       quickInfoList: [
         {
           background: '#ffc09f',
@@ -367,12 +376,20 @@ export default {
     async btnNewOrder(){
       var code = await reqNewOrder(this.orderList,this.comment,this.sum);
       if(code === '000') {
-        this.$notify.success("下单成功！");
+        // this.$notify.success("下单成功！");
         this.orderList.splice(0,this.orderList.length);
         this.comment = '';
+        this.successFlag = 1;
+        this.successMsg = "下单成功!";
       } else {
-        this.$notify.error("下单失败！");
+        this.successMsg = "下单失败!";
+        this.successFlag = 2;
       }
+
+      let _this = this;
+      setTimeout(function (){
+        _this.successFlag = 0
+      },3000);
     },
     async queryHistoryOrders() {
       this.historyList = await historyOrder(this.history_orderDate,this.history_orderNo);
@@ -1271,7 +1288,7 @@ header img {
   position: absolute;
   z-index: 400;
   top: 0;
-  border-radius: 0 0 8px 8px;
+  border-radius: 8px;
   transition: .25s all;
   border: 1px solid gray;
   color: gray;
@@ -1321,11 +1338,77 @@ header img {
 
 
 #exchange-button {
-  right: 180px;
+  left: 0;
 }
+
 #reprint-button {
-  right: 100px;
+  right: 160px;
 }
+
+
+
+#float-buttons {
+  width: 260px;
+  height: 40px;
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: 0;
+  //transform: translateX(140px);
+  z-index: 400;
+  transition: all .25s;
+}
+
+
+
+#information {
+  width: 120px;
+  height: 40px;
+  position: absolute;
+  z-index: 400;
+  top: 0;
+  border-radius: 8px;
+  transition: .25s all;
+  border: 1px solid gray;
+  color: gray;
+  font-size: 14px;
+  line-height: 20px;
+  overflow: hidden;
+  right: 20px;
+  background: #e1e1e1;
+}
+
+#information > i {
+  width: 36px;
+  height: 36px;
+  border-radius: 36px;
+  border: 1px solid gray;
+  margin: 2px;
+  display: inline-block;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px #b0b0b0 inset,-2px -2px 4px #fff inset;
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
+  color: #65B85D;
+  background: #e1e1e1;
+  //animation: success-icon .5s infinite;
+}
+
+
+#information > div {
+  width: 78px;
+  height: 40px;
+  float:  right;
+  display: inline-block;
+  line-height: 40px;
+  color: #fff;
+  padding: 0 4px;
+  box-sizing: border-box;
+  background: #3a5fd9;
+}
+
+
 
 /* ------ 小装饰 ----------- */
 .lajitong-clear {
@@ -1388,5 +1471,18 @@ textarea {
 }
 .no-order {
 
+}
+
+
+@keyframes success-icon {
+  0%,100% {
+    transform: rotateZ(0deg);
+  }
+  25% {
+    transform: rotateZ(20deg);
+  }
+  75% {
+    transform: rotateZ(-20deg);
+  }
 }
 </style>

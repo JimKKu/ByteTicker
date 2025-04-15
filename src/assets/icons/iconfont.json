@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "582602",
+      "name": "成功",
+      "font_class": "70chenggong",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "739104",
+      "name": "成功",
+      "font_class": "chenggong",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "1330717",
+      "name": "成功",
+      "font_class": "chenggong1",
+      "unicode": "e742",
+      "unicode_decimal": 59202
+    },
+    {
       "icon_id": "310341",
       "name": "food31",
       "font_class": "food31",

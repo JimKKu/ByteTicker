@@ -161,7 +161,7 @@
       <div v-if="sum!==0" @click="orderList.length === 0?sum=0:''">应收金额:&nbsp;&nbsp;<span>{{ showSum.toFixed() }}</span>&nbsp;元</div>
     </footer>
 
-    <div id="float-buttons" :style="successFlag?'transform: translateX(0px)':'transform: translateX(140px)'">
+    <div id="float-buttons" :style="success.flag?'transform: translateX(0px)':'transform: translateX(140px)'">
       <!-- 右上角两个绝对定位按钮 -->
       <div id="exchange-button" class="float-button" @click="changeAside">
         <div class="in-float-button-container">
@@ -187,8 +187,8 @@
 
 
       <div id="information">
-        <i class="iconfont icon-chenggong"></i>
-        <div>{{ successMsg }}</div>
+        <i :class="success.icon" :style="{color: success.color}"></i>
+        <div>{{ success.msg }}</div>
       </div>
     </div>
 
@@ -216,8 +216,12 @@ export default {
       iToday: '',
       sum: 0,
       aside1: true,
-      successFlag: 0,
-      successMsg: '',
+      success: {
+        flag: 0,
+        msg: '',
+        icon: '',
+        color: ''
+      },
       quickInfoList: [
         {
           background: '#ffc09f',
@@ -379,17 +383,19 @@ export default {
         // this.$notify.success("下单成功！");
         this.orderList.splice(0,this.orderList.length);
         this.comment = '';
-        this.successFlag = 1;
-        this.successMsg = "下单成功!";
+        this.success.flag = 1;
+        this.success.msg = "下单成功!";
+        this.success.icon = 'iconfont icon-chenggong';
+        this.success.color = '#65B85D';
       } else {
-        this.successMsg = "下单失败!";
-        this.successFlag = 2;
+        this.success.msg = "下单失败!";
+        this.success.flag = 2;
+        this.success.icon = 'iconfont icon-shibai';
+        this.success.color = '#ff4141';
       }
 
       let _this = this;
-      setTimeout(function (){
-        _this.successFlag = 0
-      },3000);
+      setTimeout(() => _this.success.flag = 0,3000);
     },
     async queryHistoryOrders() {
       this.historyList = await historyOrder(this.history_orderDate,this.history_orderNo);
@@ -1390,7 +1396,6 @@ header img {
   font-size: 30px;
   line-height: 36px;
   text-align: center;
-  color: #65B85D;
   background: #e1e1e1;
   //animation: success-icon .5s infinite;
 }
@@ -1476,13 +1481,13 @@ textarea {
 
 @keyframes success-icon {
   0%,100% {
-    transform: rotateZ(0deg);
+    transform: rotateX(0deg);
   }
   25% {
-    transform: rotateZ(20deg);
+    transform: rotateX(20deg);
   }
   75% {
-    transform: rotateZ(-20deg);
+    transform: rotateX(-20deg);
   }
 }
 </style>

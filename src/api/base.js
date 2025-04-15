@@ -1,7 +1,11 @@
 import axios from 'axios'
 
-let base = '';
 
+/* TODO: 打包exe用 */
+// let base = 'http://127.0.0.1:8080';
+// let base = 'http://101.133.229.103:8080';
+
+let base = '';
 
 // GET 请求
 export const sndGET=(url,params)=>{

@@ -31,10 +31,9 @@
     </insert>
 
     <select id="selectMaxNum" resultType="java.lang.Integer">
-        select
-        MAX(num)
-        from tbl_order
-        where  createDate=date_format(now(), '%Y%m%d')
+        SELECT MAX(num)
+        FROM tbl_order
+        WHERE createDate = FORMATDATETIME(CURRENT_DATE(), 'yyyyMMdd')
     </select>
 
 

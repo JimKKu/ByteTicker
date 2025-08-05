@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jim</groupId>
-    <artifactId>ssr</artifactId>
+    <artifactId>ByteTicker</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ssr</name>
-    <description>ssr</description>
+    <name>ByteTicker</name>
+    <description>ByteTicker</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -38,11 +38,18 @@
             <artifactId>druid</artifactId>
             <version>1.2.1</version>
         </dependency>
+        <!-- H2DB & MyBatis -->
         <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
+<!-- MySQL -->
+<!--        <dependency>-->
+<!--            <groupId>com.mysql</groupId>-->
+<!--            <artifactId>mysql-connector-j</artifactId>-->
+<!--            <scope>runtime</scope>-->
+<!--        </dependency>-->
         <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -87,7 +94,6 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.jim.ssr.SsrApplication</mainClass>
-                    <skip>true</skip>
                 </configuration>
                 <executions>
                     <execution>

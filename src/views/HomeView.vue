@@ -47,9 +47,9 @@
                     <i class="iconfont icon-lajitong lajitong-clear">&nbsp;</i>清&nbsp;空
                   </div>
                   <div id="in-aside-order1-inner-right">
-                    <i class="iconfont icon-qian8 icon-money"></i>
+                    <i class="iconfont icon-qian icon-money"></i>
                     来单咯
-                    <i class="iconfont icon-qian8 icon-money"></i>
+                    <i class="iconfont icon-qian icon-money"></i>
                   </div>
                 </div>
               </div>
@@ -66,7 +66,7 @@
                       </div>
                       <div id="in-aside-card-3">
                         <div class="order-button">
-                          <button class="iconfont icon-jianhaob" :disabled="order.num === 0" @click="btnMinusOrder(index)"></button>
+                          <button class="iconfont icon-jianhao" :disabled="order.num === 0" @click="btnMinusOrder(index)"></button>
                         </div>
                         <div class="order-input">
                           <input v-model="order.num">
@@ -146,7 +146,7 @@
               </div>
               <div id="in-history-aside-3">
                 <div id="in-history-aside-3-container">
-                  <div class="iconfont icon-jintian4" @click="btnToday"></div>
+                  <div class="iconfont icon-jintian" @click="btnToday"></div>
                   <input v-model="history_orderDate" placeholder="日期" :style="iToday === history_orderDate?'color:gray':'color:#3a5fd9;font-weight: 500'">
                   <input v-model="history_orderNo" placeholder="订单号" v-on:input="queryHistoryOrders">
                 </div>
@@ -166,7 +166,7 @@
       <div id="exchange-button" class="float-button" @click="changeAside">
         <div class="in-float-button-container">
           <div>
-            <i :class="aside1? 'iconfont icon-lishihangcheng':'iconfont icon-dingdan'"></i>
+            <i :class="aside1? 'iconfont icon-history':'iconfont icon-fanhui1'"></i>
           </div>
           <div>
             {{aside1 ? '历史订单' : '继续点单'}}
@@ -177,7 +177,7 @@
       <div id="reprint-button" class="float-button" @click="rePrinter">
         <div class="in-float-button-container">
           <div>
-            <i class="iconfont icon-zhongxinshengcheng"></i>
+            <i class="iconfont icon-zhongxindayin-01"></i>
           </div>
           <div>
             重新打印
@@ -241,7 +241,7 @@ export default {
         },{
           background: '#3f9124',
           info: "香葱",
-          icon: 'iconfont icon-dacong',
+          icon: 'iconfont icon-shucai-',
           size: '12px'
         },{
           background: '#6cc94c',

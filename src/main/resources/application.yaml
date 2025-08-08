@@ -10,7 +10,7 @@ mybatis:
 
 spring:
   datasource:
-    url: jdbc:h2:file:./db/ByteTickerDB;IFEXISTS=FALSE # Ubuntu
+    url: jdbc:h2:file:~/.config/ByteTicker/db/h2db #;IFEXISTS=FALSE # Ubuntu
     driver-class-name: org.h2.Driver
     username: root
     password: root
@@ -23,6 +23,11 @@ spring:
       ddl-auto: update
     show-sql: true
 
+logging:
+  file:
+    path: ./logs
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
 #spring:
 #  datasource:
 #    type: com.alibaba.druid.pool.DruidDataSource

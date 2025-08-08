@@ -11,5 +11,4 @@ public interface TypeMapper {
 
     List<Type> getTypeList();
 
-
 }

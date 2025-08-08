@@ -13,16 +13,16 @@ import java.util.List;
 
 /**
  * @Author: Jim
- * @Description: ´òÓ¡¹¤¾ßÀà
- * TODO ¾ßÌå²ÎÊıºóÃæµ÷Õû
+ * @Description: æ‰“å°å·¥å…·ç±»
+ * TODO å…·ä½“å‚æ•°åé¢è°ƒæ•´
  */
 @Slf4j
 public class PrinterUtils {
 
-    private static final String TITLE="ÖØÇì¶şÁ½Ãæ";
+    private static final String TITLE="é‡åº†äºŒä¸¤é¢";
 
     private static final String LINE = "--------------------------------";
-    /* ¿Õ¸ñ²¹Æë */
+    /* ç©ºæ ¼è¡¥é½ */
     private static final String b0 = "";
     private static final String b1 = " ";
     private static final String b2 = b1 + b1;
@@ -54,42 +54,42 @@ public class PrinterUtils {
 
     public static void print(OrderVO vo) {
 
-        /* ²âÊÔ: ÖÕ¶ËÊä³ö */
-        doPrint(vo);
+        /* æµ‹è¯•: ç»ˆç«¯è¾“å‡º */
+        doTest(vo);
 
     }
 
 
     private static void doPrint(OrderVO vo) {
-        log.info("--¿ªÊ¼´òÓ¡");
+        log.info("--å¼€å§‹æ‰“å°");
         Sdk sdk =new Sdk();
 
-        /** USB Á¬½Ó */
+        /** USB è¿æ¥ */
         sdk.pioOpen("usb","",3000);
 
-        /* Ò³Í·¿ÕĞĞ */
+        /* é¡µå¤´ç©ºè¡Œ */
         sdk.pioWritePort("\n\n\n\n".getBytes());
 
-        /** ¶¨ÒåÑùÊ½ */
+        /** å®šä¹‰æ ·å¼ */
         sdk.selectAlignment(1);
         sdk.selectCharacterSize(022022);
         sdk.selectOrCancelInvertPrintModel(0);
 
-        /* ´òÓ¡±êÌâ */
+        /* æ‰“å°æ ‡é¢˜ */
         sdk.pioWritePort(TITLE.getBytes());
 
-        /* »»Á½ĞĞ */
+        /* æ¢ä¸¤è¡Œ */
         sdk.printAndFeedLine();
         sdk.printAndFeedLine();
 
-        /** ¶¨ÒåÑùÊ½ */
+        /** å®šä¹‰æ ·å¼ */
         sdk.selectAlignment(1);
         sdk.selectCharacterSize(022022);
         sdk.selectOrCancelInvertPrintModel(1);
-        /* ´òÓ¡Á÷Ë®ºÅ */
+        /* æ‰“å°æµæ°´å· */
         sdk.pioWritePort(getSerialNumber(vo.getNum()).getBytes());
 
-        /** ¶¨ÒåÑùÊ½ */
+        /** å®šä¹‰æ ·å¼ */
         sdk.printAndFeedLine();
         sdk.printAndFeedLine();
         sdk.selectAlignment(0);
@@ -97,73 +97,73 @@ public class PrinterUtils {
         sdk.selectOrCancelInvertPrintModel(0);
 
 
-        /* ´òÓ¡³¤Á÷Ë®ºÅ */
-        sdk.pioWritePort(("³¤¶©µ¥ºÅ:"+vo.getNum()).getBytes());
-        /* »»ĞĞ */
+        /* æ‰“å°é•¿æµæ°´å· */
+        sdk.pioWritePort(("é•¿è®¢å•å·:"+vo.getNum()).getBytes());
+        /* æ¢è¡Œ */
         sdk.printAndFeedLine();
-        /* Ê±¼ä */
-        sdk.pioWritePort(("ÏÂµ¥Ê±¼ä:"+DateUtils.getCurrentDateTime("yyyy-MM-dd HH:mm:ss")).getBytes());
+        /* æ—¶é—´ */
+        sdk.pioWritePort(("ä¸‹å•æ—¶é—´:"+DateUtils.getCurrentDateTime("yyyy-MM-dd HH:mm:ss")).getBytes());
 
-        /* »»ĞĞ */
+        /* æ¢è¡Œ */
         sdk.printAndFeedLine();
 
-        // ·Ö¸îÏß
+        // åˆ†å‰²çº¿
         sdk.pioWritePort(LINE.getBytes());
         sdk.printAndFeedLine();
         /* menu title */
-        sdk.pioWritePort("Æ·Àà                   ·İÊı Ğ¡¼Æ".getBytes());
+        sdk.pioWritePort("å“ç±»                   ä»½æ•° å°è®¡".getBytes());
         /* menu list */
         sdk.pioWritePort(buildMenu(vo.getOrderList()).getBytes());
-        /* »»ĞĞ */
+        /* æ¢è¡Œ */
         // sdk.printAndFeedLine();
-        /* ·Ö¸îÏß */
+        /* åˆ†å‰²çº¿ */
         sdk.pioWritePort(LINE.getBytes());
-        /* »»ĞĞ */
+        /* æ¢è¡Œ */
         sdk.printAndFeedLine();
-        /* ±¸×¢ĞÅÏ¢ */
-        sdk.pioWritePort(("±¸×¢:"+getComment(vo.getComment())).getBytes());
-        /* »»ĞĞ */
+        /* å¤‡æ³¨ä¿¡æ¯ */
+        sdk.pioWritePort(("å¤‡æ³¨:"+getComment(vo.getComment())).getBytes());
+        /* æ¢è¡Œ */
         sdk.printAndFeedLine();
         sdk.selectCharacterSize(122122);
-        /* Ó¦ÊÕ½ğ¶î */
-        sdk.pioWritePort(("Ó¦ÊÕ½ğ¶î:"+vo.getPrice()+"Ôª").getBytes());
-        /* »»ĞĞ */
+        /* åº”æ”¶é‡‘é¢ */
+        sdk.pioWritePort(("åº”æ”¶é‡‘é¢:"+vo.getPrice()+"å…ƒ").getBytes());
+        /* æ¢è¡Œ */
         sdk.printAndFeedLine();
 
         sdk.pioWritePort("\n\n\n\n\n\n\n".getBytes());
         sdk.selectCutPagerModerAndCutPager(0);
 
         sdk.pioClose();
-        log.info("--½áÊø´òÓ¡");
+        log.info("--ç»“æŸæ‰“å°");
     }
 
     private static void doTest(OrderVO vo) {
-        log.info("--¿ªÊ¼´òÓ¡");
+        log.info("--å¼€å§‹æ‰“å°");
 
 
         System.out.println("\n\n\n");
-        /* ´òÓ¡±êÌâ */
+        /* æ‰“å°æ ‡é¢˜ */
         System.out.println(TITLE);
-        /* ´òÓ¡Á÷Ë®ºÅ */
+        /* æ‰“å°æµæ°´å· */
         System.out.println(getSerialNumber(vo.getNum()));
-        /* ´òÓ¡³¤Á÷Ë®ºÅ */
-        System.out.println(("³¤¶©µ¥ºÅ:"+vo.getNum()));
-        /* Ê±¼ä */
-        System.out.println("ÏÂµ¥Ê±¼ä:"+DateUtils.getCurrentDateTime("yyyy-MM-dd HH:mm:ss"));
-        // ·Ö¸îÏß
+        /* æ‰“å°é•¿æµæ°´å· */
+        System.out.println(("é•¿è®¢å•å·:"+vo.getNum()));
+        /* æ—¶é—´ */
+        System.out.println("ä¸‹å•æ—¶é—´:"+DateUtils.getCurrentDateTime("yyyy-MM-dd HH:mm:ss"));
+        // åˆ†å‰²çº¿
         System.out.println(LINE);
         /* menu title */
-        System.out.println("Æ·Àà" + b19 + "·İÊı" + b1 + "Ğ¡¼Æ");
+        System.out.println("å“ç±»" + b19 + "ä»½æ•°" + b1 + "å°è®¡");
         /* menu list */
         System.out.println(buildMenu(vo.getOrderList()));
-        /* ·Ö¸îÏß */
+        /* åˆ†å‰²çº¿ */
         System.out.println(LINE);
-        /* ±¸×¢ĞÅÏ¢ */
-        System.out.println(("±¸×¢:"+getComment(vo.getComment())));
-        /* Ó¦ÊÕ½ğ¶î */
-        System.out.println(("Ó¦ÊÕ½ğ¶î:"+vo.getPrice()));
+        /* å¤‡æ³¨ä¿¡æ¯ */
+        System.out.println(("å¤‡æ³¨:"+getComment(vo.getComment())));
+        /* åº”æ”¶é‡‘é¢ */
+        System.out.println(("åº”æ”¶é‡‘é¢:"+vo.getPrice()));
         System.out.println("\n\n\n\n\n\n");
-        log.info("--½áÊø´òÓ¡");
+        log.info("--ç»“æŸæ‰“å°");
     }
 
 
@@ -201,7 +201,7 @@ public class PrinterUtils {
         return String.valueOf(num).length();
     }
 
-    // ÓÉÓÚÖ»ÓĞÈı¸ö¸ñ×Ó¸ø¼Û¸ñ£¬ËùÒÔ²»Òª³¬¹ı1000Ôª/µ¥
+    // ç”±äºåªæœ‰ä¸‰ä¸ªæ ¼å­ç»™ä»·æ ¼ï¼Œæ‰€ä»¥ä¸è¦è¶…è¿‡1000å…ƒ/å•
     private static String getPrice(int price) {
         int len = strLen(price);
         switch (len) {
@@ -232,7 +232,7 @@ public class PrinterUtils {
 
 
     /**
-     * ·İÊı
+     * ä»½æ•°
      * @param num
      * @return
      */
@@ -249,14 +249,14 @@ public class PrinterUtils {
     }
 
     private static String getName(String name1,String name2,int size) {
-        // TODO Æ´½Ó×Ö·û´® ×Ü³¤¶È26Î»£¬Ä©Î²ÓÃ¿Õ¸ñ²¹Æë£¨32-3-3£©
+        // TODO æ‹¼æ¥å­—ç¬¦ä¸² æ€»é•¿åº¦26ä½ï¼Œæœ«å°¾ç”¨ç©ºæ ¼è¡¥é½ï¼ˆ32-3-3ï¼‰
         String x = "";
         switch (size) {
             case 1:
-                x = "(Ğ¡)";
+                x = "(å°)";
                 break;
             case 2:
-                x = "(´ó)";
+                x = "(å¤§)";
                 break;
         }
         String name;
@@ -326,7 +326,7 @@ public class PrinterUtils {
 
 
     private static String getComment(String str) {
-        if(str.endsWith("¡¢")) {
+        if(str.endsWith("ã€")) {
             return str.substring(0,str.length() - 1);
         }
         return str;

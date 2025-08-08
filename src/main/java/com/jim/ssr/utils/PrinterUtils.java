@@ -54,8 +54,13 @@ public class PrinterUtils {
 
     public static void print(OrderVO vo) {
 
-        /* 测试: 终端输出 */
-        doTest(vo);
+        try {
+            /* 调用打印工具 */
+            doPrint(vo);
+        } catch (Exception e) {
+            /* 测试: 终端输出 */
+            doTest(vo);
+        }
 
     }
 

@@ -1,0 +1,261 @@
+{
+  "id": "4994961",
+  "name": "Github | ByteTicker",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "310341",
+      "name": "food31",
+      "font_class": "food31",
+      "unicode": "e6a5",
+      "unicode_decimal": 59045
+    },
+    {
+      "icon_id": "707462",
+      "name": "辣椒1个",
+      "font_class": "lajiao1ge",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "707464",
+      "name": "辣椒3个",
+      "font_class": "lajiao3ge",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "707477",
+      "name": "辣椒2个",
+      "font_class": "lajiao2ge",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "5172487",
+      "name": "葱",
+      "font_class": "shucai-",
+      "unicode": "e68f",
+      "unicode_decimal": 59023
+    },
+    {
+      "icon_id": "5175750",
+      "name": "香菜",
+      "font_class": "xiangcai",
+      "unicode": "e6a9",
+      "unicode_decimal": 59049
+    },
+    {
+      "icon_id": "6582323",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "6844414",
+      "name": "点餐订单",
+      "font_class": "diancandingdan",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "7157823",
+      "name": "返回",
+      "font_class": "fanhui1",
+      "unicode": "e637",
+      "unicode_decimal": 58935
+    },
+    {
+      "icon_id": "21071220",
+      "name": "点餐",
+      "font_class": "diancan",
+      "unicode": "e691",
+      "unicode_decimal": 59025
+    },
+    {
+      "icon_id": "29594978",
+      "name": "点餐",
+      "font_class": "diancan1",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "38710281",
+      "name": "继续",
+      "font_class": "jixu",
+      "unicode": "e6f6",
+      "unicode_decimal": 59126
+    },
+    {
+      "icon_id": "44212229",
+      "name": "你继续",
+      "font_class": "nijixu",
+      "unicode": "e778",
+      "unicode_decimal": 59256
+    },
+    {
+      "icon_id": "44668274",
+      "name": "返回",
+      "font_class": "a-zu7173",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "1621095",
+      "name": "历史",
+      "font_class": "history",
+      "unicode": "e6fc",
+      "unicode_decimal": 59132
+    },
+    {
+      "icon_id": "4784096",
+      "name": "今天",
+      "font_class": "jintian",
+      "unicode": "e654",
+      "unicode_decimal": 58964
+    },
+    {
+      "icon_id": "15392666",
+      "name": "历史2",
+      "font_class": "lishi2",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "30870089",
+      "name": "重新打印-01",
+      "font_class": "zhongxindayin-01",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "36301160",
+      "name": "lajitong",
+      "font_class": "lajitong",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "109713",
+      "name": "垃圾桶",
+      "font_class": "del",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "5171735",
+      "name": "钱",
+      "font_class": "qian",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "5387527",
+      "name": "加号",
+      "font_class": "jiahao",
+      "unicode": "eaf3",
+      "unicode_decimal": 60147
+    },
+    {
+      "icon_id": "5387532",
+      "name": "减号",
+      "font_class": "jianhao",
+      "unicode": "eaf5",
+      "unicode_decimal": 60149
+    },
+    {
+      "icon_id": "5072222",
+      "name": "冰激凌",
+      "font_class": "icecream",
+      "unicode": "e669",
+      "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "5202136",
+      "name": "14-冰激凌",
+      "font_class": "-bingjiling",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "5221206",
+      "name": "冰激凌10",
+      "font_class": "bingjiling",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "9097134",
+      "name": "冰激凌",
+      "font_class": "ziyuan",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "3874542",
+      "name": "饺子",
+      "font_class": "jiaozi",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "5089126",
+      "name": "米饭",
+      "font_class": "mifan",
+      "unicode": "e708",
+      "unicode_decimal": 59144
+    },
+    {
+      "icon_id": "5091093",
+      "name": "米饭",
+      "font_class": "mifan1",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "5091097",
+      "name": "面条",
+      "font_class": "miantiao",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "5191500",
+      "name": "荷包蛋",
+      "font_class": "hebaodan",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "5199630",
+      "name": "盖浇饭",
+      "font_class": "gaijiaofan",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "9841808",
+      "name": "全部",
+      "font_class": "quanbu",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "10781162",
+      "name": "荷包蛋",
+      "font_class": "hebaodan1",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "39795268",
+      "name": "面条",
+      "font_class": "miantiao1",
+      "unicode": "e822",
+      "unicode_decimal": 59426
+    }
+  ]
+}

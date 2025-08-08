@@ -56,4 +56,8 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# PKG Files
+/out/
+/app/jre/
 >>>>>>> bt-client/main

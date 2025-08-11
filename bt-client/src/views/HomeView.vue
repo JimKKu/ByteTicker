@@ -264,6 +264,13 @@ export default {
     this.getMenuList(0);
     this.INIT_Date();
     this.queryHistoryOrders();
+
+    setInterval(async () => {
+      // 刷新订单按钮
+      this.typeList = await reqGetTypeList();
+      // 刷新日期
+      this.INIT_Date();
+    }, 2000)
   },
   methods: {
     /* ----- methods ----- */

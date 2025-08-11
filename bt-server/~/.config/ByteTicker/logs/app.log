@@ -1,0 +1,8 @@
+2025-08-11 20:19:02 [main] INFO  com.jim.ssr.SsrApplicationTests - Starting SsrApplicationTests using Java 17.0.12 on JimsMacBook-Air.local with PID 48448 (started by hsk in /Users/hsk/DevCodes/ByteTicker/bt-server)
+2025-08-11 20:19:02 [main] INFO  com.jim.ssr.SsrApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-08-11 20:19:02 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-11 20:19:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-11 20:19:03 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2db'. Database available at 'jdbc:h2:file:~/.config/ByteTicker/db/h2db'
+2025-08-11 20:19:03 [main] INFO  com.jim.ssr.SsrApplicationTests - Started SsrApplicationTests in 1.568 seconds (JVM running for 2.845)
+2025-08-11 20:19:03 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-11 20:19:03 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

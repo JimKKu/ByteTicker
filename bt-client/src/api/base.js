@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 /* TODO: 打包exe用 */
-let base = 'http://127.0.0.1:8080';
+let base = 'http://127.0.0.1:14156';
 
 // let base = '';
 

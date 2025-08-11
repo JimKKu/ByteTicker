@@ -1,6 +1,6 @@
 # Server 配置
 server:
-  port: 8080
+  port: 14156
 
 # MyBatis 配置
 mybatis:

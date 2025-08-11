@@ -4,7 +4,7 @@ proxy['/']={
     // WebSocket
     ws:false,
     // Target
-    target:'http://127.0.0.1:8080',
+    target:'http://127.0.0.1:14156',
     // Header: Host -> Target
     changeOrigin:true,
     // 不重写请求地址

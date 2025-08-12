@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4994961 */
-  src: url('iconfont.woff2?t=1754644048590') format('woff2'),
-       url('iconfont.woff?t=1754644048590') format('woff'),
-       url('iconfont.ttf?t=1754644048590') format('truetype');
+  src: url('iconfont.woff2?t=1754966542112') format('woff2'),
+       url('iconfont.woff?t=1754966542112') format('woff'),
+       url('iconfont.ttf?t=1754966542112') format('truetype');
 }
 
 .iconfont {
@@ -10,6 +10,38 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-jiaozi2:before {
+  content: "\e709";
+}
+
+.icon-jiaozi-:before {
+  content: "\e623";
+}
+
+.icon-jidan:before {
+  content: "\e602";
+}
+
+.icon-miantiao2:before {
+  content: "\e604";
+}
+
+.icon-fan:before {
+  content: "\e61a";
+}
+
+.icon-dianfanbao:before {
+  content: "\e6be";
+}
+
+.icon-a-058_miantiao:before {
+  content: "\e721";
+}
+
+.icon-chow-meinx:before {
+  content: "\e622";
 }
 
 .icon-food31:before {
@@ -36,10 +68,6 @@
   content: "\e6a9";
 }
 
-.icon-fanhui:before {
-  content: "\e62b";
-}
-
 .icon-diancandingdan:before {
   content: "\e627";
 }
@@ -54,18 +82,6 @@
 
 .icon-diancan1:before {
   content: "\e601";
-}
-
-.icon-jixu:before {
-  content: "\e6f6";
-}
-
-.icon-nijixu:before {
-  content: "\e778";
-}
-
-.icon-a-zu7173:before {
-  content: "\e609";
 }
 
 .icon-history:before {
@@ -86,10 +102,6 @@
 
 .icon-lajitong:before {
   content: "\e605";
-}
-
-.icon-del:before {
-  content: "\e616";
 }
 
 .icon-qian:before {
@@ -120,39 +132,7 @@
   content: "\e647";
 }
 
-.icon-jiaozi:before {
-  content: "\e612";
-}
-
-.icon-mifan:before {
-  content: "\e708";
-}
-
-.icon-mifan1:before {
-  content: "\e619";
-}
-
-.icon-miantiao:before {
-  content: "\e61c";
-}
-
-.icon-hebaodan:before {
-  content: "\e621";
-}
-
-.icon-gaijiaofan:before {
-  content: "\e624";
-}
-
 .icon-quanbu:before {
   content: "\e61b";
-}
-
-.icon-hebaodan1:before {
-  content: "\e60a";
-}
-
-.icon-miantiao1:before {
-  content: "\e822";
 }
 

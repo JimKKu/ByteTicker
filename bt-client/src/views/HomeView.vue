@@ -166,7 +166,7 @@
       <div id="exchange-button" class="float-button" @click="changeAside">
         <div class="in-float-button-container">
           <div>
-            <i :class="aside1? 'iconfont icon-history':'iconfont icon-fanhui1'"></i>
+            <i :class="aside1? 'iconfont icon-history':'iconfont icon-diancan1'"></i>
           </div>
           <div>
             {{aside1 ? '历史订单' : '继续点单'}}

@@ -60,4 +60,5 @@ pnpm-debug.log*
 # PKG Files
 /out/
 /app/jre/
+!**/*/dist
 >>>>>>> bt-client/main

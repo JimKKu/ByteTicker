@@ -60,5 +60,8 @@ pnpm-debug.log*
 # PKG Files
 /out/
 /app/jre/
-!**/*/dist
+# 前端打包文件
+**/dist/
+# 日志文件
+**/*.log
 >>>>>>> bt-client/main

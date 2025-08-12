@@ -1,10 +1,27 @@
-# ByteTicker
+# ByteTicker | 数字点单软件
+
+![Electron](https://img.shields.io/badge/Electron-47848F?logo=electron&logoColor=white)
+![Vue 2](https://img.shields.io/badge/Vue.js-2.x-4FC08D?logo=vuedotjs&logoColor=white)
+![Spring Boot 2](https://img.shields.io/badge/Spring_Boot-2.x-6DB33F?logo=springboot&logoColor=white)
+![H2](https://img.shields.io/badge/H2-Database-007AFF)
+![Node.js 22](https://img.shields.io/badge/Node.js-22-339933?logo=nodedotjs&logoColor=white)
 
 
-## 由来
+## How TO USE | 如何使用
 
-本项目最初是受朋友所托进行开发，最初版本为Vue + SpringBoot + MySQL，并使用[Eletronjs](https://www.electronjs.org/)打包成`.exe`可执行文件进行执行。但是由于朋友比较急且他也是计算机方向，因此我并没有做一个专门用于管理的界面（如分类、菜品管理），等后面有时间会加上。
+本项目为点单程序，通过连接芯烨小票打印机（开发使用的为 [58IIH*USB](https://www.xprinter.net/product/596.html) 版本打印小票，下载并启程程序后，连接芯烨打印机，选择点单内容并下单即可，页面会显示应付价格等。
 
-最初的版本由于采用了MySQL，因此不得不在点单设备上装一个MySQL环境，且当时需要手动执行`java -jar`来启动后端（我设置成了开机自动启动jar包的方式），用户双击可执行文件，只是打开一个被封装的前端应用罢了。
+更加详细的使用方式可以查看 [使用说明](./USE.md),若有问题可以提交 [Issues](https://github.com/JimKKu/ByteTicker/issues)。
 
-随着时间流逝，我接触到了H2DB，因此决定重新启动该项目，将该项目的数据库从MySQL切换至H2DB，如此一来就不再需要数据库服务，又花了时间，将jar包也放到了可执行文件中去，至此完成第二版本。
+## Preview | 预览
+
+
+<div style="width: 100%;display: flex">
+  <img src="resources/preview.gif" style="width: 800px;border-radius:10px" />
+  <img src="resources/tip1.jpg" style="width: 200px;border-radius:10px" />
+</div>
+
+
+## 其它
+
+本项目的诞生源于两个朋友的创业需求：最初为一家店铺开发点单DEMO，后又为流动饺子摊做了定制化修改。早期版本受限于临时需求以及开发时间，存在数据库选型模糊、后端需手动启动等问题。经过系统性重构，如今已演进为标准化解决方案。
